@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nail IT後台管理</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+        .container-fluid {
+            height: 90px;
+            position: fixed;
+            font-weight: bold;
+            font-size: 16px;
+            background-color: black;
+        }
+
+        #navall > div {
+            background-color: black;
+            max-height: 100%;
+            /* 待研究 */
+            height: 90px;
+        }
+
+        #brand {
+            font-family: Cascadia Mono SemiBold;
+            font-size: 30px;
+            color: white;
+            height: 100%;
+        }
+
+        #navend {
+            font-size: 14px;
+            text-align: right;
+            color: white;
+        }
+        .btn {
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            border: 2px solid black;
+            height: 60px;
+            border-radius: 0px;
+            width:110px;height:40px;
+        }
+            .btn:hover,
+            .btn:link,
+            .btn:visited,
+            .btn:active {
+                text-decoration-line: none;
+                color: white;
+            }
+
+     
+    </style>
+
+</head>
+
+<body>
+    <div id="mydata3">
+        <div class="container-fluid">
+            <!-- 功能列------------------------------------------------------------------------------------------- -->
+            <nav class="container-fluid">
+                <div class="row opacity-25" id="navall">
+                    <div class="col-1"></div>
+                    <div class="col-7 p-0 d-flex align-items-center justify-content-start" id="brand">
+                        Nail IT 後臺管理
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+            </nav>
+            <div class="row mt-5" style="padding-top:90px">
+                <div class="col-1" style=""></div>
+                <div class="col-5 " style="background-color: white; height: 500px;">
+
+                    <h4 class="mt-4"><b>登入</b></h4>
+                    <div>
+                        <label for="accountInput" class="mt-4">帳號：</label>
+                        <input id="accountInput" type="text" style=" width: 240px;height:35px " placeholder=" 請輸入您的帳號" v-model="myID" />
+                    </div>
+                    <div class="mt-1">
+                        <label for="pwInput" class="mt-4">密碼：</label>
+                        <input id="pwInput" type="password" style=" width: 240px;height:35px " placeholder=" 請輸入您的密碼" v-model="pswd" />
+
+                    </div>
+                    <!--href="./backstage.html"-->
+
+
+                    <div class="btn mt-4 d-flex align-content-center align-content-center justify-content-center" onclick="plzlogin()">登 入</div>
+
+                   
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="/TanTanLib/js/bslogin.js"></script>
+</body>
+
+</html>

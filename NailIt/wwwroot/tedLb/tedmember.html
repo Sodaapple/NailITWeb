@@ -1,0 +1,1482 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/navbars/">
+    <link rel="stylesheet" href="./ted.css/member.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link href="../YueCss/workSet.css" rel="stylesheet" />
+    <link href="../YueCss/calen.css" rel="stylesheet" />
+    <link href="/messageImage_1675689510333.jpg" type="image/x-icon" rel="icon" />
+    <title>會員中心</title>
+</head>
+<body>
+    <!-- 頁首 -->
+    <dialog id="infoModal"></dialog>
+    <dialog id="infoModal2"></dialog>
+
+    <div class="container-fluid p-0">
+        <nav id="mynav">
+            <div class="row opacity-25 p-0 " id="navall">
+                <div class="col-1 p-0"></div>
+                <div class="col-2 d-flex align-items-center" id="brand">
+                    <a href="/TanTanLib/html/cover.html"><img class="Navimg" src="../YiPLib/UploadFolder/70.png"></a>
+                </div>
+                <div class="col-3">
+                    <ul class="navmid d-flex justify-content-between align-items-center p-0 pt-2">
+                        <li><a href="/YiPLib/Fliter.html"> 美 甲 查 詢 </a></li>
+                        <li><a href="/Community/Index"> 美 甲 小 天 地 </a></li>
+                        <li><a href="#"> 關 於 我 們 </a></li>
+                    </ul>
+                </div>
+                <div class="col-4 pt-3">
+                    <p class="navend1"><span id="daNick">尚未登入&nbsp&nbsp&nbsp&nbsp&nbsp</span><a id="huiORreg" style="color:black" href="../YueRegister.html"> 註冊&nbsp</a> / <a id="loginORout" style="color:black" href="../Yuelogin.html"> &nbsp登入 </a></p>
+                </div>
+                <div class="col-1 d-flex align-items-center justify-content-end navend2">
+    <div style="position:relative">
+        <img class="mt-1 mr-3 cursor-pointer" id="chat" src="../images/chat-box.png" onclick="showChatPage()">
+        <div class="unread-badge-message bg-danger rounded-circle d-none"></div>
+    </div>
+    <div class="dropdown">
+        <img class="cursor-pointer dropbtn-sysNotic" src="../images/notification.png" onclick="showSysNotic()">
+        <div class="unread-badge-sysNotic bg-danger rounded-circle d-none"></div>
+        <div id="sysNoticDropDown" class="dropdown-content dropdown-content-sysNotic rounded" style="background-color:#ccc;max-width:450px">
+            <a class="drop-item">--目前沒有未讀系統訊息--</a>
+        </div>
+    </div>
+</div>
+                <div class="col-1 p-0"></div>
+            </div>
+        </nav>
+        <div class="row m-0" style="width: 100%; padding-top: 90px;">
+
+            <div class="col-1">
+                <p></p>
+            </div>
+            <div id="select" class="col-2">
+                <!--sidebar-->
+                <div id="app">
+                    <dl>
+                        <dt class="title"><a style="color:black" href="https://localhost:44308/TanTanLib/html/cover.html">首頁</a>>會員中心</dt>
+                        <dt class="title">我的帳號</dt>
+                        <dd><a class="member-link" href="#" onclick="openinfor(event,'member-infor','個人檔案>個人資料')">個人檔案</a></dd>
+                        <dd><a class="member-link" href="#" onclick="openinfor(event,'Bank-card','銀行帳號/信用卡')">銀行帳號/信用卡</a></dd>
+                        <dd id="memberManicurist"><a class="member-link" href="#" data-toggle="modal" data-target="#certified">開通店家/美甲師</a></dd>
+                        <dt class="title"><a class="member-link" onclick="openinfor(event,'my-appointment','我的預約')" href="#">我的預約</a></dt>
+                        <dt class="title">我的評價</dt>
+                        <dd><a class="member-link" href="#" onclick="openinfor(event,'history-evaluation','我的評價>歷史評價')">歷史評價</a></dd>
+                        <dd><a class="member-link" href="#" onclick="openinfor(event,'valuation-notice','我的評價>評價通知')">評價通知</a></dd>
+                        <dt class="title"><a href="#" class="member-link" onclick="reserveCheckSendGet()">訂單管理</a></dt>
+                        <dd><a class="member-link" href="/YiPLib/NailDesigner.html">美甲師主頁</a></dd>
+                        <dd><a class="member-link" onclick="calenSendGet()" href="#">工作時間設定</a></dd>
+                        <dd><a class="member-link" onclick="removalSendGet()" href="#">工作項目設定</a></dd>
+                    </dl>
+                </div>
+            </div>
+
+
+
+            <!-- 身分認證-->
+            <div class="modal fade" id="certified" tabindex="-1" role="dialog" aria-labelledby="certified" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="certified">美甲師功能開通</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h6>請輸入電子信箱(我們將寄送驗證碼到此信箱)</h6>
+                            <div class="certified-input">
+                                <input type="text" placeholder="example@gmail.com" id="emailcertified" class="form-control" required>
+                                <br>
+                                <button id="certified-button" class="btn" data-dismiss="modal" onclick="sendmail()" value="newcard">發送驗證碼</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 輸入驗證碼 -->
+            <div  id="insertverif" class="insert-topdiv">
+                <div  class="insert-content">
+                    <span class="close111">&times;</span>
+                    <p>請輸入驗證碼</p>
+                    <input class="form-control" id="certifiednum" type="text" name="name" value="" />
+                    <button class="btn" id="btnverif" onclick="verifcert()">驗證</button>
+                </div>
+            </div>
+
+            <div class="col-1">
+
+            </div>
+
+            <div id="contentdiv" class="col-7" style="display:none">
+
+            </div>
+            <div id="tedDiv" class="col-7">
+                <div class="inner1"><b>我的帳戶</b></div>
+                <div id="inner3content" class="inner3">
+                    <!-- 新增美甲師資料 -->
+                    <div id="insertshopfirst" class="insertshop-div">
+                        <div class="contentinsertshop">
+                            <span class="close2">&times;</span>
+                            <div class="form-group">
+                                <label>店家/美甲師名稱:</label><input type="text" id="newsolanname" class="form-control" name="name" value="" />
+                                <label>店家/美甲師地址:</label>
+                                <div class="input-group mb-3">
+                                    <select style="max-width:25%" class="custom-select" onchange="change(this)" name="city" id="city1"></select><label for="city">縣市</label>
+                                    <select style="max-width:25%" class="custom-select" name="hometown"  id="hometown1"></select><label for="hometown">鄉鎮</label>
+                                </div>
+                                <input type="text" id="newsolanaddress" class="form-control" name="name" value="" />
+                                <label>店家/美甲師電話:</label><input type="text" id="newshopphone" class="form-control" name="name" value="" />
+                                <label>介紹</label><textarea class="form-control" id="newintoshop" rows="3"></textarea>
+                                <label>證照</label><textarea class="form-control" id="newshoplicen" rows="3"></textarea>
+                                <button id="btninsertshop" onclick="btninsertshopcert()" class="btn">確定新增</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="memberinfor">
+                        <div class="content" id="member-infor">
+                            <div class="inner2">
+                                <pre><b><button style="border-bottom: 1px solid;" id="personal" class="inner-link" onclick="openinfor(event,'member-infor','個人檔案>個人資料')" href="#">個人資料</button></b>    <b><button class="inner-link" onclick="openinfor(event,'shop-infor','個人檔案>店家個檔')" href="#">店家個檔</button></b>                          <button style="bottom:40px" type="button" onclick="openinfor(event,'member-infor-modif','個人檔案>個人資料>修改')" class="btn btn-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+          </svg></button></pre>
+                            </div>
+                            <br />
+                            <h5><b>會員帳號</b></h5>
+                            <h5>{{memberlist.memberAccount}}</h5>
+                            <br />
+                            <h5><b>暱稱</b></h5>
+                            <h5>{{memberlist.memberNickname}}</h5>
+                            <br />
+                            <h5><b>姓名</b></h5>
+                            <h5>{{memberlist.memberName}}</h5>
+                            <br />
+                            <h5><b>性別</b></h5>
+                            <h5 id="Gender"></h5>
+                            <br />
+                            <h5><b>手機</b></h5>
+                            <h5>{{memberlist.memberPhone}}</h5>
+                            <br />
+                            <h5><b>生日</b></h5>
+                            <h5 id="bir"></h5>
+                            <br />
+                            <h5><b>會員信箱</b></h5>
+                            <h5>{{memberlist.memberEmail}}</h5>
+                        </div>
+                        <div class="content" id="member-infor-modif">
+                            <div class="inner2"><pre><b><button style="border-bottom: 1px solid;" class="inner-link" onclick="openinfor(event,'member-infor','個人檔案>個人資料')" href="#">個人資料</button></b>    <button class="inner-link" onclick="openinfor(event,'shop-infor','個人檔案>店家個檔')" href="#">店家個檔</button></pre></div>
+                            <br>
+                            <label for="member" class="label-title"><b>修改密碼</b></label>
+                            <div class="input-group mb-3">
+                                <input type="password" class="form-control" maxlength="20" id="newword1">
+                            </div>
+                            <label for="member" class="label-title"><b>確認密碼</b></label>
+                            <div class="input-group mb-3">
+                                <input type="password" class="form-control" maxlength="20" id="newword2">
+                                <span id="newPwd2span" style="color:red"></span>
+                            </div>
+                            <label for="member" class="label-title"><b>會員暱稱</b></label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" maxlength="20" v-model="memberlist.memberNickname">
+                            </div>
+                            <label for="member" class="label-title" maxlength="20"><b>姓名</b></label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" maxlength="20" v-model="memberlist.memberName">
+                            </div>
+                            <label for="member" class="label-title"><b>性別</b></label>
+                            <div class="input-group mb-3">
+                                <select class="custom-select" id="inputGroupSelect01">
+                                    <option value="0">男</option>
+                                    <option value="1">女</option>
+                                </select>
+                            </div>
+                            <label for="member" class="label-title"><b>手機號碼</b></label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" maxlength="10" v-model="memberlist.memberPhone">
+                            </div>
+                            <label for="member" class="label-title"><b>生日</b></label>
+                            <div class="input-group mb-3">
+                                <input id="year" type="text" class="form-control" maxlength="4"><label for="birthday"><b>年份</b></label>
+                                <select class="custom-select" id="inputGroupSelect02">
+                                </select><label for="birthday"><b>月</b></label>
+                                <select class="custom-select" id="inputGroupSelect03"></select><label for="birthday"><b>日</b></label>
+                            </div>
+                            <label for="member" class="label-title"><b>e-mail</b></label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" maxlength="50" v-model="memberlist.memberEmail">
+                            </div>
+                            <button type="button" class="btn btn-dark" v-on:click="btnmodifmember">確認修改</button>
+                        </div>
+                        <div class="content" id="shop-infor">
+                            <div class="inner2">
+                                <pre><b><button id="personal" class="inner-link" onclick="openinfor(event,'member-infor','個人檔案>個人資料')" href="#">個人資料</button></b>    <b><button style="border-bottom: 1px solid;" id="shop" class="inner-link" onclick="openinfor(event,'shop-infor','個人檔案>店家個檔')" href="#">店家個檔</button></b>                          <button id="btnshowmodif" type="button" onclick="openinfor(event,'shop-infor-modif','個人檔案>店家個檔>修改')" class="btn btn-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+          </svg></button></pre>
+                            </div>
+                            <div id="shopisopen">
+                                <br />
+                                <h5><b>店家/美甲師名稱</b></h5>
+                                <h5>{{shoplist.manicuristSalonName}}</h5>
+                                <br />
+                                <h5><b>店家/美甲師地址</b></h5>
+                                <h5>{{shoplist.manicuristAddress}}</h5>
+                                <br />
+                                <h5><b>店家/美甲師電話</b></h5>
+                                <h5>{{shoplist.manicuristSalonPhone}}</h5>
+                                <br />
+                                <h5><b>介紹</b></h5>
+                                <h5>{{shoplist.manicuristIntro}}</h5>
+                                <br />
+                                <h5><b>證照</b></h5>
+                                <h5>{{shoplist.manicuristLicense}}</h5>
+                            </div>
+                            <div id="shopnotnotopen"><h5>尚未開通美甲師功能，請先進行開通</h5></div>
+                        </div>
+                        <div class="content" id="shop-infor-modif">
+                            <div class="inner2"><pre><b><button class="inner-link" onclick="openinfor(event,'member-infor','個人檔案>個人資料')" href="#">個人資料</button></b>    <b><button style="border-bottom: 1px solid;" class="inner-link" onclick="openinfor(event,'shop-infor','個人檔案>店家個檔')" href="#">店家個檔</button></b></pre></div>
+                            <br>
+                            <label for="shop" class="label-title"><b>店家/美甲師名稱</b></label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" maxlength="20" v-model="shoplist.manicuristSalonName">
+                            </div>
+                            <label for="shop" class="label-title"><b>店家/美甲師地址</b></label>
+                            <input type="checkbox" name="check" id="isdetil">
+                            <label for="isdetil">地址只顯示縣市和鄉鎮</label>
+                            <div class="input-group mb-3">
+                                <select class="custom-select" onchange="change(this)" v-model="shoplist.manicuristCounty" name="city" id="city"></select><label for="city">縣市</label>
+                                <select class="custom-select" name="hometown" v-model="shoplist.manicuristTownship" id="hometown"></select><label for="hometown">鄉鎮</label>
+
+                            </div>
+                            <input type="text" class="form-control" maxlength="20" id="address">
+                            <br>
+                            <label for="shop" class="label-title"><b>店家/美甲師電話</b></label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" maxlength="10" v-model="shoplist.manicuristSalonPhone">
+                            </div>
+                            <label for="shop" class="label-title"><b>介紹</b></label>
+                            <div class="input-group mb-3">
+                                <textarea name="introduction" class="form-control" id="" cols="30" rows="5" v-model="shoplist.manicuristIntro"></textarea>
+                            </div>
+                            <label for="shop" class="label-title"><b>證照</b></label>
+                            <div>
+                                <input id="license" type="text" class="form-control" v-model="shoplist.manicuristLicense">
+                            </div>
+                            <br>
+
+                            <br>
+                            <button type="button" class="btn btn-dark" v-on:click="btnshopmodif">確認修改</button>
+                            <br>
+                        </div>
+                        <div class="content" id="Bank-card">
+                            <div class="card-div">
+                                <h5 class="card-a">信用卡/金融卡</h5><Button type="button" class="btn btn-warning" id="newcardbtn" value="newcard" data-toggle="modal" data-target="#exampleModal">+ 增加新卡片</Button>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">新增信用卡/金融卡</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row-2">
+                                                    <br>
+                                                    <div class="col-1"></div>
+                                                    <div class="col-12">
+                                                        <h6 class="text-card-font">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shield-check" viewBox="0 0 16 16" style="color:mediumspringgreen;">
+                                                                <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z" />
+                                                                <path d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                                                            </svg><b>你的信用卡資訊將會被嚴格保護。</b><pre>
+   Nail it並不會留存您的信用卡完整資訊，Nail it配合的合作服務商符合
+   PCI-DSS國際安全認證，致力於提供安全且便截的交易環境。
+                        </pre>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                                <div class="card-Classification">
+                                                    <h6>卡片詳情</h6>
+                                                    <img class="Classification" src="./img/VISA.ICON.png" alt="">
+                                                    <img class="Classification" src="./img/mastercard.icon.png" alt="">
+                                                    <img class="Classification" src="./img/JCB.ICON.png" alt="">
+                                                </div>
+                                                <div class="card-number">
+                                                    <input type="text" placeholder="信用卡號碼" v-model="creditlist[0].creditCardNumber" class="form-control" name="" id="input-card-number" required>
+                                                </div>
+                                                <span id="creditnumwarn" style="color:red;font-size:11px;"></span>
+                                                <br>
+                                                <div class="input-group-prepend">
+                                                    <input type="text" id="creditenddate" placeholder="到期日MM/YY" class="form-control">
+                                                    <input type="text" placeholder="安全驗證碼" class="form-control">
+                                                    <BUtton type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" id="btn-tool"><img style="height: 20px;" src="./img/help_FILL0_wght400_GRAD0_opsz48.png" alt=""></BUtton>
+                                                </div>
+                                                <span id="creditdate" style="color:red;font-size:11px;"></span>
+                                                <br>
+                                                <div class="card-name">
+                                                    <input type="text" v-model="creditlist[0].creditCardHolder" id="creditholdername" placeholder="持卡者名字" class="form-control">
+                                                </div>
+                                                <span id="creditname" style="color:red;font-size:11px;"></span>
+                                                <br>
+                                                <div>
+                                                    <h5 style="font-size: 11px;" class="bill-address-text">帳單地址</h5>
+                                                    <div class="bill-address">
+                                                        <input class="form-control" id="addresscredit" v-model="creditlist[0].creditCardBilladdress" placeholder="信用卡帳單地址" type="text">
+                                                    </div>
+                                                </div>
+                                                <span id="creditaddress" style="color:red;font-size:11px;"></span>
+                                                <br>
+                                                <div class="bill-Postal-code">
+                                                    <input type="text" id="postcode" v-model="creditlist[0].creditCardPostalCode" placeholder="郵遞區號" class="form-control">
+                                                </div>
+                                                <span id="creditpostcode" style="color:red;font-size:11px;"></span>
+                                                <br>
+                                                <div>
+                                                    <pre style="font-size: 11px;"> 新增信用卡時，Nail it將會取得一次1元的授權紀錄，以驗證您的卡號資訊，此筆
+授權將不會請款。</pre>
+                                                </div>
+                                                <div class="row-auto">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-light" data-dismiss="modal">取消</button>
+                                                <button type="button" id="btn-input" class="btn" v-on:click="btninsertcard">送出</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-1">
+                                <img src="./img/visa.png" class="card-1-1"> <h5 class="card-1-1">VISA</h5> <h5 class="card-1-1" style="color:red;" id="iscreditdate"></h5> <h5 id="card-1-1-number" class="card-1-1"></h5>
+                                <button class="btn" id="deletecard" v-on:click="btndelect">刪除卡片</button>
+                            </div>
+                            <div class="counnt-div">
+                                <h5 id="counnt">銀行帳號</h5> <button type="button" id="counnt1" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal2" value="newcounnt">+ 新增銀行帳號</button>
+                                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel2">新增銀行帳號</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div class="bank-notice">
+                                                    <pre>提醒您，銀行帳號資訊必須與身分證號一致，否則可能會影響日後的
+撥款權益。</pre>
+                                                </div>
+                                                <div class="bank-div">
+                                                    <label for="bank-code">銀行代號</label><input v-model="shoplist.manicuristBankCode" type="text" class="form-control" id="bank-code">
+                                                </div>
+                                                <div class="bank-div">
+                                                    <label for="bank-name">銀行名稱</label><input v-model="shoplist.manicuristBankName" type="text" class="form-control" id="bank-name">
+                                                </div>
+                                                <div class="bank-div">
+                                                    <label for="bank-branch">分行名稱</label><input v-model="shoplist.manicuristBankNameBranch" type="text" class="form-control" id="bank-branch">
+                                                </div>
+                                                <div class="bank-div">
+                                                    <label for="account-name">戶名或公司名</label><input v-model="shoplist.manicuristBankCompanyName" type="text" class="form-control" id="account-name">
+                                                </div>
+                                                <div class="bank-div">
+                                                    <label for="account-num">銀行帳號</label><input v-model="shoplist.manicuristBankAccount" type="text" class="form-control" id="account-num">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                                <button type="button" id="btn-certin-input" class="btn btn-primary" v-on:click="insertaccount">確定新增</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bankaccount-div">
+                                <h5 class="bankaccount">{{shoplist.manicuristBankCompanyName}}</h5> <h5 class="bankaccount">{{shoplist.manicuristBankName}}({{shoplist.manicuristBankNameBranch}})</h5><h5 id="bankaccount1" class="bankaccount"></h5><button id="btndelete" v-on:click="deleteaccount" type="button" class="btn">刪除帳號</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content" id="my-appointment">
+                        <div class="switch-div">
+                            <button class="switch-btn" id="switch-ing" onclick="orderstat(event,'ing','switch-ing')">預約中</button>
+                            <button class="switch-btn" id="switch-confirm" onclick="orderstat(event,'confirm','switch-confirm')">預約已確認</button>
+                            <button class="switch-btn" id="switch-finish" onclick="orderstat(event,'finish','switch-finish')">已完成</button>
+                            <button class="switch-btn" id="switch-cancel" onclick="orderstat(event,'cancel','switch-cancel')">已取消</button>
+                        </div>
+                        <div id="ing" class="tab-order" style="overflow:auto;height:400px">
+                            <div v-for="(ing,key) in inglist">
+                                <br />
+                                <div class="order-name"><h6>{{ing.manicuristSalonName}}</h6></div>
+                                <div class="product-container">
+                                    <div v-if="ing.orderType" class="product-picture"><a v-bind:href="'https://localhost:44308/YiPLib/product.html?id='+ing.demoSetId"><img style="object-fit:cover" v-bind:src="ing.demoSetCover" alt=""></a></div>
+                                    <div v-else="ing.orderType" class="product-picture"><a v-bind:href="'https://localhost:44308/YiPLib/NailDesign.html?id='+ing.manicuristId"><img style="object-fit:cover" v-bind:src="ing.demoSetCover" alt=""></a></div>
+                                    <div class="product-information"><p>{{ing.orderItemName}}</p><p style="color:gray" class="productdetil">{{ing.demoSetContent}}</p><p class="productdetil">預約日期:{{ing.orderOrderTime}}</p></div>
+                                    <div class="btn-cancel-order"><button onclick="cancelorderbtn(this)" v-bind:id="'cancel'+ing.orderId" style="width:100px;height:30px" class="cancel-btn">取消預約</button></div>
+                                    <div class="btn-order-stat"><pre>訂金 NT${{ing.orderDeposit}}</pre> <P><a style="color: #FF6733;" v-bind:id="'order'+[key]" data-toggle="modal" data-target="#showdetil" onclick="Getorder(this)" href="#">詳情</a></P><button style="width:100px;height:30px" disabled="disabled" class="ing-btn">預約中</button></div>
+                                </div>
+                                <!-- 訂單詳情-->
+                                <div class="modal fade" id="showdetil" tabindex="-1" role="dialog" aria-labelledby="showdetil" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 id="salonname"></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                            <div id="show-order-detil" class="modal-body">
+                                                <div>
+                                                    <label for="number">訂單編號:</label><h6 id="number-ing"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="date">預約日期:</label><h6 id="date-ing"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="enddate">完成日期:</label><h6 id="enddate">-</h6>
+                                                </div>
+                                                <div>
+                                                    <label for="part">施作部位:</label><h6 id="part-ing"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="remove">卸甲:</label><h6 id="remove-ing"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="item">預約項目:</label><h6 id="item-ing"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="pay">預估金額:</label><h6 id="pay-ing">NT$</h6>
+                                                </div>
+                                                <div>
+                                                    <label for="rent">訂金:</label><h6 id="rent-ing">NT$</h6>
+                                                </div>
+                                                <div>
+                                                    <label for="addre">店家地址:</label><h6 id="addre-ing"></h6>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                        <div id="confirm" class="tab-order" style="overflow:auto;height:400px">
+                            <div v-for="(rig,key) in rightlist">
+                                <br>
+                                <div class="order-name"><h6>{{rig.manicuristSalonName}}</h6></div>
+
+                                <div class="product-container">
+                                    <div v-if="rig.orderType" class="product-picture"><a v-bind:href="'https://localhost:44308/YiPLib/product.html?id='+rig.demoSetId"><img style="object-fit:cover" v-bind:src="rig.demoSetCover" alt=""></a></div>
+                                    <div v-else="rig.orderType" class="product-picture"><a v-bind:href="'https://localhost:44308/YiPLib/NailDesign.html?id='+rig.manicuristId"><img style="object-fit:cover" v-bind:src="rig.demoSetCover" alt=""></a></div>
+                                    <div class="product-information"><p>{{rig.orderItemName}}</p><p style="color:gray" class="productdetil">{{rig.demoSetContent}}</p><p class="productdetil">預約日期:{{rig.orderOrderTime}}</p></div>
+                                    <div class="btn-order-stat">
+                                        <pre>訂金 NT${{rig.orderDeposit}}</pre> <P><a style="color: #FF6733;" data-toggle="modal" v-bind:id="'rigorder'+[key]" onclick="Getorderrig(this)" data-target="#showdetilcheck" href="#">詳情</a></P>
+                                        <button style="width:100px;height:30px" v-if="rig.orderStateC == 'A2'" v-bind:id="'oodd'+rig.orderId" onclick="ordercompli(this)" class="check-btn">已完成</button><button v-else="rig.orderStateC == 'A1'" style="background-color:gray;width:100px;height:30px" class="check-btn">預約中</button>
+                                    </div>
+                                </div>
+                                <!-- 訂單詳情完成-->
+                                <div class="modal fade" id="showdetilcheck" tabindex="-1" role="dialog" aria-labelledby="showdetilcheck" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 id="salonname-rig"></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                            <div id="show-order-detil" class="modal-body">
+                                                <div>
+                                                    <label for="number">訂單編號:</label><h6 id="number-rig"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="date">預約日期:</label><h6 id="date-rig"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="enddate">完成日期:</label><h6 id="enddate">-</h6>
+                                                </div>
+                                                <div>
+                                                    <label for="part">施作部位:</label><h6 id="part-rig"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="remove">卸甲:</label><h6 id="remove-rig"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="item">預約項目:</label><h6 id="item-rig"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="pay">預估金額:</label><h6 id="pay-rig"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="rent">訂金:</label><h6 id="rent-rig"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="addre">店家地址:</label><h6 id="addre-rig"></h6>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+
+                        <div id="finish" class="tab-order" style="overflow:auto;height:400px">
+                            <div v-for="(fin,key) in finlist">
+                                <br>
+                                <div class="order-name"><h6>{{fin.manicuristSalonName}}</h6></div>
+
+                                <div class="product-container">
+                                    <div v-if="fin.orderType" class="product-picture"><a v-bind:href="'https://localhost:44308/YiPLib/product.html?id='+fin.demoSetId"><img style="object-fit:cover" v-bind:src="fin.demoSetCover" alt=""></a></div>
+                                    <div v-else="fin.orderType" class="product-picture"><a v-bind:href="'https://localhost:44308/YiPLib/NailDesign.html?id='+fin.manicuristId"><img style="object-fit:cover" v-bind:src="fin.demoSetCover" alt=""></a></div>
+                                    <div class="product-information"><p>{{fin.orderItemName}}</p><p style="color:gray" class="productdetil">{{fin.demoSetContent}}</p><p class="productdetil">完成日期:{{fin.orderCompleteTime}}</p></div>
+                                    <div v-if="fin.orderType" class="btn-cancel-order"><button onclick="regref(this)" v-bind:id="'rere'+fin.demoSetId" style="width:100px;height:30px" class="cancel-btn">再預約</button></div>
+                                    <div  v-else="fin.orderType" class="btn-cancel-order"><button onclick="regref1(this)" v-bind:id="'rerere'+fin.manicuristId" style="width:100px;height:30px" class="cancel-btn">再預約</button></div>
+                                    <div class="btn-order-stat"><pre>訂金 NT${{fin.orderDeposit}}</pre> <P><a style="color: #FF6733;" data-toggle="modal" v-bind:id="'orderfin'+[key]" onclick="Getorderfin(this)" data-target="#showdetilfin" href="#">詳情</a></P><button v-if="fin.orderStateC == 'A4'" style="width:100px;height:30px" disabled="disabled" class="ing-btn">未評價</button><button style="width:100px;height:30px" v-else="fin.orderStateC == 'A5'" disabled="disabled" class="ing-btn">已評價</button></div>
+                                </div>
+                                <!-- 訂單詳情-->
+                                <div class="modal fade" id="showdetilfin" tabindex="-1" role="dialog" aria-labelledby="showdetilfin" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 id="salonname-fin"></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                            <div id="show-order-detil" class="modal-body">
+                                                <div>
+                                                    <label for="number">訂單編號:</label><h6 id="number-fin"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="date">預約日期:</label><h6 id="date-fin"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="enddate">完成日期:</label><h6 id="enddate-fin"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="part">施作部位:</label><h6 id="part-fin"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="remove">卸甲:</label><h6 id="remove-fin"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="item">預約項目:</label><h6 id="item-fin"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="pay">預估金額:</label><h6 id="pay-fin"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="rent">訂金:</label><h6 id="rent-fin"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="addre">店家地址:</label><h6 id="addre-fin"></h6>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                        <div id="cancel" class="tab-order" style="overflow:auto;height:400px">
+                            <div v-for="(cancel,key) in cancellist">
+                                <br>
+                                <div class="order-name"><h6>{{cancel.manicuristSalonName}}</h6><h6 class="order-cancel">已取消</h6></div>
+
+                                <div class="product-container">
+                                    <div v-if="cancel.orderType" class="product-picture"><a v-bind:href="'https://localhost:44308/YiPLib/product.html?id='+cancel.demoSetId"><img style="object-fit:cover" v-bind:src="cancel.demoSetCover" alt=""></a></div>
+                                    <div v-else="cancel.orderType" class="product-picture"><a v-bind:href="'https://localhost:44308/YiPLib/NailDesign.html?id='+cancel.manicuristId"><img style="object-fit:cover" v-bind:src="cancel.demoSetCover" alt=""></a></div>
+                                    <div class="product-information"><p>{{cancel.orderItemName}}</p><p style="color:gray" class="productdetil">{{cancel.demoSetContent}}</p><p class="productdetil">取消日期:{{cancel.orderCancelTime}}</p></div>
+                                    <div class="btn-order-stat"><pre>訂金 NT${{cancel.orderDeposit}}</pre> <P><a style="color: #FF6733;" data-toggle="modal" v-bind:id="'ordercancel'+[key]" onclick="Getordercancel(this)" data-target="#showdetilcancel" href="#">詳情</a></P><div v-if="cancel.orderType"><button onclick="regref(this)" v-bind:id="'erer'+cancel.demoSetId" style="width:100px;height:30px" class="check-btn">再預約</button></div><div v-else="cancel.orderType"><button v-bind:id="'ererer1'+cancel.manicuristId" onclick="regref1(this)" style="width:100px;height:30px" class="check-btn">再預約</button></div></div>
+                                </div>
+                                <!-- 訂單詳情完成-->
+                                <div class="modal fade" id="showdetilcancel" tabindex="-1" role="dialog" aria-labelledby="showdetilcancel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 id="salonname-cancel"></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                            <div id="show-order-detil" class="modal-body">
+                                                <div>
+                                                    <label for="number">訂單編號:</label><h6 id="number-cancel"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="date">預約日期:</label><h6 id="date-cancel"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="enddate">取消日期:</label><h6 id="enddate-cancel"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="part">施作部位:</label><h6 id="part-cancel"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="remove">卸甲:</label><h6 id="remove-cancel"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="item">預約項目:</label><h6 id="item-cancel"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="pay">預估金額:</label><h6 id="pay-cancel"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="rent">訂金:</label><h6 id="rent-cancel"></h6>
+                                                </div>
+                                                <div>
+                                                    <label for="addre">店家地址:</label><h6 id="addre-cancel"></h6>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 我的評價-->
+                    <div id="allevaluate">
+                        <div class="content" id="history-evaluation">
+                            <div class="evaluation-top-div">
+                                <button class="evaluation-btn" id="evaluation-await" onclick="orderstat(event,'await','evaluation-await')">待評中</button><button class="evaluation-btn" id="evaluation-finish" onclick="orderstat(event,'finished','evaluation-finish')">已完成</button>
+                            </div>
+                            <div class="tab-order" id="await" style="overflow:auto;height:400px">
+                                <div v-for="(item,key) in evaluatelist">
+                                    <div class="product-container">
+                                        <div v-if="item.orderType" class="product-picture"><a v-bind:href="'https://localhost:44308/YiPLib/product.html?id='+item.demoSetId"><img style="object-fit:cover" v-bind:src="item.demoSetCover" alt=""></a></div>
+                                        <div v-else="item.orderType" class="product-picture"><a v-bind:href="'https://localhost:44308/YiPLib/NailDesign.html?id='+item.manicuristId"><img style="object-fit:cover" v-bind:src="item.demoSetCover" alt=""></a></div>
+                                        <div class="product-information"><h5><b>{{item.manicuristSalonName}}</b></h5><h6 style="font-size:11px">{{item.orderItemName}}</h6><h6 style="font-size:11px;color:gray">{{item.demoSetContent}}</h6><h6 class="productdetil">完成日期:{{item.orderOrderTime}}</h6></div>
+                                        <div class="btn-order-stat"><pre>訂金 NT${{item.orderDeposit}}</pre> <P><a style="color: #FF6733;" data-toggle="modal" v-bind:id="'evashow'+[key]" onclick="Getevashowdetail(this)" data-target="#showdetil-evaluation" href="#">詳情</a></P></div>
+
+                                    </div>
+                                    <br>
+                                    <div v-bind:class="'rating'+[key]">
+                                        <span v-bind:id="'star1'+[key]" class="fa fa-star-o" onclick="ratstar(this)"></span>
+                                        <span v-bind:id="'star2'+[key]" class="fa fa-star-o" onclick="ratstar(this)"></span>
+                                        <span v-bind:id="'star3'+[key]" class="fa fa-star-o" onclick="ratstar(this)"></span>
+                                        <span v-bind:id="'star4'+[key]" class="fa fa-star-o" onclick="ratstar(this)"></span>
+                                        <span v-bind:id="'star5'+[key]" class="fa fa-star-o" onclick="ratstar(this)"></span>
+                                    </div>
+                                    <div class="commment">
+                                        <textarea name="comment-text" class="form-control" v-bind:id="'commontext'+[key]" cols="30" rows="10"></textarea>
+                                        <button class="btn" v-bind:value="[key]" onclick="evainsertbtn(this)">評價</button>
+                                    </div>
+                                    <hr />
+                                    <div class="modal fade" id="showdetil-evaluation" tabindex="-1" role="dialog" aria-labelledby="showdetil-evaluation" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 id="salonname-evaing"></h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true"></span>
+                                                    </button>
+                                                </div>
+                                                <div id="show-order-detil" class="modal-body">
+                                                    <div>
+                                                        <label for="number">訂單編號:</label><h6 id="number-evaing"></h6>
+                                                    </div>
+                                                    <div>
+                                                        <label for="date">預約日期:</label><h6 id="date-evaing"></h6>
+                                                    </div>
+                                                    <div>
+                                                        <label for="enddate">完成日期:</label><h6 id="enddate-evaing"></h6>
+                                                    </div>
+                                                    <div>
+                                                        <label for="part">施作部位:</label><h6 id="part-evaing"></h6>
+                                                    </div>
+                                                    <div>
+                                                        <label for="remove">卸甲:</label><h6 id="remove-evaing"></h6>
+                                                    </div>
+                                                    <div>
+                                                        <label for="item">預約項目:</label><h6 id="item-evaing"></h6>
+                                                    </div>
+                                                    <div>
+                                                        <label for="pay">預估金額:</label><h6 id="pay-evaing"></h6>
+                                                    </div>
+                                                    <div>
+                                                        <label for="rent">訂金:</label><h6 id="rent-evaing"></h6>
+                                                    </div>
+                                                    <div>
+                                                        <label for="addre">店家地址:</label><h6 id="addre-evaing"></h6>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-order" id="finished" style="overflow:auto;height:400px">
+                                <div v-for="(item,key) in evafinlist">
+                                    <div class="ratings" >
+                                        <div class="emptystar">★★★★★</div>
+                                        <div v-bind:style="{'width': item.commentScore}" class="fullstar">★★★★★</div>
+                                    </div>
+                                    <div class="finished-text"><h6>{{item.commentContent}}</h6></div>
+                                    <div><pre>評價日期: {{item.commentBuildTime}}</pre></div>
+                                    <div class="finish-order">
+                                        <div v-if="item.orderType" class="finish-order-div1">
+                                            <a v-bind:href="'https://localhost:44308/YiPLib/product.html?id='+item.demoSetId"><img style="object-fit:cover" v-bind:src="item.demoSetCover" class="finish-picture" alt=""></a>
+                                        </div>
+                                        <div v-else="item.orderType" class="finish-order-div1">
+                                            <a v-bind:href="'https://localhost:44308/YiPLib/NailDesign.html?id='+item.manicuristId"><img style="object-fit:cover" v-bind:src="item.demoSetCover" class="finish-picture" alt=""></a>
+                                        </div>
+                                        <div class="finish-order-div2">
+                                            <h5><b>{{item.manicuristSalonName}}</b></h5>
+                                            <h6 style="font-size:11px">{{item.orderItemName}}</h6>
+                                            <h6 style="font-size:11px;color:gray">{{item.demoSetContent}}</h6>
+                                            <p style="font-size: 11px;">訂單編號:{{item.orderId}}</p>
+                                        </div>
+                                        <div class="finish-order-div3">
+                                            <a class="ratings-detil" style="color: #FF6733;" data-toggle="modal" v-bind:id="'evafinshow'+[key]" onclick="evafinbtnshow(this)" data-target="#finish-showdetil" href="#">詳情</a>
+                                        </div>
+                                        <!--訂單詳情-->
+                                        <div class="modal fade" id="finish-showdetil" tabindex="-1" role="dialog" aria-labelledby="finish-showdetil" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 id="salonname-evafin"></h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                    <div id="show-order-detil" class="modal-body">
+                                                        <div>
+                                                            <label for="number">訂單編號:</label><h6 id="number-evafin"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="date">預約日期:</label><h6 id="date-evafin"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="enddate">完成日期:</label><h6 id="enddate-evafin"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="part">施作部位:</label><h6 id="part-evafin"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="remove">卸甲:</label><h6 id="remove-evafin"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="item">預約項目:</label><h6 id="item-evafin"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="pay">預估金額:</label><h6 id="pay-evafin"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="rent">訂金:</label><h6 id="rent-evafin"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="addre">店家地址:</label><h6 id="addre-evafin"></h6>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="content" id="valuation-notice">
+                            <div class="evaluation-top-div">
+                                <button class="evaluation-btn" id="evaluation-wait-custom" onclick="orderstat(event,'wait-custom','evaluation-wait-custom')">待評中</button><button class="evaluation-btn" id="evaluation-custom-finish" onclick="orderstat(event,'custom-finish','evaluation-custom-finish')">已完成</button>
+                            </div>
+                            <div class="tab-order" id="wait-custom" style="overflow:auto;height:400px">
+                                <div v-for="(item,key) in historyinglist">
+                                    <br>
+                                    <div><h5 style="font-size:15px" class="order-name">會員:{{item.memberName}}</h5></div>
+                                    <div><pre>完成日期: {{item.orderCompleteTime}}</pre></div>
+                                    <div class="finish-order">
+                                        <div v-if="item.orderType" class="finish-order-div1">
+                                            <a v-bind:href="'https://localhost:44308/YiPLib/product.html?id='+item.demoSetId"><img style="object-fit:cover" v-bind:src="item.demoSetCover" class="finish-picture" alt=""></a>
+                                        </div>
+                                        <div v-else="item.orderType" class="finish-order-div1">
+                                            <a v-bind:href="'https://localhost:44308/YiPLib/NailDesign.html?id='+item.manicuristId"><img style="object-fit:cover" v-bind:src="item.demoSetCover" class="finish-picture" alt=""></a>
+                                        </div>
+                                        <div class="finish-order-div2">
+                                            <h6>{{item.orderItemName}}</h6>
+                                            <p style="font-size: 11px;">{{item.demoSetContent}}</p>
+                                            <p style="font-size: 11px;">訂單編號:{{item.orderId}}</p>
+                                        </div>
+                                        <div class="finish-order-div3">
+                                            <a class="ratings-detil" style="color: #FF6733;" v-bind:id="'noticeing'+[key]" onclick="noticeingbtn(this)" data-toggle="modal" data-target="#await-showdetil" href="#">詳情</a>
+                                        </div>
+                                        <!--訂單詳情-->
+                                        <div class="modal fade" id="await-showdetil" tabindex="-1" role="dialog" aria-labelledby="await-showdetil" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 id="salonname-noticeing"></h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                    <div id="show-order-detil" class="modal-body">
+                                                        <div>
+                                                            <label for="number">訂單編號:</label><h6 id="number-noticeing"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="date">預約日期:</label><h6 id="date-noticeing"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="enddate">完成日期:</label><h6 id="enddate-noticeing"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="part">施作部位:</label><h6 id="part-noticeing"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="remove">卸甲:</label><h6 id="remove-noticeing"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="item">預約項目:</label><h6 id="item-noticeing"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="pay">預估金額:</label><h6 id="pay-noticeing"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="rent">訂金:</label><h6 id="rent-noticeing"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="addre">店家地址:</label><h6 id="addre-noticeing"></h6>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-order" id="custom-finish" style="overflow:auto;height:400px">
+                                <div v-for="(item,key) in historyfinlist">
+                                    <br>
+                                    <div>
+                                        <h5 class="order-name" style="font-size:15px;">會員:{{item.memberName}}</h5>
+                                    </div>
+                                    <div class="ratings">
+                                        <div class="emptystar">★★★★★</div>
+                                        <div style="object-fit:cover" v-bind:style="{'width': item.commentScore}" class="fullstar">★★★★★</div>
+                                    </div>
+                                    <div class="finished-text"><h6>{{item.commentContent}}</h6></div>
+                                    <div><pre>評價日期: {{item.commentBuildTime}}</pre></div>
+                                    <div class="finish-order">
+                                        <div v-if="item.orderType" class="finish-order-div1">
+                                            <a v-bind:href="'https://localhost:44308/YiPLib/product.html?id='+item.demoSetId"><img v-bind:src="item.demoSetCover" class="finish-picture" alt=""></a>
+                                        </div>
+                                        <div v-else="item.orderType" class="finish-order-div1">
+                                            <a v-bind:href="'https://localhost:44308/YiPLib/NailDesign.html?id='+item.manicuristId"><img v-bind:src="item.demoSetCover" class="finish-picture" alt=""></a>
+                                        </div>
+                                        <div class="finish-order-div2">
+                                            <h6>{{item.orderItemName}}</h6>
+                                            <p style="font-size: 11px;">{{item.demoSetContent}}</p>
+                                            <p style="font-size: 11px;">訂單編號:{{item.orderId}}</p>
+                                        </div>
+                                        <div class="finish-order-div3">
+                                            <a class="ratings-detil" style="color: #FF6733;" data-toggle="modal" v-bind:id="'noticefin'+[key]" onclick="noticefinbtn(this)" data-target="#finish-custom-showdetil" href="#">詳情</a>
+                                        </div>
+                                        <!--訂單詳情-->
+                                        <div class="modal fade" id="finish-custom-showdetil" tabindex="-1" role="dialog" aria-labelledby="finish-custom-showdetil" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 id="salonname-noticefin"></h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                    <div id="show-order-detil" class="modal-body">
+                                                        <div>
+                                                            <label for="number">訂單編號:</label><h6 id="number-noticefin"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="date">預約日期:</label><h6 id="date-noticefin"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="enddate">完成日期:</label><h6 id="enddate-noticefin"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="part">施作部位:</label><h6 id="part-noticefin"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="remove">卸甲:</label><h6 id="remove-noticefin"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="item">預約項目:</label><h6 id="item-noticefin"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="pay">預估金額:</label><h6 id="pay-noticefin"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="rent">訂金:</label><h6 id="rent-noticefin"></h6>
+                                                        </div>
+                                                        <div>
+                                                            <label for="addre">店家地址:</label><h6 id="addre-noticefin"></h6>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 頁尾 -->
+            <footer class="footer " style="height:320px;">
+                <div class="row p-0">
+                    <div class="col-1 "></div>
+                    <div class="col-10">
+                        <div id="footit">
+                            <b style="font-family:Cascadia Mono SemiBold;">關於Nail it</b>
+                            <b>檢舉</b>
+                            <b>隱私權政策</b>
+                            <b>防詐騙宣導</b>
+                        </div>
+                        <div id="footpre">
+                            <pre>
+地址：408台中市南屯區公益路二段51號18樓
+客服信箱：Nailit@gmail.com
+客服電話： 04 -2326-5860
+        </pre>
+                        </div>
+                        <div id="footcopy">
+                            <p style="font-size: 12px;font-family:Franklin Gothic Book;">
+                                Copyright ©2022 MSIT44TEAM1
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </footer>
+
+        </div>
+    </div>
+    <script src="../YueJs/loginCheck.js"></script>
+    <script src="ted.js/order.js"></script>
+    <script src="./ted.js/member.js"></script>
+    <script src="ted.js/evaluate.js"></script>
+    <script src="../js/Ansel_Layout.js"></script>
+    <script src="../AnselLib/Ansel_Service.js"> </script>
+    <script src="../AnselLib/Ansel_common.js"></script>
+
+    <script src="../YueJs/nailRemovalPricejs.js"></script>
+    <script src="../YueJs/reserveCanceljs.js"></script>
+    <script src="../YueJs/reserveCheckjs.js"></script>
+    <script src="../YueJs/reserveCompletejs.js"></script>
+    <script src="../YueJs/reserveDonejs.js"></script>
+    <script src="../YueJs/reserveScorejs.js"></script>
+    <script src="../YueJs/toastr.js"></script>
+    <script src="../YueJs/serviceSetjs.js"></script>
+    <script src="../YueJs/YueSetCalenjs.js"></script>
+
+    <script>
+        openinfor(event, 'member-infor', '個人檔案>個人資料');
+        var nowmembb = "";
+        async function grave() {
+            await YueloginCheck();
+            nowmembb = nowMember;
+            xxxx(nowMember);
+            now1(nowMember);
+           
+            now3(nowMember);
+            now4(nowMember);
+            now5(nowMember);
+            now6(nowMember);
+            now7(nowMember);
+        }
+        grave();
+        var flag = false;
+        var app = new Vue({
+            el: "#memberinfor",
+            data:
+            {
+                memberlist: [{
+                    "memberId": 1, "memberAccount": "apple123", "memberPassword": "apple456", "memberName": "田美麗",
+                    "memberNickname": "beautiful", "memberGender": false, "memberPhone": "0923869547",
+                    "memberBirth": "1993-10-27T00:00:00", "memberEmail": "saya029@gmail.com", "memberScore": 4.9,
+                    "memberManicurist": true, "memberLogincredit": null, "memberReportpoint": 0,
+                    "memberBanned": null, "member_Verify": null, "member_Question": null, "member_Answer": null
+                }],
+                shoplist: [{
+
+                    "manicuristId": 1, "manicuristPic": "UploadFolder/Saya.jpg",
+                    "manicuristSalonName": "我看妳欠店", "manicuristAddress": "台北市萬華區萬大路486巷16號",
+                    "manicuristCounty": "台北市", "manicuristTownship": "萬華區", "manicuristPublic": true,
+                    "manicuristSalonPhone": "0923859697",
+                    "manicuristLicense": "TNA美甲師檢定、JNA國際美甲師技能檢定考試",
+                    "manicuristBankCode": null, "manicuristBankAccount": null,
+                    "manicuristIntro": "竹北個人工作室,預約後傳地址(近萊爾富晨晞店)·禁食、飲料,請勿攜伴、陌生男賓止步·店付款方式:現金、轉帳(中國信).本店具感恩的心,待調為正式價位舊客享專屬折扣排除病變甲、孕婦、趕時間的孩子.需久坐約2至3小時,請預留足夠時間卸甲及加購保養時間另計",
+                    "manicuristScore": 4.6, "manicuristBankName": null, "manicuristBankNameBranch": null, "manicuristBankCompanyName": null
+
+                }], creditlist: [{
+                    "creditCardOwner": 1, "creditCardNumber": null, "creditCardExpirationdateYear": null, "creditCardExpirationdateMon": null
+                    , "creditCardHolder": null, "creditCardBilladdress": null, "creditCardPostalCode": null
+                }], shoplistcard: [],
+                verifcodelist: [],
+                memberlistman: []
+            },
+            methods: { //會員資料修改
+                btnmodifmember: function () {
+                    var new1 = $("#newword1").val();
+                    var new2 = $("#newword2").val();
+                    if ((new1 != "") || (new2 != "")) {
+                        var span = $("#newPwd2span");
+                        if (new1 != new2) {
+                            span.html("兩次輸入不一樣，請重新輸入")
+                        } else {
+                            app.memberlist.memberPassword = $("#newword2").val();
+                            if ($("#inputGroupSelect01").val() == 0) {
+                                this.memberlist.memberGender = true;
+                            } else {
+                                this.memberlist.memberGender = false;
+                            }
+
+                          
+                            $.ajax({
+                                type: "put",
+                                url: "/api/MemberTables/1",
+                                contentType: "application/json",
+                                data: JSON.stringify(this.memberlist),
+                                success: function () {
+                                    window.location = "/tedLb/tedmember.html";
+                                    alert("資料修改成功");
+                                }
+                            })
+                        }
+                    } else {
+                        if ($("#inputGroupSelect01").val() == 0) {
+                            this.memberlist.memberGender = true;
+                        } else {
+                            this.memberlist.memberGender = false;
+                        }
+                        console.log($("#inputGroupSelect01").val());
+                        var year = $("#year").val();
+                        var mon = $("#inputGroupSelect02").val();
+                        if (mon.length == 1) {
+                            mon = "0" + mon;
+                        }
+                        var day = $("#inputGroupSelect03").val();
+                        if (day.length == 1) {
+                            day = "0" + day;
+                        }
+                        app.memberlist.memberBirth = year + "-" + mon + "-" + day + "T" + "00:00:00";
+                        console.log(year + "-" + mon + "-" + day + " " + "00:00:00");
+                        $.ajax({
+                            type: "put",
+                            url: "/api/MemberTables/1",
+                            contentType: "application/json",
+                            data: JSON.stringify(this.memberlist),
+                            success: function () {
+                                window.location = "/tedLb/tedmember.html";
+                                alert("資料修改成功");
+                            }
+                        })
+                    }
+                },//店家資料修改
+                btnshopmodif: function () {
+                    app.shoplist.manicuristAddress = $("#city").val() + $("#hometown").val() + $("#address").val();
+                    $.ajax({
+                        type: "put",
+                        url: "/api/ManicuristTables/1",
+                        contentType: "application/json",
+                        data: JSON.stringify(this.shoplist),
+                        success: function () {
+                            window.location = "/tedLb/tedmember.html";
+                            alert("資料修改成功");
+                        }
+                    })
+                },
+                // 新增信用卡
+                btninsertcard: function () {
+                    var flag = true;
+                    if ($("#input-card-number").val() == "") {
+                        $("#creditnumwarn").html(" 信用卡號碼欄位不能為空值");
+                        flag = false;
+                    }
+                    if ($("#creditenddate").val() == "") {
+                        $("#creditdate").html("欄位為空值或是格式錯誤");
+                        flag = false;
+                    }
+                    if ($("#creditholdername").val() == "") {
+                        $("#creditname").html("名字欄位不能為空值");
+                        flag = false;
+                    }
+                    if ($("#addresscredit").val() == "") {
+                        $("#creditaddress").html("帳單地址不能為空值");
+                        flag = false;
+                    }
+                    if ($("#postcode").val() == "") {
+                        $("#creditpostcode").html("郵遞區號不能為空值");
+                        flag = false;
+                    }
+
+                    if (flag == true) {
+                        app.creditlist[0].creditCardOwner = nowmembb;
+                        app.creditlist[0].creditCardExpirationdateYear = ($("#creditenddate").val()).substr(3, 2);
+                        app.creditlist[0].creditCardExpirationdateMon = ($("#creditenddate").val()).substr(0, 2);
+                        if (confirm('是否確定要新增信用卡?') == true) {
+
+                            $.ajax({
+                                type: "post",
+                                url: "/api/CreditCardTables",
+                                contentType: "application/json",
+                                data: JSON.stringify(app.creditlist[0]),
+
+                                success: function () {
+                                    window.location = "/tedLb/tedmember.html";
+
+                                    alert("信用卡新增成功");
+                                }
+                            })
+                        }
+                    }
+                },
+                //新增美甲師銀行帳號
+                insertaccount: function () {
+                    console.log(this.shoplistcard);
+                    if (confirm('是否確定要新增銀行帳號?') == true) {
+
+                        $.ajax({
+                            type: "put",
+                            url: "/api/ManicuristTables/" + nowmembb,
+                            contentType: "application/json",
+                            data: JSON.stringify(this.shoplist),
+                            success: function () {
+                                window.location = "/tedLb/tedmember.html";
+                                alert("新增銀行帳號成功")
+                            }
+                        })
+                    }
+                },  //刪除銀行帳號
+                deleteaccount: function () {
+                    if (confirm('是否確定要刪除銀行帳號?') == true) {
+                        this.shoplist.manicuristBankAccount = null;
+                        this.shoplist.manicuristBankCode = null;
+                        this.shoplist.manicuristBankCompanyName = null;
+                        this.shoplist.manicuristBankName = null;
+                        this.shoplist.manicuristBankNameBranch = null;
+                        console.log(this.shoplist);
+                        $.ajax({
+                            type: "put",
+                            url: "/api/ManicuristTables/1",
+                            contentType: "application/json",
+                            data: JSON.stringify(this.shoplist),
+                            success: function () {
+                                window.location = "/tedLb/tedmember.html";
+                                alert("刪除銀行帳號成功");
+                            }
+
+                        })
+                    }
+                },
+                //刪除信用卡
+                btndelect: function () {
+                    console.log(app.creditlist[0]);
+                    if (confirm('是否確定要刪除信用卡?') == true) {
+
+                        $.ajax({
+                            type: "delete",
+                            url: "/api/CreditCardTables/" + app.creditlist[0].creditCardId,
+                            contentType: "application/json",
+                            data: JSON.stringify(app.creditlist[0]),
+
+                            success: function () {
+                                window.location = "/tedLb/tedmember.html";
+                                alert("信用卡成功刪除");
+                            }
+                        })
+                    }
+                }
+
+            }
+        })
+
+        //會員修改判斷
+        function xxxx(nowMember) {
+
+            $.ajax({
+                type: "get",
+                url: "/api/membertables/" + nowMember,
+                success: function (e) {
+                    app.memberlist = e;
+
+                    if (e.memberGender == true) {
+                        $("#Gender").text("男");
+                        $("#inputGroupSelect01").val(0);
+                    } else {
+                        $("#Gender").text("女");
+                        $("#inputGroupSelect01").val(1);
+                    }
+                    if (e.memberBirth != null) {
+
+                    $("#bir").text((e.memberBirth).substr(0, 10));
+                    $("#year").val((e.memberBirth).substr(0, 4));
+                    var mon = (e.memberBirth).indexOf("-", 5);
+                    var day = (e.memberBirth).indexOf("T");
+                    var month = (e.memberBirth).substr(5, mon - 5);
+                    if (month.indexOf(0) >= 0) {
+                        month = month.substr(1, 1);
+                    }
+                    var day1 = (e.memberBirth).substr(mon + 1, day - mon - 1);
+                    if (day1.indexOf(0) >= 0) {
+                        day1 = day1.substr(1, 1);
+                    };
+                    $("#inputGroupSelect02").val(month).selected;
+                    $("#inputGroupSelect03").val(day1).selected;
+                    }
+                    if (e.memberManicurist == true) {
+                        $("#memberManicurist").css("display", "none");
+                    }
+
+                    if (e.memberManicurist == false) {
+
+                        $("#shopisopen").css("display", "none");
+                        $("#btnshowmodif").attr("disabled", true);
+                    }
+                    if (e.memberManicurist == true) {                      
+
+                                $.ajax({
+                                    type: "get",
+                                    url: "/api/Manicuristtables/" + nowMember,
+                                    success: function (e) {
+                                        app.shoplistcard = e;
+                                        app.shoplist = e;
+                                        $("#city").val((e.manicuristAddress).substr(0, 3));
+                                        var town = (e.manicuristAddress);
+                                        var num = 0;
+                                        if (town.indexOf("鄉", 3) > 0) {
+                                            num = town.indexOf("鄉", 3)
+                                        } else if (town.indexOf("鎮", 3) > 0) {
+                                            num = town.indexOf("鎮", 3);
+                                        } else if (town.indexOf("區", 3) > 0) {
+                                            num = town.indexOf("區", 3);
+                                        } else if (town.indexOf("市", 3) > 0) {
+                                            num = town.indexOf("市", 3)
+                                        };
+                                        for (var i = 0; i < area_data[town.substr(0, 3)].length; i++) {
+                                            document.getElementById("hometown").add(new Option(area_data[town.substr(0, 3)][i], area_data[town.substr(0, 3)][i]))
+                                        }
+                                        $("#hometown").val(town.substring(3, 3));
+                                        $("#address").val(town.substring(num + 1));
+
+                                        if (e.manicuristBankAccount != null) {
+                                            $("#counnt1").css("visibility", "hidden");
+                                            $(".bankaccount-div").css("visibility", "visible");
+                                            $("#bankaccount1").html("**** **** **** " + (e.manicuristBankAccount).substr(12, 4));
+                                        }
+
+                                        if (e.manicuristSalonName != null) {
+
+                                            $("#shopnotnotopen").css("display", "none");
+                                        }
+
+                                    }
+                                })
+                            }
+                        }
+
+                    
+                
+            })
+    
+        }
+        function now1(nowMember) {
+
+            $.ajax({
+                type: "get",
+                url: "/api/CreditCardTables/" + nowMember,
+                success: function (e) {
+                    if (e.length != 0) {
+                        app.creditlist = e;
+                        $("#newcardbtn").css("visibility", "hidden");
+                        $(".card-1").css("visibility", "visible");
+                        $("#card-1-1-number").html("**** **** **** " + (e[0].creditCardNumber).substr(12, 4))
+                    }
+                }
+            })
+           
+        }
+
+      
+        //寄送驗證碼
+        function sendmail() {
+            console.log(nowmembb);
+            app.verifcodelist = [];
+            app.verifcodelist.push(String(nowmembb));
+            var randstr = randomstr(6);
+            console.log(randstr);
+            app.verifcodelist.push(randstr);
+            app.verifcodelist.push($("#emailcertified").val());
+            console.log(app.verifcodelist);
+            console.log($("#emailcertified").val());
+            $.ajax({
+                type: "post",
+                url: "/api/Verifcode",
+                contentType: "application/json",
+                data: JSON.stringify(app.verifcodelist)
+
+            })
+            alert("我們已寄送驗證碼到您的信箱-請到信箱確認驗證碼")
+            setTimeout(function () { $("#insertverif").css("display", "block") }, 1000);
+            //alert("我們已寄送驗證碼到您的信箱-請到信箱確認驗證碼");
+
+            var span = document.getElementsByClassName("close111")[0];
+
+            //$.ajax({
+            //    type: "get",
+            //    url: "/api/Verifcode/1",
+            //    success: function (e) {
+            //        console.log(e);
+            //    }
+            //})
+            span.onclick = function () {
+                $("#insertverif").css("display", "none");
+            }
+            window.onclick = function (event) {
+                if (event.target == $("#insertverif")) {
+                    $("#insertverif").css("display", "none");
+                }
+            }
+        }
+        //驗證開通美甲師
+
+        function verifcert() {
+            if ($("#certifiednum").val() != app.verifcodelist[1]) {
+                alert("驗證碼錯誤")
+            } else if ($("#certifiednum").val() == app.verifcodelist[1]) {
+                $.ajax({
+                    type: "get",
+                    url: "/api/MemberTables/" + nowMember,
+                    success: function (e) {
+                        e.memberManicurist = true;
+                        $.ajax({
+                            type: "put",
+                            url: "/api/MemberTables/" + nowMember,
+                            contentType: "application/json",
+                            data: JSON.stringify(e),
+                            success: function () {
+                                alert("驗證成功");
+
+                            }
+                        })
+                    }
+                });
+
+
+                $("#insertverif").css("display", "none");
+                $("#insertshopfirst").css("display", "block");
+                var span = document.getElementsByClassName("close2")[0];
+                span.onclick = function () {
+                    $("#insertshopfirst").css("display", "none");
+
+                }
+            }
+        }
+        var newshoplist = [{
+            "manicuristId": 4, "manicuristPic": "UploadFolder/會員預設.jpg",
+            "manicuristSalonName": null, "manicuristAddress": null,
+            "manicuristCounty": null, "manicuristTownship": null, "manicuristPublic": true,
+            "manicuristSalonPhone": null,
+            "manicuristLicense": "無",
+            "manicuristBankCode": null, "manicuristBankAccount": null,
+            "manicuristIntro": null,
+            "manicuristScore": null, "manicuristBankName": null, "manicuristBankNameBranch": null, "manicuristBankCompanyName": null
+        }]
+
+        //新增美甲師資料
+        function btninsertshopcert() {
+            newshoplist[0].manicuristId = nowMember;
+            newshoplist[0].manicuristSalonName = $("#newsolanname").val();
+            newshoplist[0].manicuristAddress = ($("#city1").val())+($("#hometown1").val())+$("#newsolanaddress").val();
+            newshoplist[0].manicuristCounty = ($("#city1").val());
+            newshoplist[0].manicuristTownship = ($("#hometown1").val());
+            newshoplist[0].manicuristSalonPhone = $("#newshopphone").val();
+            newshoplist[0].manicuristIntro = $("#newintoshop").val();
+            newshoplist[0].manicuristLicense = $("#newshoplicen").val();
+            console.log(newshoplist);
+            $.ajax({
+                type: "post",
+                url: "/api/ManicuristTables",
+                contentType: "application/json",
+                data: JSON.stringify(newshoplist[0]),
+                success: function () {
+                    window.location = "/tedLb/tedmember.html";
+                    alert("美甲師功能已開通囉!!請到個人資訊查看~");
+                }
+            })
+
+        }
+       
+
+        
+
+
+        function randomstr(e) {
+            var t = "ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz123456789", a = t.length, n = "";
+            for (var i = 0; i < e; i++) {
+                n += t.charAt(Math.floor(Math.random() * a));
+            }
+            return n;
+        }
+        //完成訂單
+        function ordercompli(e) {
+            var complit = e.id;
+            var num = 0;
+            for (var i = 4; i < complit.length; i++) {
+                if (complit[i].toString().indexOf('0') < 0) {
+                    num = i;
+                    break;
+                }
+            }
+            var realid = complit.substr(num, complit.length - num);
+            var stat = ["A4"];
+            if (confirm('是否確定訂單已完成?') == true) {
+                $.ajax({
+                    type: "put",
+                    url: "/api/OrderTED/" + realid,
+                    contentType: "application/json",
+                    data: JSON.stringify(stat),
+                    success: function () {
+                        window.location = "/tedLb/tedmember.html";
+                    }
+                })
+            }
+        }
+
+        function regref(e) {
+            var idd = e.id.substr(4,e.id.length-4);
+            window.location = "https://localhost:44308/YiPLib/product.html?id=" + idd;
+        }
+        function regref1(e) {
+            var idd = e.id.substr(6, e.id.length - 6);
+            window.location="https://localhost:44308/YiPLib/NailDesign.html?id=" + idd;
+            
+        }
+    
+    </script>
+
+</body>
+</html>

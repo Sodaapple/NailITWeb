@@ -1,0 +1,26 @@
+/*#region Common*/
+.bottomBorder {
+  border-bottom: 2px solid #dee2e6;
+}
+
+/* style="border-bottom:2px solid #dee2e6" */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.show {
+  display: block !important;
+}
+
+/*#endregion*/
+
+/*#region Editable*/
+.editable[placeholder]:empty:before {
+  content: attr(placeholder);
+  color: #555;
+}
+
+.editable[placeholder]:empty:focus:before {
+  content: "";
+}
+/*#endregion*/

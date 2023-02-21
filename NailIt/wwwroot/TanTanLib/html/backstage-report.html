@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nail IT後台管理</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+
+
+    <link rel="stylesheet" href="../css/backstage.css">
+
+
+</head>
+
+<body>
+    <div id="mydata">
+        <div class="container-fluid">
+            <!-- 功能列------------------------------------------------------------------------------------------- -->
+            <nav class="container-fluid" >
+                <div class="row opacity-25" id="navall">
+                    <div class="col-1"></div>
+                    <div class="col-7 p-0 d-flex align-items-center justify-content-start" id="brand">
+                        Nail IT 後臺管理
+                    </div>
+
+                    <div class="col-3  pt-3 justify-content-end" id="navend">
+                        Hi {{loginmame}} / <b style="font-size:14px;" onclick="plzlogout()">登出</b>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+            </nav>
+            <!-- 內文------------------------------------------------------------------------------------------- -->
+            <div>
+                <div class="row">
+                    <!-- 左側------------------------------------------------------------------------------------------- -->
+                    <div class="col-1"></div>
+                    <div class="col-2 mylist">
+                        <div id="mylist1">
+                            <b>後臺管理</b>
+                            <a class="tablinks" href="./backstage-report.html" style="text-decoration-line: underline;">審核檢舉</a>
+                            <a class="tablinks" href="./backstage-notice.html">系統通知</a>
+                            <a class="tablinks" href="./backstage-order.html">訂單管理</a>
+                            <b class="tablinks" data-toggle="collapse" href="#mylist2" style="font-size: 18px;">人員管理 <img id="triango" src="../images/箭頭.png" style="width:20px;" class="ml-5" /> </b>
+
+                        </div>
+                        <div id="mylist2" class="collapse">
+                            <a class="tablinks" href="./backstage-mem.html">會員管理</a>
+                            <a class="tablinks" href="./backstage-manager.html">系統人員管理</a>
+                        </div>
+                    </div>
+
+                    <!-- 右側------------------------------------------------------------------------------------------- -->
+                    <div class="col-1"></div>
+                    <div class="px-0 col-7 mycon">
+                        <!-- 1審核------------------------------------------------------------------------------ -->
+                        <div id="report" class="tabcontent">
+                            <b id="rigtil">後臺管理 ＞ <u>審核檢舉</u></b>
+                            <!-- 檢舉條件篩選------------------------------------------------------------------------------------------- -->
+                            <div class="mt-5 ml-2">
+                                <div class="d-flex align-items-start justify-content-start">
+                                    <div>
+                                        <b class="my-0 mr-4" id="serfil">查詢條件</b>
+                                    </div>
+                                    <div class="d-flex align-items-start flex-column">
+                                        <div class="d-flex align-items-center justify-content-start">
+                                            <p class="my-0">檢舉時間：</p>
+                                            <input id="datestart" type="date" value="">
+
+                                            <b class="mx-4">-</b>
+                                            <input id="dateend" type="date" value="">
+                                        </div>
+                                        <div class="my-4 d-flex align-items-center  justify-content-start">
+                                            <div class="d-flex align-items-center  justify-content-start">
+                                                <div>
+                                                    <p class="my-0">檢舉類型：</p>
+                                                </div>
+
+                                                <div>
+                                                    <select id="reptype" name="reptype" style="width: 130px;height:30px;">
+                                                        <!--v-model="selreptype"-->
+                                                        <option value="" selected>請選擇類型</option>
+                                                        <option v-for="item in syscode" v-bind:value="item.codeId">
+                                                            {{item.codeRepresent}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="mx-5 d-flex align-items-center">
+                                                <div>
+                                                    <p class="my-0">審核狀態：</p>
+                                                </div>
+                                                <div>
+                                                    <select id="repres" name="repres" style="width: 130px;height:30px;">
+                                                        <option value="" selected>請選擇狀態</option>
+                                                        <option value="NULL">待審核</option>
+                                                        <option value="1">審核通過</option>
+                                                        <option value="0">審核不通過</option>
+                                                    </select>
+                                                </div>
+                                                <!-- 審核狀態NULL=待審核,TRUE=審核通過,FLASE=審核不通 -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mr-1 d-flex justify-content-end align-items-center">
+                                    <button class="serbut" onclick="seaselrep()">查詢</button>
+
+                                </div>
+                            </div>
+
+                            <!-- 檢舉項目標籤+上下頁------------------------------------------------------------------------------------------- -->
+                            <div id="tabtitle" class="py-2 my-3 d-flex justify-content-between align-items-center">
+                                <div>
+                                    <b class="my-0 ml-2">審核檢舉項目</b>
+                                </div>
+                                <div id="infopage" class="d-flex align-items-center justify-content-end">
+                                    <p class="my-0 mr-2">共計</p>
+                                    <p class="my-0 mr-2">{{reportnum}}項</p>
+                                    <p class="my-0 mr-1">頁數</p>
+
+                                    <p class=" my-0 mr-2 ml-1">1</p>
+                                    <p class="my-0 mr-3">/ {{reportpage}} </p>
+                                    <a class="mr-2 mb-1" style="text-decoration-line: none;color:gray" disabled="disabled">上一頁</a>
+                                    <a class="mr-1 mb-1"  style="text-decoration-line: none;color:gray" disabled="disabled">下一頁</a>
+
+                                </div>
+                            </div>
+
+                            <!-- 檢舉項目欄位表------------------------------------------------------------------------------------------- -->
+                            <div class="my-2">
+                                <table class="table table-hover  table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">序號</th>
+                                            <th scope="col">檢舉類型</th>
+                                            <th scope="col">審核狀態</th>
+                                            <th scope="col">檢舉時間</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody v-for="(item,key) in report">
+                                        <tr>
+                                            <th scope="row">{{report[key].reportId}}</th>
+                                            <td>{{report[key].codeRepresent}}</td>
+                                            <td>{{report[key].reportResult}}</td>
+                                            <td>{{report[key].reportBuildTime}}</td>
+                                            <td style="width: 25%">
+                                                <button style="background-color: #FF6733" v-if="AAA[key]" onclick="reviewreport1(this)" v-bind:value="report[key].reportId" class="mr-3" data-toggle="modal" data-target="#reviewModal">審 核</button> <button v-else="AAA[key]" id="vierep" onclick="reviewreport1(this)" v-bind:value="report[key].reportId" data-toggle="modal" data-target="#examineModal">查 看</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal --------------------------------------------------------------------------------------------------------------------------------------->
+        <!-- 審核Modal ------------------------------------------------------------------------------------------------>
+        <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div>
+                        <button type="button" class="close pt-3 px-3" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <b>檢舉編號：{{onereport[0].reportId}}</b>
+                        <hr>
+                        <p>檢舉人：{{onereport[0].reportBuilder}}  {{onereport[0].builderMemberName}}</p>
+                        <p>被檢舉：{{onereport[0].reportTarget}}  {{onereport[0].targetMemberName}}</p>
+                        <p>檢舉類別：{{onereport[0].reportPlaceC}} {{onereport[0].codeRepresent}}</p>
+                        <p>檢舉原因：{{onereport[0].reportReasonC}} {{onereport[0].codeRepresentr}}</p>
+                        <p>檢舉來源編號：{{onereport[0].reportItem}}</p>
+                        <p>事由說明：{{onereport[0].reportContent}}</p>
+                        <p>檢舉時間：{{onereport[0].reportBuildTime}}</p>
+                        <p class="mb-1">狀態：</p>
+                        <input type="radio" id="OK" name="status" onclick="BackVal(this)" value="true">
+                        <label for="OK">審核通過</label><br>
+                        <input type="radio" id="NO" name="status" onclick="BackVal(this)" value="false">
+                        <label for="NO">審核不通過</label><br>
+                    </div>
+                    <div class="p-3 d-flex justify-content-end">
+                        <button type="button" class="mycancel mr-3" data-dismiss="modal">取消</button><button onclick="changereviewreport(this)" type="button" class="mysend" data-dismiss="modal">提交</button>
+                    </div>
+                    <!--v-on:click="reprevok"-->
+                </div>
+            </div>
+        </div>
+        <!-- 審核查閱Modal------------------------------------------------------------------------------------------------>
+        <div class="modal fade" id="examineModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div>
+                        <button type="button" class="close pt-3 px-3" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body py-2">
+                        <b>檢舉編號：{{onereport[0].reportId}}</b>
+                        <hr>
+                        <p>被檢舉：{{onereport[0].reportBuilder}}  {{onereport[0].builderMemberName}}</p>
+                        <p>檢舉人：{{onereport[0].reportTarget}}  {{onereport[0].targetMemberName}}</p>
+                        <p>檢舉類別：{{onereport[0].reportPlaceC}} {{onereport[0].codeRepresent}}</p>
+                        <p>檢舉原因：{{onereport[0].reportReasonC}} {{onereport[0].codeRepresentr}}</p>
+                        <p>檢舉來源編號：{{onereport[0].reportItem}}</p>
+                        <p>事由說明：{{onereport[0].reportContent}}</p>
+                        <p>檢舉時間：{{onereport[0].reportBuildTime}}</p>
+                        <p>狀態：{{onereport[0].reportResult}}</p>
+                        <p>審核人員：{{onereport[0].managerId}}  {{onereport[0].managerName}}</p>
+                        <p class="mb-0" id="reptime">審核時間：{{onereport[0].reportCheckTime}}</p>
+                    </div>
+                    <div class="p-3 d-flex justify-content-end">
+                        <button type="button" class="mycancel" data-dismiss="modal">關閉</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 插入JS檔 -->
+
+    <!--<script src="../../TanTanLib/js/bsmlist.js"></script>-->
+    <script src="/TanTanLib/js/myajax.js"></script>
+
+
+</body>
+
+</html>

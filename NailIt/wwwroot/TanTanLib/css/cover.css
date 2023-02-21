@@ -1,0 +1,399 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#mynav {
+    width: 100%;
+    height: 90px;
+    position: fixed;
+    background-position-x: 0px;
+    font-size: 16px;
+    background-color: white;
+    opacity: .9;
+    z-index: 9999;
+}
+
+#navall > div {
+    /* background-color: blue; */
+    max-height: 100%;
+    /* 待研究 */
+    height: 90px;
+}
+
+#brand {
+    font-family: Cascadia Mono SemiBold;
+    font-size: 30px;
+    color: black;
+    height: 100%;
+}
+
+
+
+.navmid {
+    /* background-color: blue; */
+    height: 100%;
+}
+
+    .navmid > li {
+        display: inline;
+        color: black;
+    }
+
+        .navmid > li > a {
+            color: black;
+            font-weight: bold;
+        }
+
+            .navmid > li > a:hover {
+                text-decoration-line: underline;
+                text-decoration-thickness: 1.5px;
+                text-underline-offset: 7px;
+            }
+
+#brand a,
+#brand a:link,
+#brand a:visited,
+#brand a:active {
+    color: black;
+    text-decoration-line: none;
+}
+
+
+.navend1 {
+    /* background-color: darksalmon; */
+    font-size: 14px;
+    text-align: right;
+    font-weight: bold;
+}
+
+.navend2 img { /* 因為notice 加入dropDown顯示系統通知訊息有修改格式 */
+    width: 25px;
+    /* background-color: blue; */
+}
+
+/* 內文------------------------------------------------------------------------------ */
+.myblock {
+    padding-top: 5%;
+}
+
+.mycar {
+    margin-top: 90px;
+}
+
+.carousel-item img {
+    height: 430px;
+    object-fit: fill;
+    object-position: center center;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    filter: invert(100%);
+}
+
+.carousel .carousel-indicators li {
+    background-color: gray;
+}
+
+    .carousel .carousel-indicators li.active {
+        background-color: #3B3838;
+    }
+
+/* 內文1------------------------------------------------------------------------------ */
+
+
+.mytite {
+    /* background-color: aqua; */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 7px;
+}
+
+b, p {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 18px;
+}
+
+
+
+select {
+    opacity: 80%;
+    border: none;
+    outline: none;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+.resertite {
+    border: 2px;
+    border-bottom-style: solid;
+}
+
+.searchButton img {
+    height: 24px;
+}
+
+
+/* TOP---------------------------------------------------------- */
+.top5pic img {
+    height: 200px;
+}
+
+
+.Seemore {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    padding-top: 145px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.Clickme {
+    background-color: white;
+    color: black;
+    width: 140px;
+    height: 40px;
+    font-weight: bold;
+    border: 4px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.Clickme:hover,
+.Clickme:focus {
+    background-color: black;
+    width: 140px;
+    height: 40px;
+    color: white;
+    z-index: 999;
+}
+
+.top5pic:hover .Clickme {
+    visibility: visible;
+    z-index: 9999;
+}
+
+.Seepic:hover {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* 只有圖片放大
+ .Seepic:hover img
+ {
+     transition: 0.5s;
+     transform: scale(1.1);
+     filter: grayscale(20%);
+ }*/
+
+/*整體放大*/
+    .top5pic:hover {
+        transition: 0.5s;
+        transform: scale(1.1);
+        filter: grayscale(30%);
+    }
+
+        .top5pic:hover p {
+            transition: 0.5s;
+            transform: scale(1.1);
+            margin-left: 5%;
+            
+        }
+
+/*.topone:hover,
+.topone:focus {
+    border:1px solid;
+    opacity: .8;
+    z-index: 10;
+}*/
+
+
+/* SEARCH---------------------------------------------------------- */
+
+.seatitle {
+    background-color: #000000;
+    height: 55px;
+}
+
+    .seatitle > b {
+        font-size: 18px;
+        color: white;
+    }
+
+.colcir {
+    background-color: rgb(116, 112, 112);
+    color: white;
+    font-weight: bold;
+    width: 70px;
+    height: 70px;
+    /* margin: 20px; */
+}
+
+    .colcir:hover {
+        color: #000000;
+        /* text-decoration-line:none; */
+    }
+
+
+
+
+
+#1 {
+    color: white;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+}
+
+.coldot {
+    margin: 4% 0%;
+}
+
+.colmix {
+    background-image: linear-gradient(to right, #ed6ea0 0%, #ec8c69 100%);
+}
+
+.mytag .btn {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
+    height: 60px;
+    margin: 1% 0%;
+    border-radius: 0px;
+}
+
+.mytag .btn {
+    transition-duration: 0.4s;
+}
+
+    .mytag .btn:hover {
+        background-color: #D0CECE;
+        font-weight: bolder;
+    }
+
+/* 頁尾---------------------------------------------------------- */
+
+#hid {
+    background-color: white;
+    border: 0px solid white;
+    height: 60px;
+    margin: 1% 0%;
+}
+
+
+footer {
+    width: 100%;
+    margin-top: 7%;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    width: 100%;
+}
+
+
+#footit {
+    margin-top: 6%;
+}
+
+    #footit b {
+        font-size: 14px;
+        margin-right: 1%;
+    }
+
+#footpre pre {
+    color: white;
+    font-size: 14px;
+}
+
+#footpre, #footcopy {
+    margin-top: 1%;
+}
+
+/*-----------------------------------------------------------------------------------------------*/
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.show {
+    display: block !important;
+}
+
+.unread-badge-message {
+    position: absolute;
+    top: 1px;
+    left: 16px;
+    width: 10px;
+    height: 10px;
+}
+
+.unread-badge-sysNotic {
+    position: absolute;
+    top: 0px;
+    left: 15px;
+    width: 10px;
+    height: 10px;
+}
+
+/* dropdown sysNotic---------------------------------------------------------- */
+/*#region Dropdown*/
+.dropbtn {
+    /* background-color: #04AA6D; */
+    /* color: white; */
+    /* padding: 16px; */
+    /* font-size: 16px; */
+    border: none;
+    cursor: pointer;
+}
+
+/* .dropbtn:hover, .dropbtn:focus {
+  } */
+.dropdown {
+    float: right;
+    position: relative;
+    /* display: inline-block; */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    /* min-width: 160px; */
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    right: 0;
+    z-index: 1;
+}
+
+    .dropdown-content a {
+        color: black;
+        padding: 5px 10px;
+        text-decoration: none;
+        display: block;
+        white-space: nowrap;
+    }
+
+.dropdown a:hover {
+    background-color: #ddd;
+}
+
+/*#endregion*/
+
+.Navimg {
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50px;
+}

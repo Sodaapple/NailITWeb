@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>綠界訂單測試</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- 套入bootstrap 和 JQ -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="../css/product.css">
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.11.0/qs.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    
+
+
+</head>
+
+<body>
+
+
+
+    <!-- 綠界金流表單 -->
+    <div class="cash">
+        <form id="cashform" action="https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5" method="post" >
+            <input type="hidden" name="MerchantID" value="3002607">
+            <br />
+            <!-- DX20230127114112152C -->
+            <input type="text" name="MerchantTradeNo" value="Nailit20230203092005">
+            <br />
+            <input type="text" name="MerchantTradeDate" value="2023/02/03 09:20:05">
+            <br />
+            <input type="hidden" name="PaymentType" value="aio">
+            <br />
+            <input type="text" name="TotalAmount" value="200">
+            <br />
+            <!-- NAILIT美甲預約 -->
+            <input type="text" name="TradeDesc" value="NAILIT美甲預約">
+            <br />
+            <input type="text" name="ItemName" value="閃亮亮 NT$500">
+            <br />
+            <input type="hidden" name="ReturnURL" value="https://hoyo.idv.tw/?a=Tools/EcPay&b=ReturnURL">
+            <br />
+            <input type="hidden" id="" name="ChoosePayment" value="Credit">
+            <br />
+            <input type="hidden" id="" name="CheckMacValue" value="">
+            <br />
+            <input type="hidden" id="" name="EncryptType" value="1">
+            <br />
+            <button type="button" id="btnCashSend">送出</button>
+        </form>
+    </div>
+
+    <script>
+        //HashKey=pwFHCqoQZGmho4w6&ChoosePayment=Credit&EncryptType=1&ItemName=閃亮亮 NT$500&MerchantID=3002607&MerchantTradeDate=2023/02/03 09:20:05&MerchantTradeNo=Nailit20230203092005&PaymentType=aio&ReturnURL=https://hoyo.idv.tw/?a=Tools/EcPay&b=ReturnURL&TotalAmount=200&TradeDesc=NAILIT美甲預約&HashIV=EkRm7iFT261dpevs
+        "hashkey%3dpwfhcqoqzgmho4w6%26choosepayment%3dcredit%26encrypttype%3d1%26itemname%3d%e9%96%83%e4%ba%ae%e4%ba%ae%20nt%24500%26merchantid%3d3002607%26merchanttradedate%3d2023%2f02%2f03%2009%3a20%3a05%26merchanttradeno%3dnailit20230203092005%26paymenttype%3daio%26returnurl%3dhttps%3a%2f%2fhoyo.idv.tw%2f%3fa%3dtools%2fecpay%26b%3dreturnurl%26totalamount%3d200%26tradedesc%3dnailit%e7%be%8e%e7%94%b2%e9%a0%90%e7%b4%84%26hashiv%3dekrm7ift261dpevs"
+        "HashKey%3DpwFHCqoQZGmho4w6%26ChoosePayment%3DCredit%26EncryptType%3D1%26ItemName%3D%E9%96%83%E4%BA%AE%E4%BA%AE%20NT%24500%26MerchantID%3D3002607%26MerchantTradeDate%3D2023%2F02%2F03%2009%3A20%3A05%26MerchantTradeNo%3DNailit20230203092005%26PaymentType%3Daio%26ReturnURL%3Dhttps%3A%2F%2Fhoyo.idv.tw%2F%3Fa%3DTools%2FEcPay%26b%3DReturnURL%26TotalAmount%3D200%26TradeDesc%3DNAILIT%E7%BE%8E%E7%94%B2%E9%A0%90%E7%B4%84%26HashIV%3DEkRm7iFT261dpevs"
+        $('#btnCashSend').on('click', function () {
+            // Nailit20230131211012
+            // 2023/01/31 21:10:12
+            // 500
+            // NAILIT美甲預約
+            // 固定項目
+            // 寫死不用動
+            // input MerchantID
+            let HashKey = "HashKey=pwFHCqoQZGmho4w6"
+            let HashIV = "EkRm7iFT261dpevs"
+
+            // MerchantTradeNo 訂單編號
+            // MerchantTradeDate 訂單日期
+            // TotalAmount 付款金額
+            // TradeDesc 商品描述
+            // ItemName 商品名稱
+            // 上面五個須給值
+            let itemName = $('input[name="ItemName"]').val();
+            let MerchantTradeDate = $('input[name="MerchantTradeDate"]').val();
+            let MerchantTradeNo = $('input[name="MerchantTradeNo"]').val();
+
+
+            let returnUrl = $('input[name="ReturnURL"]').val();
+
+            // let OrderResultURL = $('input[name="OrderResultURL"]').val();
+
+            let TotalAmount = $('input[name="TotalAmount"]').val();
+            let TradeDesc = $('input[name="TradeDesc"]').val();
+
+            // CheckMacValue 檢查碼生成 上面參數都正確會傳放入 val()進去
+            let x = `${HashKey}&ChoosePayment=Credit&EncryptType=1&ItemName=${itemName}&MerchantID=3002607&MerchantTradeDate=${MerchantTradeDate}&MerchantTradeNo=${MerchantTradeNo}&PaymentType=aio&ReturnURL=${returnUrl}&TotalAmount=${TotalAmount}&TradeDesc=${TradeDesc}&HashIV=${HashIV}`
+            console.log(x)
+            let y = encodeURIComponent(x)
+            y = y.replaceAll("%20", "+")
+            y = y.toLowerCase();
+            console.log(y)
+            var hash = CryptoJS.SHA256(y).toString();
+            
+            // QB = QB.toUpperCase();
+            console.log(hash)
+            hash = hash.toUpperCase()
+            $('input[name="CheckMacValue"]').val(hash)
+
+            // const apiURL = 'https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5';
+            
+            // const data = { 
+            //     MerchantID: 3002607,
+            //     MerchantTradeNo: "DX20230127114112152C",
+            //     MerchantTradeDate: "2023/01/27 11:41:12",
+            //     PaymentType: "aio",
+            //     TotalAmount: 1500,
+            //     TradeDesc: "美甲",
+            //     ItemName: "繽紛",
+            //     ReturnURL: "https://hoyo.idv.tw/?a=Tools/EcPay&b=ReturnURL",
+            //     ChoosePayment: "Credit",
+            //     CheckMacValue: hash,
+            //     EncryptType: 1
+            // };
+            // const options = {
+            //     method: 'POST',
+            //     headers: { 'content-type': 'application/x-www-form-urlencoded' },
+            //     data: Qs.stringify(data),
+            //     url : apiURL,
+            // };
+            
+            
+            // axios(options);
+
+
+            $('#cashform').submit();
+        })
+
+        // let z = "HashKey%3dpwFHCqoQZGmho4w6%26ChoosePayment%3dCredit%26EncryptType%3d1%26ItemName%3d%e7%b9%bd%e7%b4%9b%26MerchantID%3d3002607%26MerchantTradeDate%3d2023%2f01%2f27+11%3a41%3a12%26MerchantTradeNo%3dDX20230127114112152a%26PaymentType%3daio%26ReturnURL%3dhttps%3a%2f%2fhoyo.idv.tw%2f%3fa%3dTools%2fEcPay%26b%3dReturnURL%26TotalAmount%3d1000%26TradeDesc%3d%e7%be%8e%e7%94%b2%26HashIV%3dEkRm7iFT261dpevs";
+        // %20 應該轉換成 +
+
+    </script>
+</body>
+
+</html>

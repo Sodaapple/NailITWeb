@@ -1,0 +1,189 @@
+.tag {
+	display: inline-block;
+	margin-top: 5%;
+	padding: 2%;
+	margin-bottom: 0%;
+}
+.tag:hover {
+	border-color: darkgrey;
+	cursor: pointer;
+}
+dialog {
+	border: none;
+	box-shadow: 0 2px 6px #ccc;
+	border-radius: 10px;
+	/*left:25%;*/
+	/*top:25%;*/
+	padding: 10px;
+	width: 30%;
+	height: 62%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.detailItem {
+	margin-top: 2%;
+	display: inline-block
+}
+#Xpng:hover {
+	cursor:pointer
+}
+
+.fa:hover {
+	cursor: pointer;
+}
+
+.doneDiv {
+	border: 1px solid ; 
+	margin-bottom:2%;
+	padding-top:2%;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type=number] {
+	-moz-appearance: textfield;
+}
+
+html {
+	overflow-y: scroll;
+}
+
+
+/*DD*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+#mynav {
+	width: 100%;
+	height: 90px;
+	position: fixed;
+	background-position-x: 0px;
+	font-size: 16px;
+	background-color: white;
+	opacity: .9;
+	z-index: 9999;
+}
+
+#navall > div {
+	/* background-color: blue; */
+	max-height: 100%;
+	/* «Ý¬ã¨s */
+	height: 90px;
+}
+
+#brand {
+	font-family: Cascadia Mono SemiBold;
+	font-size: 30px;
+	color: black;
+	height: 100%;
+}
+
+
+
+.navmid {
+	/* background-color: blue; */
+	height: 100%;
+}
+
+	.navmid > li {
+		display: inline;
+		color: black;
+	}
+
+		.navmid > li > a {
+			color: black;
+			font-weight: bold;
+		}
+
+			.navmid > li > a:hover {
+				text-decoration-line: underline;
+				text-decoration-thickness: 1.5px;
+				text-underline-offset: 7px;
+			}
+
+.navend1 {
+	/* background-color: darksalmon; */
+	font-size: 14px;
+	text-align: right;
+	font-weight: bold;
+}
+
+.navend2 > img {
+	width: 25px;
+	/* background-color: blue; */
+}
+
+/* ­¶§À---------------------------------------------------------- */
+
+#hid {
+	background-color: white;
+	border: 0px solid white;
+	height: 60px;
+	margin: 1% 0%;
+}
+
+
+footer {
+	width: 100%;
+	margin-top: 7%;
+	background-color: rgb(0, 0, 0);
+	color: white;
+	width: 100%;
+}
+
+
+#footit {
+	margin-top: 6%;
+}
+
+	#footit b {
+		font-size: 14px;
+		margin-right: 1%;
+	}
+
+#footpre pre {
+	color: white;
+	font-size: 14px;
+}
+
+#footpre, #footcopy {
+	margin-top: 1%;
+}
+
+
+.ratings {
+	margin: 0 .1rem;
+	line-height: 20px;
+	position: relative;
+	vertical-align: middle;
+	display: inline-block;
+	color: #ddd;
+	font-size: 25px;
+	overflow:hidden;
+	padding-top:0px;
+	padding-bottom:2px;
+}
+
+#full_star {
+	width: 50%; 
+        position: absolute;
+        left: 1px;
+        top: 0.6px;
+        white-space: nowrap;
+        overflow: hidden;
+        color: #FFC000;
+        line-height: 20px;
+}

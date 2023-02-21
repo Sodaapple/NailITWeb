@@ -1,0 +1,659 @@
+.Navimg{
+    height:70px;
+    object-fit:cover;
+    border-radius:50px;
+}
+.member-link{
+    color: black;
+}
+.title{
+    font-size: 18px;
+}
+dt,dd{
+    padding: 10px;
+}
+dd{
+    padding-left: 30px;
+}
+#select{
+    border-right:2px solid;
+
+
+   
+}
+.inner1{
+    height:100px;
+    font-size: 18px;
+}
+.inner2{
+    border-bottom: 1px solid;
+    font-size: 20px;
+}
+.inner3{
+    height: auto;
+  
+}
+.inner-link{
+    color: black;
+    border: none;
+    
+    background-color: transparent;
+
+}
+.inner3 h5{
+    font-size: 18px;
+}
+.form-control{
+    max-width: 50%;
+}
+.label-title{
+    font-size:18px;
+}
+.custom-select{
+    max-width: 12%;
+}
+
+.inputcity{
+    width: 40%;
+}
+#year{
+    max-width:10%;
+}
+.content{
+    display:none;
+}
+
+#home{
+    max-width: 100%;
+}
+#introduction{
+    height: 100px;
+}
+#license{
+    height: 50px;
+}
+.card-a,button[value=newcard]{
+    display: inline;
+}
+.btn.btn-warning{
+    right: 0%;
+}
+.card-div{
+    height: 50px;
+    border-bottom: 1px solid;
+}
+button[value=newcard]{
+    background-color: #FF6733;
+    color:white;
+    float: right;
+}
+button[value=newcard]:hover{
+    background-color: #fc8158;
+}
+#btn-input{
+    background-color: #FF6733;
+}
+#btn-input:hover{
+    background-color:#fc8158;
+}
+.card-1{
+    visibility:hidden;
+    padding-top: 5%;
+    height: 170px;
+}
+.card-1 img{
+    height: 40px;
+    width: 60px;
+    border: 1px solid;
+    border-color: gray;
+
+}
+
+.card-1-1{
+   margin-left: 2%;
+    display: inline-block;
+}
+#card-1-1-number{
+   padding-left: 40%;
+}
+#counnt,#counnt1{
+    display: inline;
+}
+button[value=newcounnt]{
+    background-color: #FF6733;
+    color: white;
+    float: right;
+}
+button[value=newcounnt]:hover{
+    background-color: #fc8158;
+}
+.counnt-div{
+    height: 50px;
+    border-bottom: 1px solid;
+}
+.modal-body .row-2{
+    border: 1px solid;
+    background: rgb(204, 250, 239);
+}
+
+.text-card-font{
+    
+    font-size: 11px;
+}
+.card-Classification{
+    height: 30px;
+
+}
+.card-Classification h6{
+    display: inline;
+    font-size: 11px;
+    padding-top: 15px;
+}
+.Classification{
+    float: right;
+    display: inline;
+    height: 24px;
+}
+.card-number{
+    width: 200%;
+}
+.card-name{
+    width: 200%;
+}
+.bill-address-text{
+    font-size: 11px;
+}
+.bill-address{
+    width: 200%;
+}
+.bill-Postal-code{
+    width: 200%;
+}
+.certified-input{
+    width: 200%;
+}
+#certified-button{
+    float: left;
+}
+.switch-div{
+    height: 40px;
+    border-bottom: 1px solid;
+}
+.switch-btn{
+    border: none;
+    height:39px;
+    width: 100px;
+    background-color: transparent;
+}
+.tab-order{
+    display: none;
+    
+}
+.order-name{
+
+    height: 25px;
+    border-bottom: 1px solid;
+}
+.order-name h6{
+    display: inline;
+}
+.order-cancel{
+    color: #FF6733;
+    float: right;
+}
+.product-container{
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    height: 100px;
+}
+
+.productdetil{
+    
+    font-size: 11px;
+}
+.product-picture img{
+    height: 100px;
+    width: 100px;
+}
+.product-picture{
+    flex: 1;
+}
+.product-information{
+    height: 100px;
+    flex: 4;
+}
+.btn-cancel-order{
+    height: 100px;
+    position: relative;
+    flex: 1;
+}
+.btn-order-stat{
+    position: relative;
+    height: 100px;
+    flex: 1;
+}
+.cancel-btn{
+    position: absolute;
+    bottom: 0%;
+    color: white;
+    border: none;
+    background-color: #FF6733;
+    
+}
+.cancel-btn:hover{
+    background-color: #fc8158;
+}
+.ing-btn{
+    position: absolute;
+    bottom: 0%;
+    border: none;
+    color:white;
+    background-color: rgb(204, 195, 195);
+
+}
+#show-order-detil div{
+    display: flex;
+}
+.check-btn{
+    border: none;
+    background-color: #FF6733;
+    color: white;
+}
+.check-btn:hover{
+    background-color: #fc8158;
+}
+#shop-modif-newcounnt{
+    border: none;
+    background-color:#FF6733;
+    color:white;
+}
+#shop-modif-newcounnt:hover{
+    background-color: #fc8158;
+}
+.bank-div{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.bank-notice{
+    width: 100%;
+    background-color: bisque;
+}
+#btn-certin-input{
+    background-color: #FF6733;
+}
+#btn-certin-input:hover{
+    background-color: #fc8158;
+}
+.evaluation-btn{
+    width: 100px;
+    background-color:transparent;
+    border: none;
+}
+.evaluation-top-div{
+    border-bottom: 1px solid;
+}
+
+.fa-star-o{
+    cursor: pointer;
+}
+.fa-star{
+    color:gold;
+    cursor: pointer;
+}
+.commment{
+    display: flex;
+    height: 100px;
+    position: relative;
+}
+.commment button{
+    background-color: #FF6733;
+    width: 100px;
+    color: white;
+    position: absolute;
+    right: 10%;
+    bottom: 0%;
+}
+.commment button:hover{
+    background-color: #fc8158;
+}
+.ratings{
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+    color: #ddd;
+    overflow: hidden;
+    font-size: 25px;
+    text-shadow: 0px 1px 0 rgb(198, 198, 198);
+}
+.fullstar{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #ffc000;
+}
+.finished-text h6{
+    font-size: 16px;
+}
+.finish-order{
+    position: relative;
+    height: 100px;
+    background-color:rgb(242, 241, 241);
+    display: flex;
+    padding-top: 8px;
+    padding-left: 8px;
+}
+.finish-picture{
+
+    height: 80px;
+}
+
+.finish-order-div1{
+    flex: 2;
+}
+.finish-order-div2{
+    flex: 12;
+}
+.finish-order-div3{
+    height: 80px;
+    flex: 1;
+}
+.delectcard {
+    border: none;
+    background-color: gray;
+    color: white;
+    float: right;
+}
+
+    .delectcard:hover {
+        background-color: #fc8158;
+    }
+.bankaccount {
+    padding: 72px;
+    display: inline;
+}
+
+.bankaccount-div {
+    padding-top: 50px;
+    visibility:hidden
+}
+
+#btndelete, #deletecard {
+    float: right;
+    background-color: gray;
+    color: white;
+}
+
+    #btndelete:hover {
+        background-color: rgb(187, 183, 183);
+    }
+
+    #deletecard:hover {
+        background-color: rgb(187, 183, 183);
+    }
+
+.insert-topdiv {
+    display: none;
+    position: fixed;
+    z-index: 99999!important;
+    padding-top:200px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.insert-content{
+    background-color:#fefefe;
+    margin:auto;
+    padding:20px;
+    border:1px solid #888;
+    width:20%;
+    height:30%;
+
+}
+.close111 {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close111:hover,
+    .close111:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+.insertshop-div {
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 9999!important; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.contentinsertshop{
+    z-index:3;
+    background-color:#fefefe;
+    margin:auto;
+    padding:20px;
+    border:1px solid #888;
+    width:30%;
+    height:90%;
+}
+.close2 {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+    .close2:hover, .close2:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+#btninsertshop {
+    background-color:#FF6733;
+    color:white;
+}
+#btninsertshop:hover{
+    background-color:#fc8158;
+}
+#btnverif{
+    background-color:#FF6733;
+    color:white;
+}
+#btnverif:hover{
+    background-color:#fc8158;
+}
+
+/*頁首*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#mynav {
+    width: 100%;
+    height: 90px;
+    position: fixed;
+    background-position-x: 0px;
+    font-size: 16px;
+    background-color: white;
+    opacity: .9;
+    z-index: 1040 !important;
+}
+
+.fade{
+    z-index:1050 !important;
+}
+
+.modal {
+    z-index: 9999 !important;
+
+}
+
+#navall > div {
+    /* background-color: blue; */
+    max-height: 100%;
+    /* 待研究 */
+    height: 90px;
+}
+
+#brand {
+    font-family: Cascadia Mono SemiBold;
+    font-size: 30px;
+    color: black;
+    height: 100%;
+}
+
+
+
+.navmid {
+    /* background-color: blue; */
+    height: 100%;
+}
+
+    .navmid > li {
+        display: inline;
+        color: black;
+    }
+
+        .navmid > li > a {
+            color: black;
+            font-weight: bold;
+        }
+
+            .navmid > li > a:hover {
+                text-decoration-line: underline;
+                text-decoration-thickness: 1.5px;
+                text-underline-offset: 7px;
+            }
+
+.navend1 {
+    /* background-color: darksalmon; */
+    font-size: 14px;
+    text-align: right;
+    font-weight: bold;
+}
+
+.navend2 img { /* 因為notice 加入dropDown顯示系統通知訊息有修改格式 */
+    width: 25px;
+    /* background-color: blue; */
+}
+
+/* 頁尾---------------------------------------------------------- */
+
+#hid {
+    background-color: white;
+    border: 0px solid white;
+    height: 60px;
+    margin: 1% 0%;
+}
+
+
+footer {
+    width: 100%;
+    margin-top: 7%;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    width: 100%;
+}
+
+
+#footit {
+    margin-top: 6%;
+}
+
+    #footit b {
+        font-size: 14px;
+        margin-right: 1%;
+    }
+
+#footpre pre {
+    color: white;
+    font-size: 14px;
+}
+
+#footpre, #footcopy {
+    margin-top: 1%;
+}
+
+
+#newsolanname, #newsolanaddress, #newshopphone, #newintoshop, #newshoplicen {
+    max-width: 70%;
+}
+.unread-badge-message {
+    position: absolute;
+    top: 1px;
+    left: 16px;
+    width: 10px;
+    height: 10px;
+}
+
+.unread-badge-sysNotic {
+    position: absolute;
+    top: 0px;
+    left: 15px;
+    width: 10px;
+    height: 10px;
+}
+
+/* dropdown sysNotic---------------------------------------------------------- */
+/*#region Dropdown*/
+.dropbtn {
+    /* background-color: #04AA6D; */
+    /* color: white; */
+    /* padding: 16px; */
+    /* font-size: 16px; */
+    border: none;
+    cursor: pointer;
+}
+
+/* .dropbtn:hover, .dropbtn:focus {
+  } */
+.dropdown {
+    float: right;
+    position: relative;
+    /* display: inline-block; */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    /* min-width: 160px; */
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    right: 0;
+    z-index: 1;
+}
+
+    .dropdown-content a {
+        color: black;
+        padding: 5px 10px;
+        text-decoration: none;
+        display: block;
+        white-space: nowrap;
+    }
+
+.dropdown a:hover {
+    background-color: #ddd;
+}

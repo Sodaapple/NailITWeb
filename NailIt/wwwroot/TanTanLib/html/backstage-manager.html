@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nail IT後台管理</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+
+
+    <link rel="stylesheet" href="../css/backstage.css">
+
+
+</head>
+
+<body>
+    <div id="mydata">
+        <div class="container-fluid">
+            <!-- 功能列------------------------------------------------------------------------------------------- -->
+            <nav class="container-fluid" >
+                <div class="row opacity-25" id="navall">
+                    <div class="col-1"></div>
+                    <div class="col-7 p-0 d-flex align-items-center justify-content-start" id="brand">
+                        Nail IT 後臺管理
+                    </div>
+
+                    <div class="col-3  pt-3 justify-content-end" id="navend">
+                        Hi {{loginmame}} / <b style="font-size:14px;" onclick="plzlogout()">登出</b>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+            </nav>
+            <!-- 內文------------------------------------------------------------------------------------------- -->
+            <div>
+                <div class="row">
+                    <!-- 左側------------------------------------------------------------------------------------------- -->
+                    <div class="col-1"></div>
+                    <div class="col-2 mylist">
+                        <div id="mylist1">
+                            <b>後臺管理</b>
+                            <a class="tablinks" href="./backstage-report.html">審核檢舉</a>
+                            <a class="tablinks" href="./backstage-notice.html">系統通知</a>
+                            <a class="tablinks" href="./backstage-order.html">訂單管理</a>
+                            <b class="tablinks" data-toggle="collapse" href="#mylist2" style="font-size: 18px;">人員管理 <img id="triango" src="../images/箭頭.png" style="width:20px;" class="ml-5" /> </b>
+
+                        </div>
+                        <div id="mylist2" >
+                            <a class="tablinks" href="./backstage-mem.html">會員管理</a>
+                            <a class="tablinks" href="./backstage-manager.html" style="text-decoration-line: underline;">系統人員管理</a>
+                        </div>
+                    </div>
+
+                    <!-- 右側------------------------------------------------------------------------------------------- -->
+                    <div class="col-1"></div>
+                    <div class="px-0 col-7 mycon">
+                        <!-- 5系統管理人員------------------------------------------------------------------------------- -->
+                        <div id="sysmem" class="tabcontent">
+                            <b id="rigtil">後臺管理 ＞<u>系統人員管理</u></b>
+                            <!-- 員工條件篩選------------------------------------------------------------------------------------------- -->
+                            <div class="mt-5 ml-2">
+                                <div class="d-flex align-items-start justify-content-start">
+                                    <div>
+                                        <b class="my-0 mr-4" id="serfil">查詢條件</b>
+                                    </div>
+                                    <div class="d-flex align-items-start flex-column">
+                                        <div class="d-flex align-items-center justify-content-start">
+                                            <div>
+                                                <p class="my-0">員工代號：</p>
+                                            </div>
+                                            <div>
+                                                <input id="managerid" type="text" class="searchTerm" style="width: 100%; height: 30px;"
+                                                       placeholder="請輸入員工代號">
+                                            </div>
+                                            <div class="mx-5 d-flex align-items-center">
+                                                <div>
+                                                    <p class="my-0 ">員工名稱：</p>
+                                                </div>
+                                                <div>
+                                                    <input id="managername" type="text" class="searchTerm" style="width: 100%; height: 30px;"
+                                                           placeholder="請輸入員工名稱">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 權限0就只能查詢 權限1就可以審核查詢修改 權限3可以管理人員 -->
+                                        <div>
+                                            <div class="my-4 d-flex align-items-center  justify-content-start">
+                                                <p class="my-0">員工權限：</p>
+                                                <select name="type" style="width:200px;height:30px;" id="managerlimit">
+                                                    <option value=3 selected>請選擇權限類別</option>
+                                                    <option value=0>最高管理員</option>
+                                                    <option value=1>審核／修改／查詢</option>
+                                                    <option value=2>查詢</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mr-1 d-flex justify-content-end align-items-center">
+                                    <button onclick="selman()" class="serbut">查詢</button>
+                                </div>
+                            </div>
+                            <!-- 員工項目標籤+上下頁------------------------------------------------------------------------------------------- -->
+                            <div id="tabtitle" class="py-2 my-3 d-flex align-items-center justify-content-between ">
+                                <div class="d-flex align-items-center">
+                                    <b class="my-0 ml-2  mr-3">員工</b>
+                                    <button data-toggle="modal" data-target="#addmemModal" class="myadd" onclick="addmanmem()">新 增 員 工</button>
+                                </div>
+                                <div id="infopage" class="d-flex align-items-center justify-content-end">
+                                    <p class="my-0 mr-2">共計</p>
+                                    <p class="my-0 mr-2">{{managernum}}個員工</p>
+                                    <p class="my-0 mr-1">頁數</p>
+                                    <p class=" my-0 mr-2 ml-1">1</p>
+                                    <p class="my-0 mr-3">/ {{managerpage}} </p>
+                                    <a class="mr-2 mb-1" style="text-decoration-line: none;color:gray" disabled="disabled">上一頁</a>
+                                    <a class="mr-1 mb-1" style="text-decoration-line: none;color:gray" disabled="disabled">下一頁</a>
+                                </div>
+                            </div>
+                            <!-- 員工項目欄位表------------------------------------------------------------------------------------------- -->
+                            <div class="my-2">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">員工代號</th>
+                                            <th scope="col">員工帳號</th>
+                                            <th scope="col">員工名稱</th>
+                                            <th scope="col">員工權限</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody v-for="(item,key) in manager">
+                                        <tr>
+                                            <th scope="row">{{manager[key].managerId}}</th>
+                                            <td>{{manager[key].managerAccount}}</td>
+                                            <td>{{manager[key].managerName}}</td>
+                                            <td>{{manager[key].managerPurview}}</td>
+                                            <!--v-bind:value="notice[key].noticeId-->
+                                            <td class="d-flex justify-content-center"><button onclick="reviewman(this)" v-bind:value="manager[key].managerId" data-toggle="modal" data-target="#editmemModal">編 輯</button><button onclick="delmanmem(this)" v-bind:value="manager[key].managerId" style="background-color: #7F7F7F" class="ml-2" data-toggle="modal">刪除</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal --------------------------------------------------------------------------------------------------------------------------------------->
+        <!-- 系統人員新增Modal ------------------------------------------------------------------------------------------------>
+        <div class="modal fade" id="addmemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div>
+                        <button type="button" class="close pt-3 px-3" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <b>員工代號：{{nowmanagerId}}</b>
+                        <hr>
+                        <p class="mb-1">員工帳號：</p>
+                        <input type="text" class="searchTerm mb-2" style="width:100%;" v-model:value="managerpost[0].managerAccount">
+                        <p class="mb-1">員工名稱：</p>
+                        <input type="text" class="searchTerm mb-2" style="width:100%;" v-model:value="managerpost[0].managerName">
+                        <p class="mb-1">修改密碼：</p>
+                        <input type="password" class="searchTerm mb-2" style="width:100%;" v-model:value="managerpost[0].managerPassword">
+                        <p class="mb-1">確認密碼：</p>
+                        <input type="password" class="searchTerm mb-2" style="width:100%;">
+                        <p class="mb-1">權限：</p>
+                        <select class="mb-2" name="type" style="width:150px;height:30px;" v-model:value="managerpost[0].managerPurview">
+                            <option value=3>請選擇權限類別</option>
+                            <option value=0>最高管理員</option>
+                            <option value=1>審核／修改／查詢</option>
+                            <option value=2>查詢</option>
+                        </select>
+                        <p class="mb-1">建日日期：</p>
+                        <input id="addmandate" class="mb-2" type="datetime" disabled="disabled">
+
+                    </div>
+                    <div class="p-3 d-flex justify-content-end">
+                        <button type="button" class="mycancel mr-3" data-dismiss="modal">取 消</button>
+                        <button type="button" class="mysend" onclick="savemanager()" data-dismiss="modal">確 認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 系統人員編輯Modal ------------------------------------------------------------------------------------------------>
+        <div class="modal fade" id="editmemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div>
+                        <button type="button" class="close pt-3 px-3" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <b>員工代號：{{onemanager[0].managerId}}</b>
+                        <hr>
+                        <p class="mb-1">員工帳號：</p>
+                        <input type="text" class="searchTerm mb-2" style="width:100%;" v-bind:value="onemanager[0].managerAccount" disabled="disabled">
+                        <p class="mb-1">員工名稱：</p>
+                        <input type="text" class="searchTerm mb-2" style="width:100%;" v-model:value="onemanager[0].managerName">
+                        <p class="mb-1">員工密碼：</p>
+                        <input type="password" class="searchTerm mb-2" style="width:100%;" v-model:value="onemanager[0].managerPassword">
+                        <p class="mb-1">確認密碼：</p>
+                        <input type="password" class="searchTerm mb-2" style="width:100%;">
+                        <p class="mb-1">權限：</p>
+                        <select class="mb-2" name="type" style="width:150px;height:30px;" v-model:value="onemanager[0].managerPurview">
+                            <option value=3>請選擇權限類別</option>
+                            <option value=0>最高管理員</option>
+                            <option value=1>審核／修改／查詢</option>
+                            <option value=2>查詢</option>
+                        </select>
+                        <p class="mb-1">建日日期：</p>
+                        <input class="mb-2" type="datetime" v-bind:value="onemanager[0].managerBuildTime" disabled="disabled">
+
+                    </div>
+                    <div class="p-3 d-flex justify-content-end">
+                        <button type="button" class="mycancel mr-3" data-dismiss="modal">取 消</button>
+                        <button type="button" class="mysend" onclick="putmanager(this)" v-bind:value="onemanager[0].managerId" data-dismiss="modal">確 認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 插入JS檔 -->
+
+    <!--<script src="../../TanTanLib/js/bsmlist.js"></script>-->
+    <script src="/TanTanLib/js/myajax.js"></script>
+
+
+</body>
+
+</html>

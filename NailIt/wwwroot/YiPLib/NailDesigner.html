@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>設計師頁面</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js"></script>
+    <link rel="icon" type="image/x-icon" href="../messageImage_1675689510333.jpg">
+    <style>
+        .slider-nav {
+            height: 100%;
+        }
+
+        .Bigtext {
+            font-size: 18px;
+        }
+
+        .Orgtext {
+            font-size: 11px;
+        }
+
+        .FixPad {
+            padding: 32px;
+        }
+
+        .FixsmPad {
+            padding-top: 10px;
+        }
+
+        .Btnpd {
+            margin-left: 80px;
+            border: none;
+            background-color: white;
+        }
+
+
+        .CBtn {
+            border: none;
+            background-color: white;
+        }
+
+        .CBpd {
+            margin-left: -25px;
+        }
+
+        .recentbtn {
+            width: 15%;
+            padding: 5px;
+        }
+
+        .NowUnderLine {
+            border-bottom: #000 solid 0.5pt;
+        }
+
+        .ShapeColor {
+            font-size: 18px;
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            transition: all .3s linear;
+        }
+
+            .ShapeColor:hover {
+                color: #7F7F7F;
+            }
+
+
+
+        #BlacklineTp {
+            border-top: #000 solid 0.5pt;
+            position: relative;
+            top: -32px;
+        }
+
+        .Blackline {
+            border-bottom: black solid 0.5pt;
+            /*position: relative;*/
+            /*color:black;*/
+        }
+
+        #photoframe {
+            /*padding-left: 50px;*/
+            /*padding-right: 50px;*/
+            text-align: center;
+        }
+
+        .Profileimg {
+            max-width: 100%;
+            /*object-fit: cover;*/
+            object-fit: contain;
+            height: 250px;
+            width: 250px;
+            object-position: center;
+        }
+
+        #Profile {
+            width: inherit;
+            word-wrap: break-word;
+        }
+
+        #Title {
+            height: 20%;
+            font-size: 18px;
+        }
+
+        #Context {
+            /*height: 70%;*/
+            height: 150px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .Myblue {
+            background-color: blue;
+        }
+
+        .Mygreen {
+            background-color: aquamarine;
+        }
+
+        #Selectbtn {
+            height: 16px;
+        }
+
+        #Demo {
+            padding-left: 10px;
+            padding-right: 10px;
+            max-width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+
+        .EventDemo {
+            padding-left: 10px;
+            padding-right: 10px;
+            max-width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+
+        .Demoimg {
+            height: 250px;
+            width: 250px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .Seemore {
+            margin-left: 30px;
+            margin-right: 30px;
+            overflow: hidden;
+        }
+
+            .Seemore:hover {
+                filter: grayscale(20%);
+            }
+
+                .Seemore:hover > .Demoimg {
+                    transition: 0.5s;
+                    transform: scale(1.1);
+                }
+
+        /*            .Seemore:hover > .Ribbon {
+                      visibility:hidden;
+                  }*/
+
+        .Ribbon {
+            position: absolute;
+            color: white;
+            background-color: rgb(0, 0, 0, 0.4);
+            /*line-height: 28px;*/
+            /*text-align: center;*/
+            letter-spacing: 3px;
+            /*margin-top: 20px;*/
+            /*margin-left: -30px;*/
+            padding-top: 3px;
+            padding-bottom: 3px;
+            padding-left: 84.5px;
+            padding-right: 85px;
+            z-index: 3;
+        }
+
+        .Clickme {
+            border: hidden;
+            position: absolute;
+            /*top: -60px;*/
+            /*margin-left: 70px;*/
+            /*margin-right: 70px;*/
+            left: 40px;
+            top: 190px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 70px;
+            padding-right: 70px;
+            /*width:100px;*/
+            text-align: center;
+            background-color: white;
+            color: black;
+            z-index: 99;
+            visibility: hidden;
+        }
+
+            .Clickme:hover {
+                background-color: black;
+                color: white;
+                z-index: 99;
+            }
+
+        .Seemore:hover > .Clickme {
+            visibility: visible;
+        }
+
+
+        .ratings {
+            position: relative;
+            /*position: absolute;*/
+            vertical-align: middle;
+            /*display: inline-block;*/
+            color: #ddd;
+            overflow: hidden;
+            font-size: 30px;
+            text-shadow: 0px 1px 0 rgb(198, 198, 198);
+            margin-top: -20px;
+        }
+
+        .Fullstar {
+            position: absolute;
+            /*position: relative;*/
+            left: 0;
+            top: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            color: #FFC000;
+        }
+
+        .Contextratings {
+            position: relative;
+            vertical-align: middle;
+            display: inline-block;
+            color: #ddd;
+            overflow: hidden;
+            font-size: 24px;
+            text-shadow: 0px 1px 0 rgb(198, 198, 198);
+            margin-top: -20px;
+        }
+
+        .ContextFullstar {
+            /*width: 60%;*/
+            position: absolute;
+            left: 0;
+            top: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            color: #FFC000;
+        }
+
+        .Searchbar {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid grey;
+            float: left;
+            width: 80%;
+        }
+
+        .Searchbtn {
+            background-color: black;
+            float: left;
+            width: 10%;
+            padding: 7px;
+            color: white;
+            font-size: 20px;
+            border: 1px solid black;
+            border-left: none;
+            cursor: pointer;
+        }
+
+            .Searchbtn:hover {
+                background: #D0CECE;
+            }
+
+        #Sendbtn {
+            color: white;
+            border: none;
+            background-color: black;
+            font-size: 18px;
+            width: 80%;
+            height: 40px;
+        }
+
+            #Sendbtn:hover {
+                background-color: #7F7F7F;
+            }
+
+        #Insertdemo {
+            color: white;
+            border: none;
+            background-color: #7F7F7F;
+            font-size: 16px;
+            width: 25%;
+            height: 35px;
+            margin-top: 10px;
+        }
+
+        #Editbtn {
+            color: white;
+            border: none;
+            background-color: #7F7F7F;
+            font-size: 16px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            padding-left: 25px;
+            padding-right: 25px;
+            cursor: pointer;
+        }
+
+            #Editbtn:hover, #Insertdemo:hover {
+                background-color: #D0CECE;
+            }
+
+        #Checkbtn:hover {
+            background-color: #fc8158;
+        }
+
+        #Checkbtn {
+            color: white;
+            border: none;
+            background-color: #FF6733;
+            font-size: 16px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            padding-left: 25px;
+            padding-right: 25px;
+            cursor: pointer;
+        }
+
+        #EdChBt {
+            padding: 20px;
+        }
+
+        #ToSort {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        #SortSelectbox {
+            font-size: 16px;
+            border: none;
+        }
+
+            #SortSelectbox:focus {
+                outline: none;
+            }
+
+        .DisInLine {
+            display: inline;
+        }
+
+        .DisFlex {
+            display: flex;
+            align-items: center;
+        }
+
+        .DisBlock {
+            display: block;
+        }
+
+        .CowRight {
+            text-align: right;
+        }
+
+        #SortLeft {
+            flex: 1;
+            justify-content: start;
+        }
+
+        #SortRight {
+            flex: 1;
+            justify-content: end;
+        }
+
+        .Cow {
+            background-color: aquamarine;
+        }
+
+        .ratingimg {
+            margin-left: 30px;
+            margin-top: 15px;
+            height: 100px;
+            width: 100px;
+            border-radius: 50px;
+            /*border: #7F7F7F 1pt solid;*/
+            object-fit: cover;
+            object-position: center;
+        }
+
+
+        .ratingcontext {
+            margin-left: 30px;
+        }
+
+        .produce {
+            margin-left: 20px;
+        }
+
+        .DemoGroup {
+            margin-left: 30px;
+            margin-bottom: 30px;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+
+        #CommentMessage {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .LinkTo {
+            color: black;
+        }
+
+            .LinkTo:hover {
+                color: #FF6733;
+                text-decoration: none;
+            }
+
+        .LinkNow {
+            color: #FF6733;
+            font-weight: bold;
+        }
+
+        /*DD*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        #mynav {
+            width: 100%;
+            height: 90px;
+            position: fixed;
+            background-position-x: 0px;
+            font-size: 16px;
+            background-color: white;
+            opacity: .9;
+            z-index: 9999;
+        }
+
+        #navall > div {
+            /* background-color: blue; */
+            max-height: 100%;
+            /* 待研究 */
+            height: 90px;
+        }
+
+        #brand {
+            font-family: Cascadia Mono SemiBold;
+            font-size: 30px;
+            color: black;
+            height: 100%;
+        }
+
+            #brand a,
+            #brand a:link,
+            #brand a:visited,
+            #brand a:active {
+                color: black;
+                text-decoration-line: none;
+            }
+
+
+
+        .navmid {
+            /* background-color: blue; */
+            height: 100%;
+        }
+
+            .navmid > li {
+                display: inline;
+                color: black;
+            }
+
+                .navmid > li > a {
+                    color: black;
+                    font-weight: bold;
+                }
+
+                    .navmid > li > a:hover {
+                        text-decoration-line: underline;
+                        text-decoration-thickness: 1.5px;
+                        text-underline-offset: 7px;
+                    }
+
+        .navend1 {
+            /* background-color: darksalmon; */
+            font-size: 14px;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .navend2 img { /* 因為notice 加入dropDown顯示系統通知訊息有修改格式 */
+            width: 25px;
+            /* background-color: blue; */
+        }
+
+        /* 頁尾---------------------------------------------------------- */
+
+        #hid {
+            background-color: white;
+            border: 0px solid white;
+            height: 60px;
+            margin: 1% 0%;
+        }
+
+
+        footer {
+            width: 100%;
+            margin-top: 7%;
+            background-color: rgb(0, 0, 0);
+            color: white;
+            width: 100%;
+        }
+
+
+        #footit {
+            margin-top: 6%;
+        }
+
+            #footit b {
+                font-size: 14px;
+                margin-right: 1%;
+            }
+
+        #footpre pre {
+            color: white;
+            font-size: 14px;
+        }
+
+        #footpre, #footcopy {
+            margin-top: 1%;
+        }
+
+        .cursor-pointer {
+            cursor: pointer;
+        }
+
+        .show {
+            display: block !important;
+        }
+
+        .unread-badge-message {
+            position: absolute;
+            top: 1px;
+            left: 16px;
+            width: 10px;
+            height: 10px;
+        }
+
+        .unread-badge-sysNotic {
+            position: absolute;
+            top: 0px;
+            left: 15px;
+            width: 10px;
+            height: 10px;
+        }
+
+        /* dropdown sysNotic---------------------------------------------------------- */
+        /*#region Dropdown*/
+        .dropbtn {
+            /* background-color: #04AA6D; */
+            /* color: white; */
+            /* padding: 16px; */
+            /* font-size: 16px; */
+            border: none;
+            cursor: pointer;
+        }
+
+        /* .dropbtn:hover, .dropbtn:focus {
+        } */
+        .dropdown {
+            float: right;
+            position: relative;
+            /* display: inline-block; */
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            /* min-width: 160px; */
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            right: 0;
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 5px 10px;
+                text-decoration: none;
+                display: block;
+                white-space: nowrap;
+            }
+
+        .dropdown a:hover {
+            background-color: #ddd;
+        }
+
+        /*#endregion*/
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid  p-0" id="ShowData" v-cloak>
+
+        <nav id="mynav">
+            <div class="row opacity-25 p-0 " id="navall">
+                <div class="col-1 p-0"></div>
+                <div class="col-2 d-flex align-items-center" id="brand">
+                    <a href="/TanTanLib/html/cover.html">
+                        <img class="Navimg" src="UploadFolder/70.png" />
+                    </a>
+                </div>
+                <div class="col-3">
+                    <ul class="navmid d-flex justify-content-between align-items-center p-0 pt-2">
+                        <li><a href="/YiPLib/Fliter.html"> 美 甲 查 詢 </a></li>
+                        <li><a href="/Community/Index"> 美 甲 小 天 地 </a></li>
+                        <li><a href="#"> 關 於 我 們 </a></li>
+                    </ul>
+                </div>
+                <div class="col-4 pt-3">
+                    <p class="navend1"><span id="daNick">尚未登入&nbsp&nbsp&nbsp&nbsp&nbsp</span><a id="huiORreg" style="color:black" href="../YueRegister.html"> 註冊&nbsp</a> / <a id="loginORout" style="color:black" href="../Yuelogin.html"> &nbsp登入 </a></p>
+                </div>
+                <div class="col-1 d-flex align-items-center justify-content-end navend2">
+                    <div style="position:relative">
+                        <img class="mt-1 mr-3 cursor-pointer" id="chat" src="../images/chat-box.png" onclick="showChatPage()">
+                        <div class="unread-badge-message bg-danger rounded-circle d-none"></div>
+                    </div>
+                    <div class="dropdown">
+                        <img class="cursor-pointer dropbtn-sysNotic" src="../images/notification.png" onclick="showSysNotic()">
+                        <div class="unread-badge-sysNotic bg-danger rounded-circle d-none"></div>
+                        <div id="sysNoticDropDown" class="dropdown-content dropdown-content-sysNotic rounded" style="background-color:#ccc;max-width:450px">
+                            <a class="drop-sysNotic-item">--目前沒有未讀系統訊息--</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 p-0"></div>
+            </div>
+        </nav>
+
+        <!--<div>
+            <nav class="row FixPad">
+                <div class="col">
+                </div>
+                <div class="col-2">
+                    <a>Nail It</a>
+                </div>
+                <div class="col-6">
+                    <button class="Btnpd">設計師作品</button>
+                    <button class="Btnpd">美甲天地</button>
+                    <button class="Btnpd">會員中心</button>
+                </div>
+                <div class="col-2">
+                    登入/會員中心
+                </div>
+                <div class="col">
+                </div>
+            </nav>
+        </div>-->
+
+
+        <div class="row" style="padding-top:90px">
+            <div class="col-1"></div>
+            <div class="col-11">
+                <div>
+                    <a class="LinkTo" href="/TanTanLib/html/cover.html">首頁</a>
+                    <span>></span>
+                    <a class="LinkTo" href="Fliter.html">美甲查詢</a>
+                    <span>></span>
+                    <label class="LinkNow">{{DesignList.manicuristSalonName}}</label>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-3" id="EdChBt">
+                <button id="Editbtn" v-on:click="GoToEdit">編輯</button>
+            </div>
+            <div class="col-5"></div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-3">
+                <div id="photoframe">
+                    <img class="Profileimg" v-bind:src="DesignList.manicuristPic" alt="" id="ProfileImg">
+                </div>
+            </div>
+            <div class="col-5" id="Profile">
+                <b id="Title" class="Bigtext FixsmPad">{{DesignList.manicuristSalonName}}</b>
+                <p id="Context" class="mt-3">{{DesignList.manicuristIntro}}</p>
+                <div>
+                    <div class="d-flex align-items-center">
+                        <div class="ratings">
+                            <div class="Emptystar">★★★★★</div>
+                            <div class="Fullstar" v-bind:style="{width:width}">★★★★★</div>
+                        </div>
+                        <div>
+                            <p class="ml-2">{{DesignList.manicuristScore}}</p>
+                        </div>
+                    </div>
+                    <!--class="mb-0 mt-3 ml-2"-->
+                </div>
+            </div>
+            <div class="col-2">
+                <div style="height: 80%;"></div>
+                <!--<button id="Sendbtn">預約</button>-->
+            </div>
+            <div class="col-1">
+            </div>
+        </div>
+
+
+        <div class="row FixPad" id="NavTool">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <button class="CBtn CBpd recentbtn Bigtext ShapeColor" onclick="Showthis(this)" value="demo">作品</button>
+                <button class="CBtn recentbtn Bigtext ShapeColor" onclick="Showthis(this)" value="event">主打</button>
+                <button class="CBtn recentbtn Bigtext ShapeColor" onclick="Showthis(this)" value="star">評價</button>
+                <button class="CBtn recentbtn Bigtext ShapeColor" onclick="Showthis(this)" value="produce">介紹</button>
+            </div>
+            <div class="col-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <p id="BlacklineTp"></p>
+            </div>
+            <div class="col-1"></div>
+        </div>
+
+
+        <div id="designcontext">
+
+            <div id="pageone" class="Chgcontext">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-5">
+                    </div>
+                    <div class="col-4">
+                        <div v-if="DemoSetValue">
+                            <input class="Searchbar" type="text" placeholder="作品,標籤" v-model="SearchString">
+                            <button class="Searchbtn" onclick="Searchit()"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                        <div v-if="DemoSetValue" class="FixPad CowRight">
+                            <p class="DisInLine">共計{{DemoSetList.length}}個作品</p>
+                            <!--<button class="CBtn">上一頁</button>
+                            <button class="CBtn">下一頁</button>-->
+                        </div>
+                        <div v-else="DemoSetValue">
+                            <p class="produce">尚未擁有作品</p>
+                        </div>
+
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-10" id="Demo">
+                        <div v-for="(item,key) in DemoSetList">
+                            <div class="Seemore my-0">
+                                <img class="Demoimg" v-bind:src="DemoSetList[key].demoSetCover" alt="Loading">
+                                <button onclick="Checkit(this)" v-bind:value="DemoSetList[key].demoSetId" class="Clickme">查看</button>
+                            </div>
+                            <p style="font-weight: bold;" class="DemoGroup">{{DemoSetList[key].demoSetName}}</p>
+                            <p class="DemoGroup">${{DemoSetList[key].demoSetPrice}}</p>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+
+            <div id="pagetwo" class="Chgcontext">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-6">
+                    </div>
+                    <div class="col-4">
+                        <div v-if="MainDemoSetValue">
+                            <input class="Searchbar" type="text" placeholder="作品,標籤" v-model="SearchString">
+                            <button class="Searchbtn" onclick="SearchIT()"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                        <div class="FixPad CowRight" v-if="MainDemoSetValue">
+                            <p class="DisInLine">共計{{MainDemoCover.length}}個作品</p>
+                            <!--<button class="CBtn">上一頁</button>
+                            <button class="CBtn">下一頁</button>-->
+                        </div>
+                        <div v-else="MainDemoSetValue">
+                            <p class="produce">尚未擁有作品</p>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-10 EventDemo">
+                        <div v-for="(item,key) in MainDemoCover">
+                            <div class="Seemore my-0">
+                                <div class="Ribbon">剩餘{{GetRestDay[key]}}天</div>
+                                <img class="Demoimg" v-bind:src="MainDemoCover[key].demoSetCover" alt="">
+                                <button onclick="Checkit(this)" v-bind:value="MainDemoCover[key].demoSetId" class="Clickme">查看</button>
+                            </div>
+                            <p style="font-weight: bold;" class="DemoGroup">{{MainDemoCover[key].demoSetName}}</p>
+                            <p class="DemoGroup">${{MainDemoCover[key].demoSetPrice}}</p>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+
+            <div id="pagethree" class="Chgcontext">
+                <div class="row">
+                    <div class="col-1">
+                    </div>
+                    <div class="col-10" id="ToSort">
+                        <div class="DisFlex" id="SortLeft" v-if="CommentValue">
+                            <div>
+                                <p class="DisInLine ">排序：</p>
+                            </div>
+                            <select name="" id="SortSelectbox" onchange="SortBySelect(this)">
+                                <option value="Default" selected disabled hidden>請選擇</option>
+                                <option value="DateHTL">日期由近到遠</option>
+                                <option value="DateLTH">日期由遠到近</option>
+                                <option value="RateHTL">星數由高到低</option>
+                                <option value="RateLTH">星數由低到高</option>
+                            </select>
+                        </div>
+
+                        <div class="DisFlex" id="SortRight" v-if="CommentValue">
+                            <p class="DisInLine">共計{{Comment.length}}條評論</p>
+                            <!--<button class="CBtn">上一頁</button>
+                            <button class="CBtn">下一頁</button>-->
+                        </div>
+                        <div v-else="CommentValue">
+                            <p class="produce">尚未擁有評論</p>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-10">
+                        <div v-for="(item,key) in Comment" v-if="Sort=='Default'">
+                            <div class="d-flex">
+                                <div>
+                                    <img class="ratingimg" src="UploadFolder/Avatar.png" alt="">
+                                </div>
+                                <div class="ratingcontext">
+                                    <div>
+                                        <p class="h5">{{Comment[key].memberNickname}}</p>
+                                    </div>
+                                    <div class="d-flex align-items-center mt-3">
+                                        <div class="Contextratings">
+                                            <div class="Emptystar">★★★★★</div>
+                                            <div class="ContextFullstar" v-bind:style="{width:Comment[key].Commentwid}">★★★★★</div>
+                                        </div>
+                                        <div>
+                                            <p class="ml-2">{{Comment[key].commentScore}}</p>
+                                        </div>
+                                    </div>
+                                    <div><p>評價日期：{{Comment[key].commentBuildTime}}</p></div>
+                                    <div><p id="CommentMessage">{{Comment[key].commentContent}}</p></div>
+                                </div>
+
+                            </div>
+                            <div class="Blackline mt-3 mb-4"></div>
+                        </div>
+
+                        <div v-for="(item,key) in SortDateLTH" v-if="Sort=='DateLTH'">
+                            <div class="d-flex">
+                                <div>
+                                    <img class="ratingimg" src="UploadFolder/Avatar.png" alt="">
+                                </div>
+                                <div class="ratingcontext">
+                                    <div>
+                                        <p class="h5">{{SortDateLTH[key].memberNickname}}</p>
+                                    </div>
+                                    <div class="d-flex align-items-center mt-3">
+                                        <div class="Contextratings">
+                                            <div class="Emptystar">★★★★★</div>
+                                            <div class="ContextFullstar" v-bind:style="{width:SortDateLTH[key].Commentwid}">★★★★★</div>
+                                        </div>
+                                        <div>
+                                            <p class="ml-2">{{SortDateLTH[key].commentScore}}</p>
+                                        </div>
+                                    </div>
+                                    <div><p>評價日期：{{SortDateLTH[key].commentBuildTime}}</p></div>
+                                    <div><p id="CommentMessage">{{SortDateLTH[key].commentContent}}</p></div>
+                                </div>
+
+                            </div>
+                            <div class="Blackline mt-3 mb-4"></div>
+                        </div>
+
+                        <div v-for="(item,key) in SortDateHTL" v-if="Sort=='DateHTL'">
+                            <div class="d-flex">
+                                <div>
+                                    <img class="ratingimg" src="UploadFolder/Avatar.png" alt="">
+                                </div>
+                                <div class="ratingcontext">
+                                    <div>
+                                        <p class="h5">{{SortDateHTL[key].memberNickname}}</p>
+                                    </div>
+                                    <div class="d-flex align-items-center mt-3">
+                                        <div class="Contextratings">
+                                            <div class="Emptystar">★★★★★</div>
+                                            <div class="ContextFullstar" v-bind:style="{width:SortDateHTL[key].Commentwid}">★★★★★</div>
+                                        </div>
+                                        <div>
+                                            <p class="ml-2">{{SortDateHTL[key].commentScore}}</p>
+                                        </div>
+                                    </div>
+                                    <div><p>評價日期：{{SortDateHTL[key].commentBuildTime}}</p></div>
+                                    <div><p id="CommentMessage">{{SortDateHTL[key].commentContent}}</p></div>
+                                </div>
+
+                            </div>
+                            <div class="Blackline mt-3 mb-4"></div>
+                        </div>
+
+                        <div v-for="(item,key) in SortRateHTL" v-if="Sort=='RateHTL'">
+                            <div class="d-flex">
+                                <div>
+                                    <img class="ratingimg" src="UploadFolder/Avatar.png" alt="">
+                                </div>
+                                <div class="ratingcontext">
+                                    <div>
+                                        <p class="h5">{{SortRateHTL[key].memberNickname}}</p>
+                                    </div>
+                                    <div class="d-flex align-items-center mt-3">
+                                        <div class="Contextratings">
+                                            <div class="Emptystar">★★★★★</div>
+                                            <div class="ContextFullstar" v-bind:style="{width:SortRateHTL[key].Commentwid}">★★★★★</div>
+                                        </div>
+                                        <div>
+                                            <p class="ml-2">{{SortRateHTL[key].commentScore}}</p>
+                                        </div>
+                                    </div>
+                                    <div><p>評價日期：{{SortRateHTL[key].commentBuildTime}}</p></div>
+                                    <div><p id="CommentMessage">{{SortRateHTL[key].commentContent}}</p></div>
+                                </div>
+
+                            </div>
+                            <div class="Blackline mt-3 mb-4"></div>
+                        </div>
+
+                        <div v-for="(item,key) in SortRateLTH" v-if="Sort=='RateLTH'">
+                            <div class="d-flex">
+                                <div>
+                                    <img class="ratingimg" src="UploadFolder/Avatar.png" alt="">
+                                </div>
+                                <div class="ratingcontext">
+                                    <div>
+                                        <p class="h5">{{SortRateLTH[key].memberNickname}}</p>
+                                    </div>
+                                    <div class="d-flex align-items-center mt-3">
+                                        <div class="Contextratings">
+                                            <div class="Emptystar">★★★★★</div>
+                                            <div class="ContextFullstar" v-bind:style="{width:SortRateLTH[key].Commentwid}">★★★★★</div>
+                                        </div>
+                                        <div>
+                                            <p class="ml-2">{{SortRateLTH[key].commentScore}}</p>
+                                        </div>
+                                    </div>
+                                    <div><p>評價日期：{{SortRateLTH[key].commentBuildTime}}</p></div>
+                                    <div><p id="CommentMessage">{{SortRateLTH[key].commentContent}}</p></div>
+                                </div>
+
+                            </div>
+                            <div class="Blackline mt-3 mb-4"></div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="col"></div>
+                </div>
+
+                <!--<div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                        <p class="Blackline ratingimgpd"></p>
+                    </div>
+                    <div class="col-1"></div>
+                </div>-->
+
+            </div>
+
+            <div id="pagefour" class="row Chgcontext">
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <div>
+                        <p class="produce">電話：{{DesignList.manicuristSalonPhone}}</p>
+                        <p class="produce" v-if="PoblicAdress">地址：{{DesignList.manicuristAddress}}</p>
+                        <p class="produce" v-else="PoblicAdress">地址：{{DesignList.manicuristCounty}}{{DesignList.manicuristTownship}}</p>
+                        <p class="produce">證照：{{DesignList.manicuristLicense}}</p>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+
+        </div>
+
+        <footer class="footer " style="height:320px;">
+            <div class="row p-0">
+                <div class="col-1 "></div>
+                <div class="col-10">
+                    <div id="footit">
+                        <b style="font-family:Cascadia Mono SemiBold;">關於Nail it</b>
+                        <b>檢舉</b>
+                        <b>隱私權政策</b>
+                        <b>防詐騙宣導</b>
+                    </div>
+                    <div id="footpre">
+                        <pre>
+地址：408台中市南屯區公益路二段51號18樓
+客服信箱：Nailit@gmail.com
+客服電話： 04 -2326-5860
+        </pre>
+                    </div>
+                    <div id="footcopy">
+                        <p style="font-size: 12px;font-family:Franklin Gothic Book;">
+                            Copyright ©2022 MSIT44TEAM1
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+        </footer>
+
+
+    </div>
+
+    <script src="../YueJs/loginCheck.js"></script>
+    <script src="../js/Ansel_Layout.js"></script>
+    <script src="../AnselLib/Ansel_Service.js"></script>
+    <script src="../AnselLib/Ansel_Common.js"></script>
+
+    <!--<script>
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn-sysNotic') && !event.target.matches('.drop-sysNotic-item')) {
+                $(".dropdown-content-sysNotic").each((index, elem) => {
+                    if (elem.classList.contains("show"))
+                        elem.classList.remove("show");
+                });
+            }
+        }
+    </script>-->
+
+    <script>
+        let GetNowurl = window.location.href;
+        let Nowurl = new URL(GetNowurl);
+        let ManicuristID = Nowurl.searchParams.get('id');
+        let GetManicuristID;
+        GetManicuristID = nowMember;
+        Pre();
+        async function Pre() {
+            await YueloginCheck();
+            console.log("nowMember" + nowMember);
+            console.log("nowMember" + nowMember);
+            console.log("GetManicuristID" + GetManicuristID);
+
+            GetManicuristID = nowMember;
+            GetData(GetManicuristID);
+        }
+
+        function GetData(GetManicuristID) {
+            $.ajax({
+                type: "get",
+                url: "/api/Manicurist/" + GetManicuristID,
+                success: function (e) {
+                    ShowData.DesignList = e;
+                    PercantStar = e.manicuristScore;
+                    FloatStar = (PercantStar * 20) + '%';
+                    ShowData.width = FloatStar;
+                    if (e.manicuristPublic == false) {
+                        ShowData.PoblicAdress = false;
+                    } else if (e.manicuristPublic == true) {
+                        ShowData.PoblicAdress = true;
+                    }
+                }
+            });
+
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetDemoSetTable/" + GetManicuristID,
+                success: function (e) {
+                    for (demoset in e) {
+                        if (e[demoset].demoSetPublic == true) {
+                            ShowData.DemoSetList.push(e[demoset]);
+                        }
+                    }
+                    //console.log("------"+ShowData.DemoSetList);
+                    if (ShowData.DemoSetList.length == 0) {
+                        ShowData.DemoSetValue = false;
+                        //console.log('OK');
+                    }
+                }
+            });
+
+            $.ajax({
+                type: "get",
+                url: "/api/Demo/" + GetManicuristID,
+                success: function (e) {
+                    for (demo in e) {
+                        ShowData.DemoList.push(e[demo]);
+                    }
+                }
+            });
+
+            $.ajax({
+                type: "get",
+                url: "/api/YiPComment/GetManicuristComment/" + GetManicuristID,
+                success: function (e) {
+                    for (let q = 0; q < e.length; q++) {
+                        e[q].commentBuildTime = e[q].commentBuildTime.slice(0, 10);
+                        e[q].Commentwid = (e[q].commentScore * 20) + '%';
+                        ShowData.Comment.push(e[q]);
+                    }
+                    if (ShowData.Comment.length == 0) {
+                        ShowData.CommentValue = false;
+                        //console.log('OK');
+                    }
+                }
+            });
+
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetMainDemoSetTable/" + GetManicuristID,
+                success: function (e) {
+                    //console.log(e);
+                    for (maindemo in e) {
+                        ShowData.MainDemoCover.push(e[maindemo]);
+                        //demoSetMainStartTime
+                        //demoSetMainEndTime
+                        let StT = e[maindemo].demoSetMainStartTime.slice(0, 10).replace('-', '/').replace('-', '/');
+                        let EdT = e[maindemo].demoSetMainEndTime.slice(0, 10).replace('-', '/').replace('-', '/');
+                        let StTD = new Date(StT);
+                        let EdTD = new Date(EdT);
+                        let NowD = new Date();
+                        let diff = EdTD - NowD;
+
+                        console.log(diff / 86400000);
+                        ShowData.GetRestDay.push(parseInt(diff / 86400000));
+                        //console.log(e[maindemo].demoSetMainStartTime.slice(0, 10).replace('-', '/').replace('-', '/'));
+                        //ShowData.StartDate.push(e[maindemo].demoSetMainStartTime.slice(0, 10).replace('-', '/').replace('-', '/'));
+                        //ShowData.EndDate.push(e[maindemo].demoSetMainEndTime.slice(0, 10).replace('-', '/').replace('-', '/'));
+                    }
+                    if (ShowData.MainDemoCover.length == 0) {
+                        ShowData.MainDemoSetValue = false;
+                        //console.log('OK');
+                    }
+                }
+            });
+
+            $.ajax({
+                type: "get",
+                url: "/api/YiPComment/GetDateLTHComment/" + GetManicuristID,
+                success: function (e) {
+                    for (let q = 0; q < e.length; q++) {
+                        e[q].commentBuildTime = e[q].commentBuildTime.slice(0, 10);
+                        e[q].Commentwid = (e[q].commentScore * 20) + '%';
+                        ShowData.SortDateLTH.push(e[q]);
+                    }
+                    //console.log(e);
+                }
+            });
+
+            $.ajax({
+                type: "get",
+                url: "/api/YiPComment/GetDateHTLComment/" + GetManicuristID,
+                success: function (e) {
+                    for (let q = 0; q < e.length; q++) {
+                        e[q].commentBuildTime = e[q].commentBuildTime.slice(0, 10);
+                        e[q].Commentwid = (e[q].commentScore * 20) + '%';
+                        ShowData.SortDateHTL.push(e[q]);
+                    }
+                    //console.log(e);
+                }
+            });
+
+            $.ajax({
+                type: "get",
+                url: "/api/YiPComment/GetRateLTHComment/" + GetManicuristID,
+                success: function (e) {
+                    for (let q = 0; q < e.length; q++) {
+                        e[q].commentBuildTime = e[q].commentBuildTime.slice(0, 10);
+                        e[q].Commentwid = (e[q].commentScore * 20) + '%';
+                        ShowData.SortRateLTH.push(e[q]);
+                    }
+                    //console.log(e);
+                }
+            });
+
+            $.ajax({
+                type: "get",
+                url: "/api/YiPComment/GetRateHTLComment/" + GetManicuristID,
+                success: function (e) {
+                    for (let q = 0; q < e.length; q++) {
+                        e[q].commentBuildTime = e[q].commentBuildTime.slice(0, 10);
+                        e[q].Commentwid = (e[q].commentScore * 20) + '%';
+                        ShowData.SortRateHTL.push(e[q]);
+                    }
+                    //console.log(e);
+                }
+            });
+        }
+
+        let PercantStar;
+        let FloatStar;
+
+        $('.Chgcontext').hide();
+        $('#pageone').show();
+        $('button[value=demo]').addClass('NowUnderLine');
+
+        function Showthis(nowPage) {
+            let thisbtn = `button[value=${nowPage.value}]`;
+            console.log(nowPage.value);
+            let BTNlist = ["demo", "event", "star", "produce"];
+            let Contextlist = ["#pageone", "#pagetwo", "#pagethree", "#pagefour"];
+            $('.Chgcontext').hide();
+            $('.recentbtn').removeClass('NowUnderLine');
+            for (let i = 0; i < BTNlist.length; i++) {
+                if (nowPage.value == BTNlist[i]) {
+                    //console.log(Contextlist[i]);
+                    $(thisbtn).addClass('NowUnderLine');
+                    $(Contextlist[i]).show();
+                }
+            }
+        }
+
+        function SortBySelect(e) {
+            console.log(e.value);
+            if (e.value == "DateLTH") {
+                ShowData.Sort = "DateLTH";
+            }
+
+            if (e.value == "DateHTL") {
+                ShowData.Sort = "DateHTL";
+            }
+
+            if (e.value == "RateHTL") {
+                ShowData.Sort = "RateHTL";
+            }
+
+            if (e.value == "RateLTH") {
+                ShowData.Sort = "RateLTH";
+            } else {
+                console.log("Fail");
+            }
+        }
+
+        function Checkit(e) {
+            window.location = "product.html?id=" + e.value;
+        }
+
+        function Searchit() {
+            console.log(ShowData.SearchString);
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetSearchTable/" + GetManicuristID + "?search=" + ShowData.SearchString,
+                success: function (e) {
+                    ShowData.DemoSetList = [];
+                    for (DS in e) {
+                        ShowData.DemoSetList.push(e[DS]);
+                    }
+                }
+            });
+            console.log(ShowData.DemoSetList);
+        }
+
+        function SearchIT() {
+            console.log(ShowData.SearchString);
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetSearchTable/" + ManicuristID + "?search=" + ShowData.SearchString,
+                success: function (e) {
+                    ShowData.MainDemoCover = [];
+                    for (DS in e) {
+                        ShowData.MainDemoCover.push(e[DS]);
+                    }
+                }
+            });
+            console.log(ShowData.MainDemoCover);
+        }
+
+
+        const ShowData = new Vue({
+            el: '#ShowData',
+            data: function () {
+                return {
+                    DesignList: [],
+                    DemoSetList: [],
+                    DemoCover: [],
+                    DemoList: [],
+                    MainDemoCover: [],
+                    width: "",
+                    MainDemoCoverLenth: "",
+                    Comment: [],
+                    SortDateLTH: [],
+                    Sort: "Default",
+                    SortDateHTL: [],
+                    SortRateHTL: [],
+                    SortRateLTH: [],
+                    SearchString: "",
+                    PoblicAdress: false,
+                    GetRestDay: [],
+                    DemoSetValue: true,
+                    MainDemoSetValue: true,
+                    CommentValue:true,
+                }
+            },
+            methods: {
+                GoToEdit: function () {
+                    window.location = "NailDesignerEdit.html";
+                }
+            }
+        }).$mount('#ShowData');
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>

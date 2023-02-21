@@ -1,0 +1,96 @@
+/*#region Body*/
+#mainPadding {
+    background-color: darkgrey;
+}
+
+#mainBackground {
+    background-color: white;
+}
+
+/*#endregion*/
+
+/*#region ChattingMembers*/
+.data-memberid:hover {
+    background-color: #ccc;
+}
+
+.chosen {
+    background-color: #ccc;
+}
+
+/*#endregion*/
+
+
+
+/*#region Draft message*/
+.fa-image:hover {
+    color: #ccc;
+}
+
+.material-symbols-outlined:hover {
+    color: #007bff;
+}
+
+#draftMessage {
+    border: none;
+    outline: none;
+    min-height: 10vh;
+    max-height: 40vh;
+}
+
+#emptySendMsgArea {
+    min-height: 10vh;
+}
+
+/* #draftMessagetextarea {
+    border: none;
+    outline: none;
+    resize: none;
+    min-height: 10vh;
+    max-height: 40vh;
+    /* overflow-y: hidden;
+} */
+/*#endregion*/
+
+
+/*#region chattingMain*/
+span img {
+    cursor: pointer;
+    height: 150px;
+    width: 240px;
+    object-fit: cover;
+}
+
+/*#endregion*/
+
+/*#region right click menu*/
+.context-menu {
+    position: fixed;
+    z-index: 10000;
+    /* width: 150px; */
+    background: #1b1a1a;
+    border-radius: 5px;
+    /* display: none; */
+    transform: scale(0);
+    transform-origin: top left;
+}
+
+.context-menu.visible {
+    /* display: block; */
+    transform: scale(1);
+    transition: transform 200ms ease-in-out;
+}
+
+.context-menu .item {
+    padding: 8px 10px;
+    font-size: 15px;
+    color: #eee;
+    cursor: pointer;
+    border-radius: inherit;
+}
+
+.context-menu .item:hover {
+    background: #343434;
+}
+
+/*#endregion*/

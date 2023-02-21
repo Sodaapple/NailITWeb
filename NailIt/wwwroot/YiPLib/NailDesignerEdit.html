@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>設計師頁面</title>
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <script src="https://kit.fontawesome.com/ee36f49177.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/> -->
+    <!-- <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js"></script>
+    <link rel="icon" type="image/x-icon" href="../messageImage_1675689510333.jpg">
+    <style>
+        .slider-nav {
+            height: 100%;
+        }
+
+        .Bigtext {
+            font-size: 18px;
+        }
+
+        .Orgtext {
+            font-size: 11px;
+        }
+
+        .FixPad {
+            padding: 32px;
+        }
+
+        .FixsmPad {
+            padding-top: 10px;
+        }
+
+        .Btnpd {
+            margin-left: 80px;
+            border: none;
+            background-color: white;
+        }
+
+        .CBtnpd {
+            border: none;
+            background-color: white;
+        }
+
+        .CBtn {
+            border: none;
+            background-color: white;
+        }
+
+        .CBpd {
+            margin-left: -25px;
+        }
+
+        .recentbtn {
+            width: 15%;
+            padding: 5px;
+        }
+
+        .NowUnderLine {
+            border-bottom: #000 solid 0.5pt;
+        }
+
+        .ShapeColor {
+            font-size: 18px;
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            transition: all .3s linear;
+        }
+
+            .ShapeColor:hover {
+                color: #7F7F7F;
+            }
+
+        #BlacklineTp {
+            border-top: #000 solid 0.5pt;
+            position: relative;
+            top: -32px;
+        }
+
+        .Blackline {
+            border-top: #000 solid 0.5pt;
+            position: relative;
+        }
+
+        #photoframe {
+            /*padding-left: 50px;*/
+            /*padding-right: 50px;*/
+            text-align: center;
+        }
+
+        .Profileimg {
+            max-width: 100%;
+            object-fit: contain;
+            /*object-fit: cover;*/
+            height: 250px;
+            width: 250px;
+            object-position: center;
+        }
+
+        #Profile {
+            width: inherit;
+            word-wrap: break-word;
+        }
+
+        #Title {
+            height: 20%;
+            font-size: 18px;
+        }
+
+        #Context {
+            height: 70%;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+
+        .Myblue {
+            background-color: blue;
+        }
+
+        .Mygreen {
+            background-color: aquamarine;
+        }
+
+        #Selectbtn {
+            height: 16px;
+        }
+
+        #Demo {
+            padding-left: 10px;
+            padding-right: 10px;
+            max-width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+
+        .EventDemo {
+            padding-left: 10px;
+            padding-right: 10px;
+            max-width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+
+        .Demoimg {
+            height: 250px;
+            width: 250px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .Seemore {
+            margin-left: 30px;
+            margin-right: 30px;
+            /*overflow: hidden;*/
+        }
+
+        /*                .Seemore:hover {
+                  filter: grayscale(0%);
+              }
+
+                  .Seemore:hover > .Demoimg {
+                      transition: 0.5s;
+                      transform: scale(1.1);
+                  }*/
+
+        .Clickme {
+            position: relative;
+            top: -60px;
+            margin-left: 70px;
+            margin-right: 70px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            text-align: center;
+            background-color: white;
+            color: black;
+            z-index: 99;
+            visibility: hidden;
+        }
+
+            .Clickme:hover {
+                background-color: black;
+                color: white;
+                z-index: 99;
+            }
+
+        /*        .Seemore:hover > .Clickme {
+                  visibility: visible;
+              }*/
+
+        .ratings {
+            position: relative;
+            vertical-align: middle;
+            display: inline-block;
+            color: #ddd;
+            overflow: hidden;
+            font-size: 30px;
+            text-shadow: 0px 1px 0 rgb(198, 198, 198);
+        }
+
+        .Fullstar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            color: #FFC000;
+        }
+
+        .Contextratings {
+            position: relative;
+            vertical-align: middle;
+            display: inline-block;
+            color: #ddd;
+            overflow: hidden;
+            font-size: 24px;
+            text-shadow: 0px 1px 0 rgb(198, 198, 198);
+            margin-top: -20px;
+        }
+
+        .ContextFullstar {
+            width: 60%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            color: #FFC000;
+        }
+
+        .Searchbar {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid grey;
+            float: left;
+            width: 80%;
+        }
+
+        .Searchbtn {
+            background-color: black;
+            float: left;
+            width: 10%;
+            padding: 7px;
+            color: white;
+            font-size: 20px;
+            border: 1px solid black;
+            border-left: none;
+            cursor: pointer;
+        }
+
+            .Searchbtn:hover {
+                background: #D0CECE;
+            }
+
+        #Sendbtn {
+            color: white;
+            border: none;
+            background-color: black;
+            font-size: 18px;
+            width: 80%;
+            height: 40px;
+        }
+
+            #Sendbtn:hover {
+                background-color: #7F7F7F;
+            }
+
+        #Insertdemo {
+            color: white;
+            border: none;
+            background-color: #FF6733;
+            font-size: 16px;
+            /*width: 25%;*/
+            /*height: 35px;*/
+            margin-top: 10px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        .Editbtn {
+            color: white;
+            border: none;
+            /*background-color: #7F7F7F;*/
+            background-color: #FF6733;
+            font-size: 16px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            padding-left: 25px;
+            padding-right: 25px;
+            cursor: pointer;
+        }
+
+            .Editbtn:hover, #Insertdemo:hover {
+                /*background-color: #D0CECE;*/
+                /*background-color: #fc8158;*/
+                background-color: #fba88d;
+                color: white;
+            }
+
+        .Checkbtn:hover {
+            /*background-color: #fc8158;*/
+            background-color: #D0CECE;
+            color: white;
+        }
+
+        .Checkbtn {
+            color: white;
+            border: none;
+            /*background-color: #FF6733;*/
+            background-color: #7F7F7F;
+            font-size: 16px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            padding-left: 25px;
+            padding-right: 25px;
+            cursor: pointer;
+        }
+
+        #EdChBt {
+            padding: 20px;
+        }
+
+        #ToSort {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        #SortSelectbox {
+            font-size: 16px;
+            border: none;
+        }
+
+        .DisInLine {
+            display: inline;
+        }
+
+        .DisFlex {
+            display: flex;
+            align-items: center;
+        }
+
+        .DisBlock {
+            display: block;
+        }
+
+        .CowRight {
+            text-align: right;
+        }
+
+        #SortLeft {
+            flex: 1;
+            justify-content: start;
+        }
+
+        #SortRight {
+            flex: 1;
+            justify-content: end;
+        }
+
+        .Cow {
+            background-color: aquamarine;
+        }
+
+        .ratingimg {
+            margin-left: 30px;
+            margin-top: 15px;
+            height: 100px;
+            width: 100px;
+            border-radius: 50px;
+            border: #7F7F7F 1pt solid;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .ratingimgpd {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .ratingcontext {
+            margin-left: 30px;
+        }
+
+        #Score {
+            height: 20%;
+            display: flex;
+        }
+
+        #Scorefloat {
+            margin-left: 20px;
+        }
+
+        .produce {
+            margin-left: 20px;
+        }
+
+        .DemoGroup {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        #file-uploader {
+            display: none;
+        }
+
+        /*        #EdUp {
+                  position: absolute;
+              }*/
+
+        #Mylabel {
+            background-color: rgb(0, 0, 0, 0.3);
+            color: white;
+            position: absolute;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: inherit;
+            top: 0px;
+            left: 65px;
+        }
+
+            #Mylabel:hover, #GetFileBtn:hover {
+                color: white;
+                background-color: black;
+            }
+
+        #GetFileBtn {
+            background-color: rgb(0, 0, 0, 0.3);
+            color: white;
+            position: relative;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: inherit;
+            top: -41px;
+            border: none;
+        }
+
+        .TxtStyle {
+            border: none;
+            border-bottom: 1px solid black;
+        }
+
+            .TxtStyle:focus {
+                outline: none;
+            }
+
+        .TxtWid {
+            width: 80px;
+        }
+
+        .PrideWid {
+            width: 50px;
+        }
+
+        #UpContext {
+            width: 100%;
+            height: 80px;
+            resize: none;
+            overflow: hidden;
+        }
+
+        #UpFileText, #UpDemoText {
+            width: 60%;
+            height: 60px;
+            resize: none;
+        }
+
+            #UpContext:focus, #UpDemoText:focus {
+                outline: none;
+            }
+
+        #UpFile, #UpDemo, #UpDemoFile {
+            display: none;
+        }
+
+        #UpFileLabel {
+            background-color: #7F7F7F;
+            color: white;
+            margin-left: 15px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        #UpDemoLabel {
+            background-color: #FF6733;
+            color: white;
+            height: 35px;
+            margin-left: 15px;
+            padding-top: 5px;
+            /*padding-bottom: 5px;*/
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+            #UpFileLabel:hover, #UpDemoLabel:hover {
+                background-color: #fba88d;
+            }
+
+        .OnTxt {
+            margin-top: 4px;
+            margin-left: 80px;
+            border: none;
+            border-bottom: 1px solid black;
+            width: 80px;
+        }
+
+            .OnTxt:focus {
+                outline: none;
+            }
+
+        .TagStyle {
+            border: #FF6733 solid 2px;
+            /*border-radius: 15px;*/
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        .TagFullColor {
+            background-color: #FF6733;
+            color: white;
+        }
+
+        /*        .valid {
+                  border-bottom: 1px solid green;
+              }
+
+              .invalid {
+                  border-bottom: 1px solid red;
+              }*/
+
+        .Tag {
+            float: left;
+            margin: 0 15px 0 0;
+            width: 70px;
+            height: 40px;
+            position: relative;
+        }
+
+            .Tag label,
+            .Tag input[type="radio"] {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+
+            .Tag input[type="radio"] {
+                opacity: 0.011;
+                z-index: 100;
+            }
+
+                .Tag input[type="radio"]:checked + label {
+                    background-color: #FF6733;
+                    color: white;
+                }
+
+            .Tag label {
+                cursor: pointer;
+                z-index: 90;
+                line-height: 1.8em;
+                text-align: center;
+            }
+
+        #SalonN {
+            border: none;
+            border-bottom: 1px solid black;
+            width: 100%;
+        }
+
+            #SalonN:focus {
+                outline: none;
+            }
+
+
+        #Infotext {
+            width: 100%;
+            height: 200px;
+            resize: none;
+            overflow: hidden;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+
+        #UpInFo, #PutInFo {
+            overflow: hidden;
+            height: 100px;
+            width: 100%;
+            resize: none;
+        }
+
+        .EDDSbtn {
+            display: flex;
+        }
+
+        .EditDS {
+            background-color: rgb(0, 0, 0, 0.3);
+            color: white;
+            position: relative;
+            top: 35px;
+            /*left: 30px;*/
+            border: none;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .DeleDS {
+            background-color: rgb(0, 0, 0, 0.3);
+            color: white;
+            position: relative;
+            top: 35px;
+            /*left: 30px;*/
+            border: none;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .UploadDemo {
+            background-color: rgb(0, 0, 0, 0.3);
+            color: white;
+            position: relative;
+            display: flex;
+            top: -35px;
+            left: 0px;
+            /*width: 250px;*/
+            /*margin-left: 30px;*/
+            /*margin-right: 30px;*/
+            text-align: center;
+            border: none;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 109px;
+            padding-right: 109px;
+        }
+
+            .EditDS:hover, .DeleDS:hover, .UploadDemo:hover {
+                color: white;
+                background-color: black;
+            }
+
+        .Puttag {
+            width: 80px;
+            border: none;
+            border-bottom: 1px solid black;
+        }
+
+            .Puttag:focus {
+                outline: none;
+            }
+
+        #PutTagS, #PutTagT {
+            text-align: center;
+        }
+
+        #Previewphoto {
+            height: 200px;
+            /*max-width: 200px;*/
+            width: 200px;
+            object-fit: cover;
+        }
+
+        .itemloop {
+            border-top: solid 1pt black;
+        }
+
+        #DemolistTable {
+            width: 250px;
+        }
+
+        #avaLable {
+            /*border:1px solid red;*/
+            padding: 3px;
+            background-color: rgb(255 233 236);
+            color: rgb(230 51 73);
+        }
+
+        #inavaLable {
+            padding: 3px;
+            color: rgb(71 189 101);
+            background-color: rgb(211 241 201);
+        }
+
+        .LinkTo {
+            color: black;
+        }
+
+            .LinkTo:hover {
+                color: #FF6733;
+                text-decoration: none;
+            }
+
+        .LinkNow {
+            color: #FF6733;
+            font-weight: bold;
+        }
+
+
+        /*DD*/
+        .mynav {
+            width: 100%;
+            height: 90px;
+            position: fixed;
+            font-weight: bold;
+            font-size: 16px;
+            background-color: white;
+            opacity: .9;
+            z-index: 2;
+        }
+
+        #navall > div {
+            /* background-color: blue; */
+            max-height: 100%;
+            /* 待研究 */
+            height: 90px;
+        }
+
+        #brand {
+            font-family: Cascadia Mono SemiBold;
+            font-size: 30px;
+            color: black;
+            height: 100%;
+        }
+
+            #brand a,
+            #brand a:link,
+            #brand a:visited,
+            #brand a:active {
+                color: black;
+                text-decoration-line: none;
+            }
+
+        .navmid {
+            /* background-color: blue; */
+            height: 100%;
+        }
+
+            .navmid > li {
+                display: inline;
+                color: black;
+            }
+
+                .navmid > li > a {
+                    color: black;
+                }
+
+                    .navmid > li > a:hover {
+                        text-decoration-line: underline;
+                        text-decoration-thickness: 1.5px;
+                        text-underline-offset: 7px;
+                    }
+
+        .navend1 {
+            /* background-color: darksalmon; */
+            font-size: 14px;
+            text-align: right;
+        }
+
+        .navend2 img { /* 因為notice 加入dropDown顯示系統通知訊息有修改格式 */
+            width: 25px;
+            /* background-color: blue; */
+        }
+
+
+        /* 頁尾---------------------------------------------------------- */
+        .footdiv {
+            margin-left: 8.5%;
+        }
+
+        #hid {
+            background-color: white;
+            border: 0px solid white;
+            height: 60px;
+            margin: 1% 0%;
+        }
+
+
+        footer {
+            width: 100%;
+            margin-top: 7%;
+            background-color: rgb(0, 0, 0);
+            color: white;
+            width: 100%;
+        }
+
+
+        #footit {
+            margin-top: 6%;
+        }
+
+            #footit b {
+                font-size: 14px;
+                margin-right: 1%;
+            }
+
+        #footpre pre {
+            color: white;
+            font-size: 14px;
+        }
+
+        #footpre, #footcopy {
+            margin-top: 1%;
+        }
+
+        .cursor-pointer {
+            cursor: pointer;
+        }
+
+        .show {
+            display: block !important;
+        }
+
+        .unread-badge-message {
+            position: absolute;
+            top: 1px;
+            left: 16px;
+            width: 10px;
+            height: 10px;
+        }
+
+        .unread-badge-sysNotic {
+            position: absolute;
+            top: 0px;
+            left: 15px;
+            width: 10px;
+            height: 10px;
+        }
+
+        /* dropdown sysNotic---------------------------------------------------------- */
+        /*#region Dropdown*/
+        .dropbtn {
+            /* background-color: #04AA6D; */
+            /* color: white; */
+            /* padding: 16px; */
+            /* font-size: 16px; */
+            border: none;
+            cursor: pointer;
+        }
+
+        /* .dropbtn:hover, .dropbtn:focus {
+        } */
+        .dropdown {
+            float: right;
+            position: relative;
+            /* display: inline-block; */
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            /* min-width: 160px; */
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            right: 0;
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 5px 10px;
+                text-decoration: none;
+                display: block;
+                white-space: nowrap;
+            }
+
+        .dropdown a:hover {
+            background-color: #ddd;
+        }
+
+        /*#endregion*/
+
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid" id="ShowData" v-cloak>
+
+        <div class="row opacity-25 mynav" id="navall">
+            <div class="col-1"></div>
+            <div class="col-2 d-flex align-items-center" id="brand">
+                <a href="/TanTanLib/html/cover.html">
+                    <img class="Navimg" src="UploadFolder/70.png" />
+                </a>
+            </div>
+            <div class="col-3">
+                <ul class="navmid d-flex justify-content-between align-items-center p-0 pt-2">
+                    <li><a href="#"> 美 甲 查 詢 </a></li>
+                    <li><a href="#"> 美 甲 小 天 地 </a></li>
+                    <li><a href="#"> 關 於 我 們 </a></li>
+                </ul>
+            </div>
+            <div class="col-4 pt-3">
+                <p class="navend1"><span id="daNick">尚未登入&nbsp&nbsp&nbsp&nbsp&nbsp</span><a id="huiORreg" style="color:black" href="../YueRegister.html"> 註冊&nbsp</a> / <a id="loginORout" style="color:black" href="../Yuelogin.html"> &nbsp登入 </a></p>
+            </div>
+            <div class="col-1 d-flex align-items-center justify-content-end navend2">
+                <div style="position:relative">
+                    <img class="mt-1 mr-3 cursor-pointer" id="chat" src="../images/chat-box.png" onclick="showChatPage()">
+                    <div class="unread-badge-message bg-danger rounded-circle d-none"></div>
+                </div>
+                <div class="dropdown">
+                    <img class="cursor-pointer dropbtn-sysNotic" src="../images/notification.png" onclick="showSysNotic()">
+                    <div class="unread-badge-sysNotic bg-danger rounded-circle d-none"></div>
+                    <div id="sysNoticDropDown" class="dropdown-content dropdown-content-sysNotic rounded" style="background-color:#ccc;max-width:450px">
+                        <a class="drop-sysNotic-item">--目前沒有未讀系統訊息--</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+
+
+        <div class="row" style="padding-top:90px">
+            <div class="col-1"></div>
+            <div class="col-11">
+                <div>
+                    <a class="LinkTo" href="/TanTanLib/html/cover.html">首頁</a>
+                    <span>></span>
+                    <a class="LinkTo" href="Fliter.html">美甲查詢</a>
+                    <span>></span>
+                    <label class="LinkNow">{{DesignList.manicuristSalonName}}</label>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-3" id="EdChBt">
+                <button class="Editbtn" v-on:click="PutM">完成</button>
+                <button class="Checkbtn" v-if="Editing" v-on:click="Previewing">預覽</button>
+                <button class="Checkbtn" v-if="preview" v-on:click="BackEdit">編輯</button>
+            </div>
+            <div class="col-5"></div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-1"></div>
+            <div id="photoframe" class="col-3 d-flex flex-column">
+                <div>
+                    <div>
+                        <img id="DesignerImg" class="Profileimg" v-bind:src="DesignList.manicuristPic" />
+                    </div>
+                    <div>
+                        <label id="Mylabel">
+                            <img id="editimg" />編輯
+                            <input type="file" id="file-uploader" accept="image/*" onchange="Getfile(this)" />
+                        </label>
+                    </div>
+                </div>
+                <!--<div class="d-flex justify-content-start" id="EdUp">-->
+
+            </div>
+            <div class="col-5" id="Profile">
+                <!--<input type="text" id="SalonN" maxlength="20" placeholder="店家名稱" v-if="Editing" v-model="PutManicurist[0].manicuristSalonName" />-->
+                <b id="Title" class="Bigtext FixsmPad">{{DesignList.manicuristSalonName}}</b>
+                <p id="Context" class="mt-3" v-if="preview">{{PutManicurist[0].manicuristIntro}}</p>
+                <br />
+                <form>
+                    <textarea id="Infotext" maxlength="200" class="mt-3" placeholder="自我介紹" v-if="Editing" v-model="PutManicurist[0].manicuristIntro"></textarea>
+                </form>
+                <!--<div id="Score">
+                    <div class="ratings">
+                        <div class="Emptystar">★★★★★</div>
+                        <div class="Fullstar" v-bind:style="{width:width}">★★★★★</div>
+                    </div>
+                    <div id="Scorefloat" class="d-flex align-items-center">{{DesignList.manicuristScore}}</div>
+                </div>-->
+            </div>
+            <div class="col-2">
+                <!--<div style="height: 80%;"></div>-->
+                <!--<button id="Sendbtn">預約</button>-->
+            </div>
+            <div class="col-1">
+            </div>
+        </div>
+
+
+        <div class="row FixPad">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <button class="CBtn CBpd recentbtn Bigtext ShapeColor" onclick="Showthis(this)" value="demo">作品</button>
+                <!--<button class="CBtnpd recentbtn Bigtext ShapeColor" onclick="Showthis(this)" value="event">主打</button>-->
+            </div>
+            <div class="col-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <p id="BlacklineTp"></p>
+            </div>
+            <div class="col-1"></div>
+        </div>
+
+
+        <div id="designcontext">
+
+            <div id="pageone" class="Chgcontext">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-5">
+                        <button id="Insertdemo" data-toggle="modal" data-target="#staticBackdrop">新增</button>
+                        <!--<button data-toggle="modal" data-target="#EditModal">新增</button>-->
+                    </div>
+                    <div class="col-4">
+                        <div v-if="DemoSetValue">
+                            <input class="Searchbar" type="text" placeholder="作品,標籤" v-model="SearchString">
+                            <button class="Searchbtn" onclick="Searchit()"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+
+                <!-- insert Modal -->
+                <div class="modal fade" id="staticBackdrop" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog   ">
+                        <form>
+                            <div class="modal-content">
+                                <div class="modal-header border-0 pb-0">
+                                    <h5 class="modal-title" id="staticBackdropLabel">新增造型款式</h5>
+                                    <button class="close" data-dismiss="modal" aria-label="Close">
+                                        <span onclick="cleartext()" aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <div class="py-2">
+                                            <label for="UpName">美甲造型款式名稱：</label>
+                                            <input v-model="InsertDemoSet[0].demoSetName" class="TxtStyle ExitEmpty" id="UpName" type="text" minlength="1" maxlength="20" required />
+                                        </div>
+                                        <div class="py-2">
+                                            <label for="UpContext">美甲造型款式內容：</label>
+                                            <br />
+                                            <textarea required v-model="InsertDemoSet[0].demoSetContent" class="ExitEmpty" id="UpInFo" placeholder="最多100字" minlength="1" maxlength="100" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+                                        </div>
+                                        <div>
+                                            <label for="UpFile">照片：</label>
+                                            <br />
+                                            <div class="d-flex align-items-center">
+                                                <textarea id="UpFileText" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' readonly="readonly">尚未選擇</textarea>
+                                                <label id="UpFileLabel" class="align-items-center">
+                                                    上傳檔案
+                                                    <input required id="UpFile" class="ExitEmpty" type="file" accept="image/*" onchange="GetCoverfile(this)" />
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="py-2">
+                                            <label for="UpC">施作部位：</label>
+                                            <select id="UpC" required v-model="InsertDemoSet[0].demoSetPartC">
+                                                <option value="none" selected disabled hidden>請選擇</option>
+                                                <option v-for="(item,key) in CodeC" v-bind:value="CodeC[key].codeId">{{CodeC[key].codeRepresent}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="py-2">
+                                            <label for="UpColor">主要顏色：</label>
+                                            <select id="UpColor" required v-model="InsertDemoSet[0].demoSetColor">
+                                                <option value="none" selected disabled hidden>請選擇</option>
+                                                <option v-for="(item,key) in FixColor" v-bind:value="FixColor[key].colorId">{{FixColor[key].colorName}}</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="py-2 d-flex">
+                                                <label for="UpTagF">標籤1：</label>
+                                                <div id="tagF">
+                                                    <select required v-model="InsertDemoSet[0].demoSetTag1">
+                                                        <option value="none" selected disabled hidden>請選擇</option>
+                                                        <option id="UpTagF" v-for="(Tag,Key) in FixTag" v-bind:value="FixTag[Key]">{{FixTag[Key]}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="py-2  d-flex">
+                                                <label for="UpTagS">標籤2：</label>
+                                                <div id="tagS">
+                                                    <div class="Tag">
+                                                        <input required class="ExitEmpty" type="radio" id="TagSF" name="UpTagS" v-bind:value="NineTag[3]" onclick="GetVal(this,'UpTagS')" />
+                                                        <label class="TagStyle RMClass" for="TagSF">{{NineTag[3]}}</label>
+                                                    </div>
+                                                    <div class="Tag">
+                                                        <input type="radio" id="TagSS" name="UpTagS" v-bind:value="NineTag[4]" onclick="GetVal(this,'UpTagS')" />
+                                                        <label class="TagStyle RMClass" for="TagSS">{{NineTag[4]}}</label>
+                                                    </div>
+                                                    <div class="Tag">
+                                                        <input type="radio" id="TagST" name="UpTagS" v-bind:value="NineTag[5]" onclick="GetVal(this,'UpTagS')" />
+                                                        <label class="TagStyle RMClass" for="TagST">{{NineTag[5]}}</label>
+                                                    </div>
+                                                    <div class="Tag">
+                                                        <input type="radio" id="TagSL" name="UpTagS" value="自訂" onclick="GetVal(this,'UpTagS')" />
+                                                        <label class="TagStyle RMClass" for="TagSL">自訂</label>
+                                                        <input type="text" class=" OnTxt" name="UpTagS" v-model="TagStxt" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="py-2  d-flex">
+                                                <label for="UpTagT">標籤3：</label>
+                                                <div id="tagT">
+                                                    <div class="Tag">
+                                                        <input required class="ExitEmpty" type="radio" id="TagTF" name="UpTagT" v-bind:value="NineTag[6]" onclick="GetVal(this,'UpTagT')" />
+                                                        <label class="TagStyle RMClass" for="TagTF">{{NineTag[6]}}</label>
+                                                    </div>
+                                                    <div class="Tag">
+                                                        <input type="radio" id="TagTS" name="UpTagT" v-bind:value="NineTag[7]" onclick="GetVal(this,'UpTagT')" />
+                                                        <label class="TagStyle RMClass" for="TagTS">{{NineTag[7]}}</label>
+                                                    </div>
+                                                    <div class="Tag">
+                                                        <input type="radio" id="TagTT" name="UpTagT" v-bind:value="NineTag[8]" onclick="GetVal(this,'UpTagT')" />
+                                                        <label class="TagStyle RMClass" for="TagTT">{{NineTag[8]}}</label>
+                                                    </div>
+                                                    <div class="Tag">
+                                                        <input type="radio" id="TagTL" name="UpTagT" value="自訂" onclick="GetVal(this,'UpTagT')" />
+                                                        <label class="TagStyle RMClass" for="TagTL">自訂</label>
+                                                        <input type="text" class=" OnTxt" name="UpTagT" v-model="TagTtxt" />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="py-2  d-flex">
+                                            <label for="Postmain">主打：</label>
+                                            <input id="Postmain" class="ExitEmpty" type="checkbox" v-model="InsertDemoSet[0].demoSetMain" />
+                                            <div v-if="InsertDemoSet[0].demoSetMain">
+                                                <label>期間</label>
+                                                <input class="ExitEmpty" id="Startd" onchange="GetStDate(this)" type="date" />
+                                                <span>-</span>
+                                                <input class="ExitEmpty" id="Endd" onchange="GetEdDate(this)" type="date" />
+                                            </div>
+                                        </div>
+                                        <div class="py-2">
+                                            <span for="UpDeposit">預估金額：</span>
+                                            <label>$NT</label>
+                                            <input id="UpDeposit" required class="TxtStyle PrideWid ExitEmpty" type="text" v-model="InsertDemoSet[0].demoSetPrice" />
+                                        </div>
+                                        <div class="py-2">
+                                            <span for="UpPrice">訂金：</span>
+                                            <label>$NT</label>
+                                            <input id="UpPrice" required class="TxtStyle PrideWid ExitEmpty" type="text" v-model="InsertDemoSet[0].demoSetDeposit" />
+                                        </div>
+                                        <div class="py-2">
+                                            <label for="UpMain">是否上架：</label>
+                                            <input id="UpMain" class="ExitEmpty" type="checkbox" v-model="InsertDemoSet[0].demoSetPublic" />
+                                        </div>
+                                    </div>
+                                    <div>
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer border-0">
+                                    <button onclick="cleartext()" class="Checkbtn" data-dismiss="modal">取消</button>
+                                    <button v-on:click="InsertDemo" type="submit" class="Editbtn">新增</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <!--insert Modal End-->
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                        <div v-if="DemoSetValue" class="FixPad CowRight">
+                            <p class="DisInLine">共計{{DemoSetList.length}}個作品</p>
+                            <!--<button class="CBtn">上一頁</button>
+                            <button class="CBtn">下一頁</button>-->
+                        </div>
+                        <div v-else="DemoSetValue" class="mt-4">
+                            <p class="produce">尚未擁有作品</p>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-10" id="Demo">
+                        <div v-for="(item,key) in DemoSetList">
+                            <div class="Seemore my-0">
+                                <div class="EDDSbtn">
+                                    <button v-bind:value="[key]" data-toggle="modal" data-target="#EditModal" onclick="GetDemoinfo(this)" class="EditDS">編輯</button>
+                                    <button v-bind:value="[key]" class="DeleDS" data-toggle="modal" onclick="GetDemoinfo(this)" data-target="#DeleteModal">刪除</button>
+                                </div>
+                                <!--<img class="Demoimg" v-bind:src="DemoSetList[key].demoSetCover" v-bind:alt="[key]" data-toggle="modal" data-target="#EditModal" onclick="GetDemoinfo(this)">-->
+                                <img class="Demoimg" v-bind:src="DemoSetList[key].demoSetCover">
+                                <button v-bind:value="[key]" data-toggle="modal" data-target="#PostPicModal" class="UploadDemo" onclick="GetCertainDemo(this)">相片</button>
+                            </div>
+                            <div class="DemoGroup">
+                                <label id="inavaLable" v-if="DemoSetList[key].demoSetPublic">已上架</label>
+                                <label id="avaLable" v-else="DemoSetList[key].demoSetPublic">未上架</label>
+                                <p style="font-weight: bold;" class="d-inline">{{DemoSetList[key].demoSetName}}</p>
+                            </div>
+                            <p class="DemoGroup">NT${{DemoSetList[key].demoSetPrice}}</p>
+                            <!--EditModal-->
+                            <div class="modal fade" id="EditModal" data-keyboard="false" tabindex="-1" aria-labelledby="EditModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <form>
+                                        <div class="modal-content">
+                                            <div class="modal-header border-0 pb-0">
+                                                <h5 class="modal-title" id="EditModalLabel">編輯造型款式</h5>
+                                                <button class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span onclick="cleartext()" aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div>
+                                                    <div class="py-2">
+                                                        <label for="PutName">美甲造型款式名稱：</label>
+                                                        <input v-model="ThisFormData[0].demoSetName" class="TxtStyle ExitEmpty" id="PutName" type="text" minlength="1" maxlength="20" required />
+                                                    </div>
+                                                    <div class="py-2">
+                                                        <label for="PutInFo">美甲造型款式內容：</label>
+                                                        <br />
+                                                        <textarea required v-model="ThisFormData[0].demoSetContent" class="ExitEmpty" id="PutInFo" placeholder="最多100字" minlength="1" maxlength="100" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+                                                    </div>
+                                                    <!--<div>
+                                                        <label for="UpDemoFile">照片：</label>
+                                                        <br />
+                                                        <div class="d-flex align-items-center">
+                                                            <textarea id="UpFileText" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' readonly="readonly"></textarea>
+                                                            <label id="UpFileLabel" class="align-items-center">
+                                                                上傳檔案
+                                                                <input id="UpDemoFile" class="ExitEmpty" type="file" accept="image/*" onchange="GetCoverfile(this)" />
+                                                            </label>
+                                                        </div>
+                                                    </div>-->
+                                                    <div class="py-2">
+                                                        <label for="PutC">施作部位：</label>
+                                                        <select id="PutC" v-model="ThisFormData[0].demoSetPartC" required>
+                                                            <option value="none" selected disabled hidden>請選擇</option>
+                                                            <option v-for="(item,key) in CodeC" v-bind:value="CodeC[key].codeId">{{CodeC[key].codeRepresent}}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="py-2">
+                                                        <label for="PutColor">主要顏色：</label>
+                                                        <select id="PutColor" required v-model="ThisFormData[0].demoSetColor">
+                                                            <option value="none" selected disabled hidden>請選擇</option>
+                                                            <option v-for="(item,key) in FixColor" v-bind:value="FixColor[key].colorId">{{FixColor[key].colorName}}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div>
+                                                        <div class="py-2 d-flex">
+                                                            <label for="PutTagF">標籤1：</label>
+                                                            <div>
+                                                                <select id="PutTagF" required v-model="ThisFormData[0].demoSetTag1">
+                                                                    <option value="none" selected disabled hidden>請選擇</option>
+                                                                    <option id="PutTagF" v-for="(Tag,Key) in FixTag" v-bind:value="FixTag[Key]">{{FixTag[Key]}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="py-2  d-flex">
+                                                            <label for="PutTagS">標籤2：</label>
+                                                            <div>
+                                                                <div class="Tag">
+                                                                    <input type="text" class="Puttag" id="PutTagS" maxlength="4" minlength="1" v-model="ThisFormData[0].demoSetTag2" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="py-2  d-flex">
+                                                            <label for="PutTagT">標籤3：</label>
+                                                            <div>
+                                                                <div class="Tag">
+                                                                    <input type="text" class="Puttag" id="PutTagT" maxlength="4" minlength="1" v-model="ThisFormData[0].demoSetTag3" />
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="py-2  d-flex">
+                                                        <label for="Putmain">主打：</label>
+                                                        <input id="Putmain" class="ExitEmpty" type="checkbox" v-model="ThisFormData[0].demoSetMain" />
+                                                        <div v-if="ThisFormData[0].demoSetMain">
+                                                            <label>期間</label>
+                                                            <input class="ExitEmpty" v-bind:value="StartDate" onchange="PostStDate(this)" type="date" />
+                                                            <span>-</span>
+                                                            <input class="ExitEmpty" v-bind:value="EndDate" onchange="PostEdDate(this)" type="date" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="py-2">
+                                                        <span for="PutDeposit">預估金額：</span>
+                                                        <label>$NT</label>
+                                                        <input required id="PutDeposit" class="TxtStyle PrideWid ExitEmpty" type="text" v-model="ThisFormData[0].demoSetPrice" />
+                                                    </div>
+                                                    <div class="py-2">
+                                                        <span for="PutPrice">訂金：</span>
+                                                        <label>$NT</label>
+                                                        <input required id="PutPrice" class="TxtStyle PrideWid ExitEmpty" type="text" v-model="ThisFormData[0].demoSetDeposit" />
+                                                    </div>
+                                                    <div class="py-2">
+                                                        <label for="PutMain">是否上架：</label>
+                                                        <input class="ExitEmpty" id="PutMain" type="checkbox" v-model="ThisFormData[0].demoSetPublic" />
+                                                    </div>
+                                                </div>
+                                                <div>
+
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer border-0">
+                                                <button onclick="cleartext()" class="Checkbtn" data-dismiss="modal">取消</button>
+                                                <button v-on:click="PutDemo()" id="editit" type="submit" class="Editbtn">修改</button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                            <!--EditModalEnd-->
+                            <!--DeleteModal-->
+                            <div class="modal fade" id="DeleteModal" data-keyboard="false" tabindex="-1" aria-labelledby="DeleteModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                    <form>
+                                        <div class="modal-content">
+                                            <div class="modal-header border-0 pb-0">
+                                                <h5 class="modal-title" id="DeleteModalLabel">刪除造型款式</h5>
+                                                <button class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span onclick="cleartext()" aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>確定要刪除「{{ThisFormData[0].demoSetName}}」嗎？</p>
+                                            </div>
+                                            <div class="modal-footer border-0">
+                                                <button class="Checkbtn" data-dismiss="modal">取消</button>
+                                                <button v-on:click="DeleteDemo()" type="submit" class="Editbtn">刪除</button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                            <!--DeleteModal End-->
+                            <!--PostPicModal-->
+                            <div class="modal fade" id="PostPicModal" data-keyboard="false" tabindex="-1" aria-labelledby="PostPicModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <form>
+                                        <div class="modal-content">
+                                            <div class="modal-header border-0 pb-0">
+                                                <h5 class="modal-title" id="PostPicModalLabel">管理{{GetUpList[0].demoSetName}}相片</h5>
+                                                <button class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span onclick="ReplayPhoto()" aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div>
+                                                    <div class="d-flex">
+                                                        <div class="d-block">
+
+
+                                                            <table id="DemolistTable">
+                                                                <tr>
+                                                                    <th class="text-center">項次</th>
+                                                                    <th class="text-center" colspan="2">操作</th>
+                                                                </tr>
+                                                                <tr class="itemloop text-center">
+                                                                    <td>封面</td>
+                                                                    <td>
+                                                                        <label>
+                                                                            查看
+                                                                            <input type="radio" style="display:none" onclick="Checkthiscover()" />
+                                                                        </label>
+                                                                    </td>
+                                                                    <td>
+                                                                        <label class="text-center">
+                                                                            修改
+                                                                            <input id="PutCover" style="display:none" type="file" accept="image/*" onchange="PutCoverfile(this)" />
+                                                                        </label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr v-for="(item,key) in DemoList" class="itemloop">
+                                                                    <td class="text-center">{{key+1}}</td>
+                                                                    <td class="text-center">
+                                                                        <label>
+                                                                            查看
+                                                                            <input type="radio" style="display:none" v-bind:value="[key]" onclick="ShowDemo(this)" />
+                                                                        </label>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <label>
+                                                                            刪除
+                                                                            <input type="radio" style="display:none" v-bind:value="[key]" onclick="DeleteDemo(this)" />
+                                                                        </label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr v-for="(item,key) in PostthisDemo" class="itemloop">
+                                                                    <td class="text-center">新增</td>
+                                                                    <td class="text-center">
+                                                                        <label>
+                                                                            查看
+                                                                            <input type="radio" style="display:none" v-bind:value="[key]" onclick="Showinsert(this)" />
+                                                                        </label>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <label>
+                                                                            刪除
+                                                                            <input type="radio" style="display:none" v-bind:value="[key]" onclick="Deleteinsert(this)" />
+                                                                        </label>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                        <div class="mx-3">
+                                                            <img id="Previewphoto" src="UploadFolder/upload.png" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr />
+                                                <div class="d-flex">
+                                                    <!--<textarea id="UpDemoText" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' readonly="readonly">尚未選擇</textarea>-->
+                                                    <label id="UpDemoLabel" class="mt-3">
+                                                        新增相片
+                                                        <input id="UpDemo" type="file" accept="image/*" onchange="GetMorefile(this)" multiple="multiple" />
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer border-0">
+                                                <button class="Checkbtn" data-dismiss="modal">取消</button>
+                                                <button v-on:click="PostDemoimg()" type="submit" class="Editbtn">新增</button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                            <!--PostPicModal End-->
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+
+            <div id="pagetwo" class="Chgcontext">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-6">
+                    </div>
+                    <div class="col-4">
+                        <form>
+                            <input class="Searchbar" type="text" placeholder="作品,標籤">
+                            <button class="Searchbtn" type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+
+                <div class="row FixPad CowRight">
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                        <p class="DisInLine">共計12個作品</p>
+                        <!--<button class="CBtn">上一頁</button>
+                        <button class="CBtn">下一頁</button>-->
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-10 EventDemo">
+                        <div v-for="(item,key) in MainDemoCover">
+                            <div class="Seemore my-0">
+                                <button data-toggle="modal" data-target="#EditModal">編輯</button>
+                                <button>編輯</button>
+                                <img class="Demoimg" v-bind:src="MainDemoCover[key].demoPic" alt="">
+                            </div>
+                            <p style="font-weight: bold;" class="DemoGroup">{{MainDemoCover[key].demoSetName}}</p>
+                            <p class="DemoGroup">${{MainDemoCover[key].demoSetPrice}}</p>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <footer class="footer" style="height:320px;">
+                <div class="col-1"></div>
+                <div class="col-10 footdiv">
+                    <div id="footit">
+                        <b style="font-family:Cascadia Mono SemiBold;">關於Nail it</b>
+                        <b>檢舉</b>
+                        <b>隱私權政策</b>
+                        <b>防詐騙宣導</b>
+                    </div>
+                    <div id="footpre">
+                        <pre>
+地址：408台中市南屯區公益路二段51號18樓
+客服信箱：Nailit@gmail.com
+客服電話： 04 -2326-5860
+        </pre>
+                    </div>
+                    <div id="footcopy">
+                        <p style="font-size: 12px;font-family:Franklin Gothic Book;">
+                            Copyright ©2022 MSIT44TEAM1
+                        </p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+
+    </div>
+
+    <script src="../YueJs/loginCheck.js"></script>
+    <script src="../js/Ansel_Layout.js"></script>
+    <script src="../AnselLib/Ansel_Service.js"></script>
+    <script src="../AnselLib/Ansel_Common.js"></script>
+
+    <script>
+        //let ManicuristID = 2;
+        let GetNowurl = window.location.href;
+        let Nowurl = new URL(GetNowurl);
+        let ManicuristID = Nowurl.searchParams.get('id');
+        let GetManicuristID;
+        Pre();
+        async function Pre() {
+            await YueloginCheck();
+            console.log("nowMember" + nowMember);
+            console.log("GetManicuristID" + GetManicuristID);
+
+            GetManicuristID = nowMember;
+            GetData(GetManicuristID);
+        }
+
+        function GetData(GetManicuristID) {
+            $.ajax({
+                type: "get",
+                url: "/api/Manicurist/" + GetManicuristID,
+                success: function (e) {
+                    ShowData.DesignList = e;
+                    PercantStar = e.manicuristScore;
+                    FloatStar = (PercantStar * 20) + '%';
+                    ShowData.width = FloatStar;
+                    ShowData.PutManicurist[0].manicuristIntro = e.manicuristIntro;
+                    ShowData.PutManicurist[0].manicuristPic = e.manicuristPic;
+                    //console.log(e.manicuristId);
+                    ShowData.PutManicurist[0].manicuristId = e.manicuristId;
+                }
+            });
+
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetDemoSetTable/" + GetManicuristID,
+                success: function (e) {
+                    console.log(e);
+                    for (demoset in e) {
+                        ShowData.DemoSetList.push(e[demoset]);
+                    }
+                    if (ShowData.DemoSetList.length == 0) {
+                        ShowData.DemoSetValue = false;
+                        //console.log('OK');
+                    }
+                }
+            });
+
+            $.ajax({
+                type: "get",
+                url: "/api/TagTable",
+                success: function (e) {
+                    //console.log(e);
+                    ShowData.TagList = e;
+                    for (let p = 0; p < 9; p++) {
+                        ShowData.FixTag[p] = e[p].tagName;
+                        //console.log(e[p].tagName);
+                        //console.log(ShowData.FixTag);
+                    }
+                    var TagLenth = [];
+                    var Gettag = [];
+                    //Gettag[0] = Math.floor(Math.random() * e.length - 1) + 1;
+                    for (let i = 0; i < e.length; i++) {
+                        TagLenth[i] = i;
+                    }
+                    //console.log(TagLenth);
+                    while (Gettag.length != 9) {
+                        //for (let x = 0; x < 10; x++) {
+                        var Rd = Math.floor(Math.random() * e.length - 1) + 1;
+                        var Posi = TagLenth.indexOf(Rd);
+                        //console.log("亂數為：" + Rd + "位置為：" + Posi);
+                        //console.log("現在陣列為" + TagLenth);
+                        if (Posi == -1) {
+                            //Temp = Temp + 1;
+                            continue;
+                        } else {
+                            //Gettag[x - Temp] = Rd;
+                            Gettag.push(Rd);
+                            TagLenth.splice(Posi, 1);
+                        }
+                    }
+                    //console.log(Gettag);
+                    //console.log(Gettag.length);
+                    //console.log(e[0].tagName);
+                    for (let g = 0; g < 9; g++) {
+                        ShowData.NineTag.push(e[Gettag[g]].tagName);
+                        //console.log(e[Gettag[g]].tagName);
+                    }
+                }
+            });
+
+            $.ajax({
+                type: "get",
+                url: "/api/color",
+                success: function (e) {
+                    //console.log(e);
+                    //ShowData.FixColor = e;
+                    for (color in e) {
+                        ShowData.FixColor.push(e[color]);
+                    }
+                }
+            });
+
+            $.ajax({
+                type: "get",
+                url: "/api/PCodeTable",
+                success: function (e) {
+                    //console.log(e);
+                    for (code in e) {
+                        ShowData.CodeC.push(e[code]);
+                    }
+                }
+            });
+        }
+
+        let PercantStar;
+        let FloatStar;
+        let DemoLenth;
+
+        $('.Chgcontext').hide();
+        $('#pageone').show();
+        $('button[value=demo]').addClass('NowUnderLine');
+        $('#GetFileBtn').css('visibility', 'hidden');
+
+        function Showthis(nowPage) {
+            let thisbtn = `button[value=${nowPage.value}]`;
+            console.log(nowPage.value);
+            let BTNlist = ["demo", "event"];
+            let Contextlist = ["#pageone", "#pagetwo"];
+            $('.Chgcontext').hide();
+            $('.recentbtn').removeClass('NowUnderLine');
+            for (let i = 0; i < BTNlist.length; i++) {
+                if (nowPage.value == BTNlist[i]) {
+                    console.log(Contextlist[i]);
+                    $(thisbtn).addClass('NowUnderLine');
+                    $(Contextlist[i]).show();
+                }
+            }
+        }
+
+
+        $('.OnTxt').css('visibility', 'hidden');
+        function GetVal(e, u) {
+            console.log(e);
+            var NowGroup = `label[name=${e.name}]`
+            $(NowGroup).removeClass('TagFullColor');
+
+            var Nowtxt = `input[type=text][name=${e.name}]`
+            if (e.value == "自訂") {
+                $(Nowtxt).css('visibility', 'visible');
+            }
+            if (e.value != "自訂" && e.name == u) {
+                $(Nowtxt).css('visibility', 'hidden');
+            }
+
+            var NowBtn = `label[value=${e.value}][name=${e.name}]`;
+            $(NowBtn).addClass('TagFullColor');
+
+            console.log(e.value);
+
+            if (e.name == 'UpTagS') {
+                ShowData.InsertDemoSet[0].demoSetTag2 = e.value;
+            }
+
+            if (e.name == 'UpTagT') {
+                ShowData.InsertDemoSet[0].demoSetTag3 = e.value;
+
+            }
+        }
+
+        function GetStDate(e) {
+            //2023-01-14
+            //2023 - 01 - 12T00: 00: 00
+            var St = `${e.value}T00:00:00`
+            ShowData.InsertDemoSet[0].demoSetMainStartTime = St;
+        }
+
+        function GetEdDate(e) {
+            //2023-01-14
+            //2023 - 01 - 12T00: 00: 00
+            var Ed = `${e.value}T23:59:59`
+            ShowData.InsertDemoSet[0].demoSetMainEndTime = Ed;
+        }
+
+        function PostStDate(e) {
+            //2023-01-14
+            //2023 - 01 - 12T00: 00: 00
+            var PSt = `${e.value}T00:00:00`
+            ShowData.ThisFormData[0].demoSetMainStartTime = PSt;
+        }
+
+        function PostEdDate(e) {
+            //2023-01-14
+            //2023 - 01 - 12T00: 00: 00
+            var PEd = `${e.value}T23:59:59`
+            ShowData.ThisFormData[0].demoSetMainEndTime = PEd;
+        }
+
+        function GetDemoinfo(e) {
+            console.log(e.value);
+            ShowData.ThisFormData[0].demoSetId = ShowData.DemoSetList[e.value].demoSetId;
+            ShowData.ThisFormData[0].demoSetName = ShowData.DemoSetList[e.value].demoSetName;
+            //ShowData.ThisFormData[0].demoSetCover = ShowData.DemoSetList[e.value].demoSetCover;
+            ShowData.ThisFormData[0].demoSetPartC = ShowData.DemoSetList[e.value].demoSetPartC;
+            ShowData.ThisFormData[0].demoSetContent = ShowData.DemoSetList[e.value].demoSetContent;
+            ShowData.ThisFormData[0].demoSetPrice = ShowData.DemoSetList[e.value].demoSetPrice;
+            ShowData.ThisFormData[0].demoSetDeposit = ShowData.DemoSetList[e.value].demoSetDeposit;
+            ShowData.ThisFormData[0].demoSetTag1 = ShowData.DemoSetList[e.value].demoSetTag1;
+            console.log(ShowData.DemoSetList[e.value].demoSetTag1);
+            console.log(ShowData.ThisFormData[0].demoSetTag1);
+            ShowData.ThisFormData[0].demoSetTag2 = ShowData.DemoSetList[e.value].demoSetTag2;
+            ShowData.ThisFormData[0].demoSetTag3 = ShowData.DemoSetList[e.value].demoSetTag3;
+            //ShowData.ThisFormData[0].demoSetTag4 = ShowData.DemoSetList[e.value].demoSetTag4;
+            ShowData.ThisFormData[0].demoSetPublic = ShowData.DemoSetList[e.value].demoSetPublic;
+            ShowData.ThisFormData[0].demoSetMain = ShowData.DemoSetList[e.value].demoSetMain;
+            //ShowData.ThisFormData[0].demoSetCount = ShowData.DemoSetList[e.value].demoSetCount;
+            if (ShowData.DemoSetList[e.value].demoSetMainStartTime != null) {
+                ShowData.ThisFormData[0].demoSetMainStartTime = ShowData.DemoSetList[e.value].demoSetMainStartTime;
+                ShowData.StartDate = ShowData.DemoSetList[e.value].demoSetMainStartTime.slice(0, 10);
+            } else {
+                ShowData.StartDate = null;
+                ShowData.ThisFormData[0].demoSetMainStartTime = null;
+            }
+            //console.log(ShowData.DemoSetList[e.value].demoSetMainStartTime.slice(0, 10));
+            if (ShowData.DemoSetList[e.value].demoSetMainEndTime != null) {
+                ShowData.ThisFormData[0].demoSetMainEndTime = ShowData.DemoSetList[e.value].demoSetMainEndTime;
+                ShowData.EndDate = ShowData.DemoSetList[e.value].demoSetMainEndTime.slice(0, 10);
+            } else {
+                ShowData.EndDate = null;
+                ShowData.ThisFormData[0].demoSetMainEndTime = null;
+
+            }
+            ShowData.ThisFormData[0].demoSetColor = ShowData.DemoSetList[e.value].demoSetColor;
+
+            //$.ajax({
+            //    type: "get",
+            //    //url: "api/path/" + this.InsertDemoSet.manicuristId,
+            //    url: "/api/DemoSet/GetPostDemoSetTable/2",
+            //    success: function (e) {
+            //        for (var b = 0; b < ShowData.PostDemo.length; b++)
+            //            this.PostDemo[b].demoSetId = e.demoSetId;
+            //    }
+            //})
+        }
+
+        async function GetCertainDemo(e) {
+            console.log(e);
+            GetCertainDemoKey = e.value;
+            ShowData.GetUpList[0].demoSetName = ShowData.DemoSetList[e.value].demoSetName;
+            ShowData.GetUpList[0].demoSetId = ShowData.DemoSetList[e.value].demoSetId;
+            ShowData.PutUpCover[0].demoSetId = ShowData.DemoSetList[e.value].demoSetId;
+            ShowData.PutUpCover[0].demoSetCover = ShowData.DemoSetList[e.value].demoSetCover;
+            //console.log(ShowData.GetUpList[0].demoSetId);
+            // console.log(ShowData.GetUpList[0].demoSetID);
+            // console.log(ShowData.DemoSetList[e.value].demoSetID);
+
+            await $.ajax({
+                type: "get",
+                url: "/api/Demo/" + ShowData.GetUpList[0].demoSetId,
+                success: function (e) {
+                    //console.log(e);
+                    ShowData.DemoList = e;
+                }
+            });
+
+        }
+
+        function ShowDemo(e) {
+            console.log(e.value);
+            var edemopic = ShowData.DemoList[e.value].demoPic;
+            //console.log(ShowData.DemoList[e.value].demoPic);
+            //console.log(ShowData.DemoList[e.value].demoPic);
+            $('#Previewphoto').attr('src', edemopic);
+        }
+        async function DeleteDemo(e) {
+            console.log(ShowData.DemoList[e.value].demoId);
+
+            await $.ajax({
+                type: "delete",
+                url: "/api/Demo/" + ShowData.DemoList[e.value].demoId,
+                success: function () {
+                    window.location = "/YiPLib/NailDesignerEdit.html";
+                }
+            });
+
+        }
+
+        function Checkthiscover() {
+            var edemocover = ShowData.PutUpCover[0].demoSetCover;
+
+            console.log(ShowData.PutUpCover[0].demoSetCover);
+            $('#Previewphoto').attr('src', edemocover);
+
+        }
+
+        function ShowPostDemo(e) {
+            $('#Previewphoto').attr('src', e.value);
+        }
+
+        function DeletePostDemo(e) {
+            var DeleteD = e.value;
+            DeleteD.demoPic = null;
+        }
+
+        function ReplayPhoto() {
+            $('#Previewphoto').attr('src', 'UploadFolder/upload.png');
+        }
+
+        function Showinsert(e) {
+            var insertimg = ShowData.PostthisDemo[e.value].demoPic;
+            $('#Previewphoto').attr('src', insertimg);
+        }
+
+        function Deleteinsert(e) {
+            ShowData.PostthisDemo.splice(e.value, 1);
+        }
+
+        function Searchit() {
+            console.log(ShowData.SearchString);
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetSearchTable/" + GetManicuristID + "?search=" + ShowData.SearchString,
+                success: function (e) {
+                    ShowData.DemoSetList = [];
+                    for (DS in e) {
+                        ShowData.DemoSetList.push(e[DS]);
+                    }
+                }
+            });
+            console.log(ShowData.DemoSetList);
+        }
+
+
+        var ShowData = new Vue({
+            el: '#ShowData',
+            data: {
+                DesignList: [],
+                DemoSetList: [],
+                DemoCover: [],
+                DemoList: [],
+                MainDemoCover: [],
+                width: "",
+                InsertDemoSet: [{ "demoSetName": null, "demoSetCover": "尚未選擇", "manicuristId": GetManicuristID, "demoSetPartC": "none", "demoSetContent": null, "demoSetPrice": null, "demoSetDeposit": null, "demoSetTag1": "none", "demoSetTag2": null, "demoSetTag3": null, "demoSetTag4": null, "demoSetPublic": false, "demoSetMain": false, "demoSetCount": 0, "demoSetMainStartTime": null, "demoSetMainEndTime": null, "demoSetColor": "none" }],
+                TagFtxt: "",
+                TagStxt: "",
+                TagTtxt: "",
+                CodeC: [],
+                PutManicurist: [{ "manicuristId": "", "manicuristPic": "", "manicuristIntro": "" }],
+                preview: true,
+                Editing: false,
+                TagList: [],
+                NineTag: [],
+                FixTag: [],
+                PostthisDemo: [],
+                FixColor: [],
+                GetUpList: [{ "demoSetId": GetManicuristID, "demoSetName": "" }],
+                PutUpCover: [{ "demoSetId": GetManicuristID, "demoSetCover": "" }],
+                PostDemoSet: [{ "demoSetName": null, "demoSetCover": "", "manicuristId": GetManicuristID, "demoSetPartC": null, "demoSetContent": null, "demoSetPrice": null, "demoSetDeposit": null, "demoSetTag1": null, "demoSetTag2": null, "demoSetTag3": null, "demoSetTag4": null, "demoSetPublic": null, "demoSetMain": null, "demoSetCount": 0, "demoSetMainStartTime": null, "demoSetMainEndTime": null }],
+                ThisFormData: [{ "demoSetId": "", "demoSetName": "", "manicuristId": GetManicuristID, "demoSetPartC": "C1", "demoSetContent": "", "demoSetPrice": null, "demoSetDeposit": null, "demoSetTag1": "", "demoSetTag2": "", "demoSetTag3": "", "demoSetPublic": true, "demoSetMain": true, "demoSetMainStartTime": null, "demoSetMainEndTime": null }],
+                StartDate: "",
+                EndDate: "",
+                GetCertainDemoKey: "",
+                SearchString: "",
+                InsertCover: [{ "demoSetId": GetManicuristID, "demoSetCover": "" }],
+                DemoSetValue: true,
+            },
+            methods: {
+                InsertDemo: function () {
+                    this.InsertDemoSet[0].manicuristId = GetManicuristID;
+                    this.InsertCover[0].manicuristId = GetManicuristID;
+                    console.log(this.InsertDemoSet[0]);
+                    if (this.InsertDemoSet[0].demoSetTag2 == "自訂") {
+                        this.InsertDemoSet[0].demoSetTag2 = this.TagStxt;
+                    }
+                    if (this.InsertDemoSet[0].demoSetTag3 == "自訂") {
+                        this.InsertDemoSet[0].demoSetTag3 = this.TagTtxt;
+                    }
+
+                    $.ajax({
+                        type: "post",
+                        url: "/api/DemoSet/PostDemoSetTable",
+                        contentType: "application/json",
+                        data: JSON.stringify(this.InsertDemoSet[0]),
+                        success: function () {
+                            window.location = "/YiPLib/NailDesignerEdit.html";
+                        }
+                    })
+
+                    // $.ajax({
+                    //    type: "post",
+                    //    url: "/api/Demo",
+                    //    contentType: "application/json",
+                    //    data: JSON.stringify(this.InsertCover[0]),
+                    //    success: function () {
+                    //        window.location = "/YiPLib/NailDesignerEdit.html";
+                    //        console.log("sucessDemo");
+                    //    }
+                    //})
+
+
+
+                },
+                Previewing: function () {
+                    this.preview = true;
+                    this.Editing = false;
+                },
+                BackEdit: function () {
+                    this.preview = false;
+                    this.Editing = true;
+                    //console.log(PostDemo[0].demoSetId);
+                    //console.log("ID");
+                },
+
+                PutM: function () {
+                    $.ajax({
+                        type: "put",
+                        url: "/api/Manicurist/" + GetManicuristID,
+                        contentType: "application/json",
+                        data: JSON.stringify(this.PutManicurist[0]),
+                        success: function () {
+                            window.location = "/YiPLib/NailDesigner.html"
+                        }
+                    })
+                },
+
+                PutDemo: function () {
+                    console.log(this.ThisFormData[0]);
+                    $.ajax({
+                        type: "put",
+                        url: "/api/DemoSet/PutDemoSetTable/" + GetManicuristID,
+                        contentType: "application/json",
+                        data: JSON.stringify(this.ThisFormData[0]),
+                        success: function () {
+                            window.location = "/YiPLib/NailDesignerEdit.html"
+                        }
+                    })
+
+                },
+
+                DeleteDemo: function () {
+                    console.log(this.ThisFormData[0].demoSetId);
+                    $.ajax({
+                        type: "delete",
+                        //url: "api/path/" + this.InsertDemoSet.manicuristId,
+                        url: "/api/DemoSet/DeleteDemoSetTable/" + this.ThisFormData[0].demoSetId,
+                        //contentType: "application/json",
+                        //data: JSON.stringify(this.ThisFormData[0]),
+                        success: function () {
+                            window.location = "/YiPLib/NailDesignerEdit.html"
+                        }
+                    })
+                },
+
+                PostDemoimg: function () {
+                    console.log(this.PutUpCover[0].demoSetId);
+
+                    if (this.GetUpList[0].demoSetCover != this.DemoSetList[GetCertainDemoKey].demoSetCover) {
+                        $.ajax({
+                            type: "put",
+                            url: "/api/DemoSet/PutDemoSetCover/" + this.PutUpCover[0].demoSetId,
+                            contentType: "application/json",
+                            data: JSON.stringify(this.PutUpCover[0]),
+                            success: function () {
+                                window.location = "/YiPLib/NailDesignerEdit.html"
+                            }
+                        });
+                    }
+
+                    console.log(this.PostthisDemo);
+
+                    if (this.PostthisDemo[0].demoSetId != null) {
+                        $.ajax({
+                            type: "post",
+                            //url: "api/path/" + this.InsertDemo.manicuristId,
+                            url: "/api/Demo",
+                            contentType: "application/json",
+                            data: JSON.stringify(this.PostthisDemo),
+                            success: function () {
+                                //window.location = "/YiPLib/NailDesignerEdit.html"
+                            }
+                        })
+                    }
+
+
+
+                },
+
+            }
+        })
+
+
+
+        let inputfile;
+        async function Getfile(e) {
+            let form = new FormData();
+            form.append("file", e.files[0]);
+            console.log(e.files[0]);
+            await fetch('/api/File', {
+                method: 'POST',
+                body: form
+            });
+            inputfile = e.files[0].name;
+            GetFileBtn();
+        }
+        let GetFileBtn = function () {
+            let FilePath = "UploadFolder/" + inputfile;
+            $('#DesignerImg').prop('src', FilePath);
+            console.log(FilePath);
+            ShowData.PutManicurist[0].manicuristPic = FilePath;
+        }
+
+        let inputCoverfile;
+        async function GetCoverfile(e) {
+            let Coverform = new FormData();
+            Coverform.append("file", e.files[0]);
+            console.log(e.files[0]);
+            await fetch('/api/File', {
+                method: 'POST',
+                body: Coverform
+            });
+            inputCoverfile = e.files[0].name;
+            let CoverFilePath = "UploadFolder/" + inputCoverfile;
+            console.log(CoverFilePath);
+            ShowData.InsertDemoSet[0].demoSetCover = CoverFilePath;
+            $('#UpFileText').text(inputCoverfile);
+        }
+
+
+        function cleartext() {
+            document.getElementsByClassName('ExitEmpty').value = '';
+        }
+
+        let inputMorefile = [];
+        async function GetMorefile(e) {
+            let MoreFile = new FormData();
+            for (let i = 0; i < e.files.length; i++) {
+                MoreFile.append("files", e.files[i], `${e.files[i].name}`);
+                inputMorefile[i] = e.files[i].name;
+                let CoverPath = `UploadFolder/${e.files[i].name}`;
+                //console.log("POST" +ShowData.PostDemo[i].demoSetId);
+                //console.log("THIS" + ShowData.ThisFormData[0].demoSetId);
+                ShowData.PostthisDemo.push({ "demoPic": CoverPath, "demoSetId": ShowData.PutUpCover[0].demoSetId });
+                //ShowData.PostthisDemo[i].demoSetId = ShowData.PutUpCover[0].demoSetId;
+                //ShowData.PostthisDemo[i].demoPic = CoverPath;
+
+                //DemoImgPath[i] = CoverPath;
+                //document.getElementById('UpDemoText').innerHTML += `${e.files[i].name} \n`;
+            }
+            console.log(MoreFile);
+            await fetch('/api/Files', {
+                method: 'POST',
+                body: MoreFile
+            });
+            console.log(inputMorefile);
+        }
+
+        var PutCoverimg;
+        async function PutCoverfile(e) {
+            let Coverimg = new FormData();
+            Coverimg.append("file", e.files[0]);
+            console.log(e.files[0]);
+            await fetch('/api/File', {
+                method: 'POST',
+                body: Coverimg
+            });
+            PutCoverimg = e.files[0].name;
+            var CoverimgPath = "UploadFolder/" + PutCoverimg;
+            console.log(CoverimgPath);
+            $('#Previewphoto').attr('src', CoverimgPath);
+            ShowData.PutUpCover[0].demoSetCover = CoverimgPath;
+            ShowData.InsertCover[0].demoSetCover = CoverimgPath;
+        }
+
+
+
+
+    </script>
+
+
+</body>
+</html>

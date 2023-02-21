@@ -1,0 +1,186 @@
+.container-fluid {
+    height: 90px;
+    position: fixed;
+    font-weight: bold;
+    font-size: 16px;
+    background-color:black;
+}
+
+#navall>div {
+    background-color:black; 
+    max-height: 100%;
+    /* 待研究 */
+    height: 90px;
+}
+
+#brand {
+    font-family: Cascadia Mono SemiBold;
+    font-size: 30px;
+    color: white;
+    height: 100%;
+}
+
+#navend {
+    
+    font-size: 14px;
+    text-align: right;
+    color: white;
+}
+
+/* 左側------------------------------------------------------------------------------------------------------- */
+
+
+.mylist {
+    margin-top: 100px;
+    padding-top:2%;
+    font-weight: bold;
+    border-right: 1px solid;
+    height: 720px;
+    
+}
+
+
+
+.tablinks {
+    text-decoration-line: none;
+    display: block;
+    margin-top: 10%;
+    margin-left: 10%;
+    font-size: 18px;
+    color: #262626
+}
+
+
+#mylist2{
+    margin-left:10%;
+}
+
+.mylist b{
+    font-size:20px;
+}
+
+.mylist a:hover:enabled {
+    cursor: pointer;
+}
+    a:active:enabled, a:focus:enabled, a:hover:enabled, .mylist a:hover {
+        color: black !important;
+        
+    }
+/*
+.tablinks #triango:focus {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg) !important;
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+}*/
+
+
+/* 右側------------------------------------------------------------------------------------------------ */
+#rigtil {
+    font-size: 20px;
+}
+
+b{
+    font-size: 18px;
+}
+
+p{
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+}
+
+.mycon{
+    margin-top: 90px;
+    padding-top:3.5%;
+    height: 720px;
+}
+
+
+
+#tabtitle{
+    border: 1px;
+    border-bottom-style: solid;
+}
+
+
+
+#infopage> b{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 14px;
+    color: black;
+    
+}
+#infopage>p{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 14px;
+    color: black;
+    
+}
+
+#infopage a {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    color: black;
+    cursor: pointer;
+}
+
+
+
+.myadd{
+    font-weight: bold;
+    border:none;
+    background-color:#6D7B72;
+    color: white;
+    width:180px;
+    height:40px;
+}
+
+
+td>button{
+    font-weight: bold;
+    border:none;
+    background-color:black;
+    color: white;
+    width:90px;
+    height:35px;
+    margin:0px;
+    padding:0px;
+}
+
+/* 查閱---------------------------------------------------------------------------------------- */
+
+.mysend{
+    font-weight: bold;
+    border:none;
+    background-color:#FF6733;
+    color: white;
+    width:90px;
+    height:35px;
+}
+
+.mycancel{
+    font-weight: bold;
+    border:none;
+    background-color:#000000;
+    color: white;
+    width:90px;
+    height:35px;
+}
+
+.serbut{
+    font-weight: bold;
+    border: none;
+    background-color: #FF6733;
+    color: white;
+    width: 90px;
+    height: 35px;
+}
+

@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @* <link rel="icon" type="image/x-icon" href="~/nail-polish.ico"> *@
+    <link rel="icon" href="~/messageImage_1675689510333.jpg" type="image/png" sizes="16x16">
+    <title>@ViewData["Title"] - NailIt</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/Ansel_Layout.css">
+    <link rel="stylesheet" href="~/AnselLib/Ansel_Common.css">
+    @RenderSection("Head", required: false)
+</head>
+
+<body>
+    <nav id="mynav" style="z-index: 1030;">
+        <div class="row opacity-25 p-0 " id="navall">
+            <div class="col-1 p-0"></div>
+            <div class="col-2 d-flex align-items-center" id="brand">
+                <a href="/TanTanLib/html/cover.html">
+                    <img class="Navimg" src="~/YiPLib/UploadFolder/70.png"/>
+                </a>
+            </div>
+            <div class="col-3">
+                <ul class="navmid d-flex justify-content-between align-items-center p-0 pt-2">
+                    <li><a href="/YiPLib/Fliter.html"> 美 甲 查 詢 </a></li>
+                    <li><a href="/Community/Index"> 美 甲 小 天 地 </a></li>
+                    <li><a href="#"> 關 於 我 們 </a></li>
+                </ul>
+            </div>
+            <div class="col-4 pt-3">
+                <p class="navend1"><a id="huiORreg" style="color:black" href="../YueRegister.html"> 註冊&nbsp</a> / <a id="loginORout" style="color:black" href="../Yuelogin.html"> &nbsp登入 </a></p>
+            </div>
+            <div class="col-1 d-flex align-items-center justify-content-end navend2">
+                <div style="position:relative">
+                    <img class="mt-1 mr-3 cursor-pointer" id="chat" src="~/images/chat-box.png" onclick="showChatPage()">
+                    <div class="unread-badge-message bg-danger rounded-circle d-none"></div>
+                </div>
+                <div class="dropdown">
+                    <img class="cursor-pointer dropbtn-sysNotic" src="~/images/notification.png" onclick="showSysNotic()">
+                    <div class="unread-badge-sysNotic bg-danger rounded-circle d-none"></div>
+                    <div id="sysNoticDropDown" class="dropdown-content dropdown-content-sysNotic rounded" style="background-color:#ccc;max-width:450px">
+                        <a class="drop-sysNotic-item">--目前沒有未讀系統訊息--</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1 p-0"></div>
+        </div>
+    </nav>
+
+    <div id="mainPadding" class="d-flex justify-content-center" style="min-height:95vh">
+        <main id="mainBackground" role="main" class="col-sm-10 default-margin">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="" style="height:320px;">
+        <div class="row p-0">
+            <div class="col-1 "></div>
+            <div class="col-10">
+                <div id="footit">
+                    <b style="font-family:Cascadia Mono SemiBold;">關於Nail it</b>
+                    <b>檢舉</b>
+                    <b>隱私權政策</b>
+                    <b>防詐騙宣導</b>
+                </div>
+                <div id="footpre">
+                    <pre>
+地址：408台中市南屯區公益路二段51號18樓
+客服信箱：Nailit@gmail.com
+客服電話： 04 -2326-5860
+        </pre>
+                </div>
+                <div id="footcopy">
+                    <p style="font-size: 12px;font-family:Franklin Gothic Book;">
+                        Copyright ©2022 MSIT44TEAM1
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/YueJs/loginCheck.js"></script>
+    <script src="~/js/Ansel_Layout.js"></script>
+    <script src="~/AnselLib/Ansel_Service.js"></script>
+    <script src="~/AnselLib/Ansel_Common.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

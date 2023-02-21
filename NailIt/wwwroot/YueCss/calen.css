@@ -1,0 +1,87 @@
+﻿.calendar {
+    width: 95%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-left: 0.5rem;
+    /* days */
+    /* dates */
+}
+
+    .calendar .header {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+        .calendar .header .currentDate {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-align: center;
+            min-width: 20vmin;
+            color: #FF6733;
+        }
+
+        .calendar .header button {
+            border: 1px solid transparent;
+            outline: none;
+            background-color: transparent;
+            cursor: pointer;
+            transition: all 0.5s;
+            font-size: 1.2rem;
+        }
+
+            .calendar .header button:hover {
+                color: red;
+            }
+
+    .calendar .days {
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+        padding: 2px 0;
+        font-size: 0.8rem;
+        color: var(--accent-color);
+    }
+
+    .calendar .dates {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 8px;
+    }
+
+    .calendar .date {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        padding: 8px 5px;
+        transition: all 0.3s;
+        border: 2px solid transparent;
+        color: rgba(0, 0, 0, 0.36);
+        cursor: pointer;
+        background-color: transparent;
+        box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+        .calendar .date.currentMonth {
+            color: #000;
+        }
+
+        .calendar .date:hover,
+        .calendar .date.selected {
+            border-color: var(--accent-color);
+            color: orangered;
+        }
+
+        .calendar .date.selected {
+            background-color: var(--accent-color);
+            color: orangered;
+        }
+
+/* .calendar .btnnotclick {
+            pointer-events: none;   
+            background-color: rgba(0, 0, 0, 0.1);
+        } */
+

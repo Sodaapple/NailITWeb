@@ -1,0 +1,276 @@
+/*#region Font*/
+/*#endregion*/
+
+#avatar {
+  font-size: 24px;
+  display: none;
+  aspect-ratio: 1 / 1;
+  color: rgb(255, 255, 255);
+  width: 60px;
+}
+
+.thumbnail {
+  max-width: 100%;
+  height: 137px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 0.25rem;
+}
+
+.data-memberId {
+  border-bottom: 1px black solid  
+}
+
+/*#region Modal*/
+.btnMemberSend{
+  border: none;
+  color: #fff;
+  height: 27px;
+  width: 79px;
+  font-size: 15px;
+}
+.btnEdit{
+  border: none;
+  color: #fff;
+  height: 24px;
+  width: 65px;
+  font-size: 13px;
+
+}
+.btnCancel{
+  background-color: #7F7F7F;
+}
+.btnExecute{
+  background-color: #FF6733;
+}
+.account{
+  /* font-size: 13px; */
+  color: #818181;
+}
+.accountMain{
+  font-size: 13px;
+  color: #818181;
+}
+.replyDiff{
+  font-size:13px;
+  color: #818181;
+}
+#ModalArticleReplyCount{
+  font-size:13px;
+  color: #818181;
+}
+/*#endregion*/
+
+/*#region Side nav*/
+.communityUl>li {
+  margin-bottom: 10px;
+}
+
+.communityUl>li>a {
+  cursor: pointer;
+}
+
+.communityUl>li>a:hover {
+  border-bottom: 1px solid #000;
+}
+
+/*#endregion*/
+
+
+/*#region Fixed new article button*/
+#btnNewArticle {
+  font-size: 30px;
+  position: fixed;
+  right: 4vw;
+  bottom: 10vh;
+}
+
+/*#endregion*/
+
+
+/*#region Editable*/
+/* set only one picture a row, and center */
+.titleArea {
+  width: 100%;
+  min-height: 6vh;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+
+.contentArea {
+  width: 100%;
+  min-height: 50vh;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+.editable[placeholder]:empty:before {
+  content: attr(placeholder);
+  color: #555;
+}
+
+.editable[placeholder]:empty:focus:before {
+  content: "";
+}
+
+/*#endregion*/
+
+
+
+/*#region border_bottom_Input*/
+.border_bottom_Input {
+  border: none;
+  border-bottom: 1px solid #000;
+}
+
+.border_bottom_Input:focus-visible {
+  outline: none;
+}
+
+/*#endregion*/
+
+
+
+/*#region Dropdown*/
+.dropbtn {
+  /* background-color: #04AA6D; */
+  /* color: white; */
+  /* padding: 16px; */
+  /* font-size: 16px; */
+  border: none;
+  cursor: pointer;
+}
+
+/* .dropbtn:hover, .dropbtn:focus {
+} */
+.dropdown {
+  float: right;
+  position: relative;
+  /* display: inline-block; */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  /* min-width: 160px; */
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  right: 0;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 5px 10px;
+  text-decoration: none;
+  display: block;
+  white-space: nowrap;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
+
+/*#endregion*/
+
+
+
+/*#region The snackbar*/
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+  visibility: hidden;
+  /* Hidden by default. Visible on click */
+  min-width: 250px;
+  /* Set a default minimum width */
+  margin-left: -125px;
+  /* Divide value of min-width by 2 */
+  background-color: #333;
+  /* Black background color */
+  color: #fff;
+  /* White text color */
+  text-align: center;
+  /* Centered text */
+  border-radius: 2px;
+  /* Rounded borders */
+  padding: 16px;
+  /* Padding */
+  position: fixed;
+  /* Sit on top of the screen */
+  z-index: 1;
+  /* Add a z-index if needed */
+  left: 50%;
+  /* Center the snackbar */
+  bottom: 30px;
+  /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.snackShow {
+  visibility: visible;
+  /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+/*#endregion*/

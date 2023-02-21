@@ -1,0 +1,623 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+// 當按鈕不能點擊時
+$btnnotclcik: rgba(0, 0, 0, 0.1);
+
+// .container-fluid {
+
+// }
+.row {
+
+    // 主體 div 包含上中下
+    .main-item {
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .header-item {
+            font-size: 18px;
+
+            .link {
+                font-weight: bold;
+                .LinkTo:hover {
+                    color: #FF6733;
+                    text-decoration: none;
+                    transition: .2s;
+                }
+                .LinkNow {
+                    color: #FF6733;
+                }
+            }
+        }
+
+        // 中間資訊欄 照片加文字
+        .middle-item {
+            margin-top: 20px;
+            height: 400px;
+
+            // 左邊縮圖
+            .photo-little {
+                width: 150px;
+
+                // overflow: scroll;
+                // overflow-x: hidden;
+                .photocontainer {
+                    height: 350px;
+                    overflow: scroll;
+
+                    .smallphoto {
+                        margin: 10px 0 10px 0;
+                        max-width: 150px;
+                        max-height: 150px;
+
+                        img {
+                            height: 100px;
+                            width: 100%;
+                            object-fit: cover;
+                        }
+
+                        &:first-child {
+                            margin-top: 0;
+                        }
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+
+
+                }
+
+                .photobtn {
+                    font-size: 16px;
+                    width: 100%;
+                    border: 0;
+                    color: white;
+                    background-color: gray;
+                }
+            }
+
+            // 中間大圖
+            .photo-big {
+                max-width: 400px;
+                max-height: 400px;
+                // 左右間距
+                margin-left: 15px;
+
+                img {
+                    width: 400px;
+                    height: 400px;
+                    object-fit: contain;
+                }
+            }
+
+            // 右邊商品介紹
+            .product-info {
+                margin-left: 40px;
+                position: relative;
+                #demoSetContent {
+                    font-size: 18px;
+                    color: gray;
+                }
+                // 商品標籤
+                .product-tag {
+                    height: 200px;
+                    margin: 20px 0;
+
+                    a {
+                        display: inline-block;
+                        padding: 3px 10px;
+                        margin: .2rem .5rem;
+                        font-size: 16px;
+
+                        border: 2px solid black;
+                        border-radius: 1.5rem;
+
+                        &:hover {
+                            color: white;
+                            background-color: black;
+                            transition: .5s;
+                        }
+                    }
+                }
+
+                // 尾部檢舉 預約按鈕
+                .product-footer {
+                    position: absolute;
+                    bottom: 0px;
+                    left: 0px;
+
+                    .reportbtn {
+                        margin-bottom: 25px;
+
+                        button {
+                            // font-size: 16px;
+                            border: 0;
+                            background-color: white;
+                        }
+                    }
+
+                    .reservebtn {
+                        button {
+                            padding: 5px 50px;
+                            font-size: 18px;
+                            text-align: center;
+                            // 文字間距
+                            letter-spacing: .25rem;
+                            color: white;
+                            background-color: black;
+                            border: 1px black;
+
+                            &:hover {
+                                background-color: #3498db;
+                                color: #fff;
+                                transition: .5s;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 底部資訊欄
+    .footter-item {
+        margin: 20px 0;
+
+        .footer-info {
+            p {
+                padding: 0 0 .3rem 1rem;
+                font-size: 20px;
+                border-bottom: 2px solid black;
+            }
+        }
+
+        .footer-container {
+            p {
+
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+.pt90 {
+    padding-top: 90px;
+}
+
+// 彈出視窗 設計 
+#alert_div,
+#repalert_div {
+    position: fixed;
+    top: 18%;
+    left: 20%;
+    background-color: white;
+    width: 800px;
+    height: 450px;
+    //border: 2px solid #3498db;
+    box-shadow: 12px 12px 7px rgba(0, 0, 0, 0.4);
+    animation-name: oxxo;
+    animation-duration: 0.5s;
+    z-index: 3;
+}
+
+
+@keyframes oxxo {
+    from {
+        top: 0%;
+    }
+
+    to {
+        top: 18%;
+    }
+}
+
+// 背後灰色遮照
+#hohodiv,
+#rephohodiv {
+    position: fixed;
+    backdrop-filter: blur(2px);
+    background: rgba(128, 128, 128, 0.329);
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    z-index: 2;
+}
+
+.isShow {
+    display: block;
+}
+
+.isHide {
+    display: none;
+}
+
+.alert_div-header {
+    text-align: right;
+
+    button {
+        padding: 0;
+        margin-right: 10px;
+        font-size: 20px;
+        border: 0;
+        background-color: white;
+    }
+}
+
+// 表單 css
+.form-info {
+
+    // height: 500px;
+    .form-header {
+        height: 80px;
+    }
+
+    // 進度條CSS
+    .Progress {
+        width: 100%;
+        position: absolute;
+        display: flex;
+        text-transform: uppercase;
+
+        .line {
+            --c: #3498db;
+            width: 100px;
+            height: 100px;
+            position: relative;
+            margin-left: 5rem;
+            display: flex;
+            justify-content: center;
+            color: var(--c);
+
+            .step {
+                font-size: 24px;
+                line-height: 50px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                border: 1px solid var(--c);
+                text-align: center;
+                position: absolute;
+                background: white;
+
+                &::before {
+                    content: attr(datatext);
+                    width: 150px;
+                    position: absolute;
+                    font-size: 16px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    bottom: -40px;
+
+                }
+
+                &::after {
+                    content: "";
+                    width: 150px;
+                    height: 2px;
+                    background: var(--c);
+                    position: absolute;
+                    top: 25px;
+                    overflow: hidden;
+                    z-index: -1;
+                }
+            }
+
+        }
+
+        // .line:nth-child(1) .step {
+        //     background-color: #FF6733;
+        //     color: #333;
+        //     transition: .5s;
+        //     &::after {
+        //         background: #FF6733;
+        //         transition: .5s;
+        //     }
+        // }
+        .line:nth-child(4) .step::after {
+            content: none;
+        }
+    }
+
+    // 表單中間主體內容 往下切分兩份 step-container 
+    .form-container {
+        width: 100%;
+        height: 330px;
+        margin: auto;
+        // text-align: center;
+    }
+
+    // 步驟內容
+    .step-container {
+        //border: 1px solid salmon;
+        padding: 0;
+
+        .itemBx {
+            margin: .5rem 0;
+
+            label {
+                width: 75px;
+                text-align: left;
+                padding: 0;
+            }
+
+            select,
+            input {
+                width: 250px;
+            }
+        }
+
+        // 日曆 CSS
+        .calendar {
+            width: 95%;
+            user-select: none;
+            margin-left: .5rem;
+
+            .header {
+                display: flex;
+                justify-content: space-evenly;
+
+                // margin-bottom: 20px;
+                .currentDate {
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    color: var(--accent-color);
+                    text-align: center;
+                    min-width: 20vmin;
+                    color: #FF6733;
+                }
+            }
+
+            .header button {
+                border: 1px solid transparent;
+                outline: none;
+                background-color: transparent;
+                cursor: pointer;
+                // padding: 0 1px;
+                transition: all 0.5s;
+                font-size: 1.2rem;
+            }
+
+            .header button:hover {
+                // border: 2px solid var(--accent-color);
+                color: red;
+            }
+
+            /* days */
+            .days {
+                display: flex;
+                justify-content: space-around;
+                text-align: center;
+                padding: 2px 0;
+                font-size: .8rem;
+                color: var(--accent-color);
+            }
+
+            /* dates */
+            .dates {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                gap: 8px;
+            }
+
+            .date {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1rem;
+                padding: 8px 5px;
+                transition: all 0.3s;
+                border: 2px solid transparent;
+                color: rgba(0, 0, 0, 0.36);
+                cursor: pointer;
+                background-color: transparent;
+                box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+
+            }
+
+            .date.currentMonth {
+                color: #000;
+            }
+
+            .date:hover,
+            .date.selected {
+                border-color: var(--accent-color);
+                color: orangered;
+            }
+
+            .date.selected {
+                background-color: var(--accent-color);
+                color: orangered;
+            }
+
+            .btnnotclick {
+                pointer-events: none;
+                background-color: $btnnotclcik;
+            }
+        }
+
+        // 選擇時間 CSS
+        .time-container {
+            .container {
+                padding-top: 15px;
+
+                .remark {
+                    font-size: 14px;
+                    padding-right: .2rem;
+
+                    p {
+                        margin: .1rem 0;
+                    }
+                }
+            }
+
+            #radio input[type="radio"] {
+                display: none;
+            }
+
+            #radio input:checked+.button {
+                background: #FF6733;
+                color: #fff;
+                cursor: default;
+            }
+
+            #radio .button {
+                display: inline-block;
+                margin: 0 5px 5px 0;
+                padding: 5px 5px;
+                background: #f7f7f7;
+                color: #333;
+                cursor: pointer;
+            }
+
+            #radio .button:hover {
+                transition: .3s;
+                background: rgba(255, 145, 0, 0.5);
+                color: #fff;
+            }
+
+            #radio .round {
+                border-radius: 5px;
+            }
+
+            #radio .btnnotclick {
+                background-color: rgba(128, 128, 128, 0.8);
+
+                &:hover {
+                    color: #333;
+                    background-color: rgba(128, 128, 128, 0.8);
+                }
+            }
+        }
+
+        // 訂單確認細節CSS
+        .rescheck {
+            font-weight: 600;
+            letter-spacing: 1px;
+
+            .title {
+                width: 90px;
+                font-size: 20px;
+                line-height: 26px;
+                color: #3498db;
+            }
+
+            .text {
+                font-size: 20px;
+                text-align: left;
+            }
+        }
+
+        // 底部按鈕
+        .form-footerbtn {
+            // height: 50px;
+            // margin-top: 40px;
+            // padding-right: 30px;
+            text-align: center;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            // justify-content: space-between;
+            .btn-box {
+
+                // height: 30px;
+                // position: absolute;
+                // top: 0;
+                // left: 0;
+                // bottom: 0;
+                // right: 0;
+                button {
+                    // margin: 0 5px;
+                    padding: .2rem .4rem;
+                    border: 0;
+                }
+
+                .cancelbtn {
+                    color: white;
+                    background-color: gray;
+                }
+
+                .stepbtn {
+                    color: white;
+                    background-color: orangered;
+                }
+            }
+
+
+
+        }
+    }
+}
+
+// 檢舉表單
+#reportform {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    padding: 0 0 0 2rem;
+
+    input {
+        width: 80%;
+    }
+
+    .reporttext textarea {
+        width: 50;
+        height: 250px;
+    }
+
+    .reportbot {
+        width: 100%;
+        text-align: right;
+        padding: 1.5rem 3rem 0 0;
+
+        button {
+            width: 6rem;
+            font-size: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+    }
+}
+
+// 星星數CSS
+.starBx {
+    display: flex;
+
+    //padding-left: 1rem;
+    .ratings {
+        margin: 0 .1rem;
+        line-height: 24px;
+        position: relative;
+        vertical-align: middle;
+        display: inline-block;
+        color: #ddd;
+        /*背景星星顏色*/
+        overflow: hidden;
+        font-size: 20px;
+        /*調整字體大小可放大縮小星星*/
+        text-shadow: 0px 1px 0 #999;
+    }
+
+    .full_star {
+        /* width: 50%; */
+        /*調整寬度可變更星等*/
+        position: absolute;
+        left: 0;
+        top: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        color: #FFC000;
+        line-height: 24px;
+        /*前景星星顏色*/
+    }
+
+    .starContext p {
+        padding: 0;
+    }
+}

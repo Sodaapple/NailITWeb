@@ -1,0 +1,2008 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品頁面</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js"></script>
+    <link rel="icon" type="image/x-icon" href="../messageImage_1675689510333.jpg">
+    <style>
+
+              .ColorsRadio, .TagRadio {
+                  display: none;
+              }
+
+              .DisplayCircle {
+                  width: 25px;
+                  height: 25px;
+                  border-radius: 50%;
+              }
+
+                  .DisplayCircle:hover {
+                      /*        border-radius: 0%;
+                   width: 25px;
+                   height: 25px;*/
+                      /*border: solid red 5px;*/
+                      /*transition: 1s;*/
+                      cursor: pointer;
+                  }
+
+              .TagLabel {
+                  border: solid gray 1px;
+                  border-radius: 10px;
+                  padding-top: 1px;
+                  padding-bottom: 1px;
+                  font-size: 13px;
+              }
+
+                  .TagLabel:hover {
+                      background-color: gray;
+                      color: white;
+                  }
+
+              .NowLabel {
+                  border: solid gray 1px;
+                  border-radius: 10px;
+                  padding-top: 1px;
+                  padding-bottom: 1px;
+                  font-size: 13px;
+                  background-color: gray;
+                  color: white;
+              }
+
+              /*range*/
+
+              .RangeContainer {
+                  display: flex;
+                  flex-direction: column;
+                  /*width: 80%;*/
+                  margin: 10% auto;
+              }
+
+              .SliderControl {
+                  position: relative;
+                  /*min-height: 50px;*/
+                  height: 20px;
+              }
+
+              .FromControl {
+                  position: relative;
+                  display: flex;
+                  justify-content: space-between;
+                  color: #635a5a;
+              }
+
+              input[type=range]::-webkit-slider-thumb {
+                  -webkit-appearance: none;
+                  pointer-events: all;
+                  border-radius: 50%;
+                  cursor: pointer;
+                  background-color: #fff;
+                  box-shadow: 0 0 0 1px #C6C6C6;
+                  width: 12px;
+                  height: 12px;
+              }
+
+                  input[type=range]::-webkit-slider-thumb:hover {
+                      background: #f7f7f7;
+                  }
+
+                  input[type=range]::-webkit-slider-thumb:active {
+                      box-shadow: inset 0 0 3px #387bbe, 0 0 9px #387bbe;
+                      -webkit-box-shadow: inset 0 0 3px #387bbe, 0 0 9px #387bbe;
+                  }
+
+              input[type="number"] {
+                  color: #8a8383;
+                  border: none;
+                  width: 60px;
+              }
+
+              input[type=number]::-webkit-inner-spin-button,
+              input[type=number]::-webkit-outer-spin-button {
+                  opacity: 1;
+              }
+
+              input[type="range"] {
+                  -webkit-appearance: none;
+                  appearance: none;
+                  height: 2px;
+                  width: 100%;
+                  position: absolute;
+                  pointer-events: none;
+                  background-color: #C6C6C6;
+              }
+
+              #FromSlider {
+                  height: 0;
+                  z-index: 1;
+              }
+              /*range-end-*/
+
+              .heart {
+                  font-size: 7px;
+                  position: absolute;
+                  color: rgb(180, 180, 180);
+                  font-weight: bold;
+                  /*top:4px;*/
+                  margin-top: 4px;
+                  margin-left: -0.5px;
+                  /*margin-top:-36px;*/
+              }
+
+              #Ctitle {
+                  margin-top: 24px;
+                  font-size: 20px;
+              }
+
+              #Sortdiv {
+                  margin-top: 24px;
+              }
+
+              .Coverdiv {
+                  display: flex;
+                  flex-wrap: wrap;
+                  /*margin-left: 90px;*/
+                  margin-left: 30px;
+              }
+
+              .Cover {
+                  /*margin-right: 70px;*/
+                  /*margin-right: 25px;*/
+                  height: 180px;
+                  width: 180px;
+                  object-fit: cover;
+                  object-position: center;
+              }
+
+              .Searchbar {
+                  padding: 10px;
+                  font-size: 16px;
+                  border: 1px solid grey;
+                  float: left;
+                  max-width: 200px;
+                  height: 35px;
+              }
+
+              .Searchbtn {
+                  background-color: black;
+                  float: left;
+                  /*width: 15%;*/
+                  padding-top: 1px;
+                  padding-bottom: 1px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  color: white;
+                  font-size: 20px;
+                  border: 1px solid black;
+                  border-left: none;
+                  cursor: pointer;
+                  height: 35px;
+                  min-width: 20px;
+                  min-height: 20px;
+              }
+
+                  .Searchbtn:hover, .ClearBtn:hover {
+                      background: #D0CECE;
+                  }
+
+              #SortSelect {
+                  width: 130px;
+                  border: none;
+              }
+
+                  #SortSelect:focus {
+                      outline: none;
+                  }
+
+              .Clickme {
+                  border: hidden;
+                  position: absolute;
+                  /*top: -60px;*/
+                  /*margin-left: 70px;*/
+                  /*margin-right: 70px;*/
+                  left: 25px;
+                  top: 130px;
+                  padding-top: 5px;
+                  padding-bottom: 5px;
+                  padding-left: 50px;
+                  padding-right: 50px;
+                  /*width:100px;*/
+                  text-align: center;
+                  background-color: white;
+                  color: black;
+                  z-index: 99;
+                  visibility: hidden;
+              }
+
+                  .Clickme:hover {
+                      background-color: black;
+                      color: white;
+                      z-index: 99;
+                  }
+
+              .Seemore {
+                  /*            margin-left: 30px;*/
+                  margin-right: 30px;
+                  overflow: hidden;
+              }
+
+                  .Seemore:hover > .Clickme {
+                      visibility: visible;
+                  }
+
+                  .Seemore:hover {
+                      filter: grayscale(20%);
+                  }
+
+                      .Seemore:hover > .Cover {
+                          transition: 1s;
+                          transform: scale(1.1);
+                      }
+              /*連結CSS (路徑) Start*/
+              .LinkTo {
+                  color: black;
+              }
+
+                  .LinkTo:hover {
+                      color: #FF6733;
+                      text-decoration: none;
+                  }
+              /*當前連結CSS*/
+              .LinkNow {
+                  color: #FF6733;
+                  font-weight: bold;
+              }
+              /*連結CSS END*/
+
+              .ForSingle {
+                  padding: 3px;
+                  /*color: rgb(230 51 73);*/
+                  color: #FF6733;
+                  transition: all .3s linear;
+                  cursor: pointer;
+                  position: relative;
+              }
+
+                  .ForSingle:after {
+                      content: '';
+                      width: 100%;
+                      height: 1px;
+                      /*background-color: rgb(230 51 73);*/
+                      background-color: #FF6733;
+                      position: absolute;
+                      bottom: 0px;
+                      left: 0;
+                      transition: all .3s linear;
+                  }
+
+
+              .ForCombo {
+                  padding: 3px;
+                  /*color: rgb(71 189 101);*/
+                  color: #7F7F7F;
+                  transition: all .3s linear;
+                  cursor: pointer;
+                  position: relative;
+              }
+
+                  .ForCombo:after {
+                      content: '';
+                      width: 0%;
+                      height: 1px;
+                      /*background-color: rgb(71 189 101);*/
+                      background-color: #7F7F7F;
+                      position: absolute;
+                      bottom: 0px;
+                      left: 0;
+                      transition: all .3s linear;
+                  }
+
+                  .ForCombo:hover::after {
+                      width: 100%;
+                  }
+
+              .NowSingle {
+                  padding: 3px;
+                  /*color: rgb(230 51 73);*/
+                  color: #7F7F7F;
+                  transition: all .3s linear;
+                  cursor: pointer;
+                  position: relative;
+              }
+
+                  .NowSingle:after {
+                      content: '';
+                      width: 0%;
+                      height: 1px;
+                      /*background-color: rgb(230 51 73);*/
+                      background-color: #7F7F7F;
+                      position: absolute;
+                      bottom: 0px;
+                      left: 0;
+                      transition: all .3s linear;
+                  }
+
+                  .NowSingle:hover::after {
+                      width: 100%;
+                  }
+
+              .NowCombo {
+                  padding: 3px;
+                  /*color: rgb(71 189 101);*/
+                  color: #FF6733;
+                  transition: all .3s linear;
+                  cursor: pointer;
+                  position: relative;
+              }
+
+                  .NowCombo:after {
+                      content: '';
+                      width: 100%;
+                      height: 1px;
+                      /*background-color: rgb(71 189 101);*/
+                      background-color: #FF6733;
+                      position: absolute;
+                      bottom: 0px;
+                      left: 0;
+                      transition: all .3s linear;
+                  }
+
+              .ForClear {
+                  padding: 3px;
+                  /*color: rgb(105 121 204);*/
+                  color: #000000;
+                  cursor: pointer;
+              }
+
+                  .ForClear:hover {
+                      color: #FF6733;
+                  }
+
+
+              .QryBtn {
+                  padding-top: 2px;
+                  padding-bottom: 2px;
+                  padding-left: 50px;
+                  padding-right: 50px;
+                  color: white;
+                  background-color: black;
+                  border: none;
+              }
+
+                  .QryBtn:hover {
+                      background: #D0CECE;
+                      border: none;
+                  }
+
+              .SelectStyle {
+                  border: none;
+                  width: 110px;
+                  text-align: center;
+              }
+
+                  .SelectStyle:focus {
+                      outline: none;
+                  }
+
+              /*DD*/
+              * {
+                  margin: 0;
+                  padding: 0;
+              }
+
+              html {
+                  overflow-y: auto;
+                  overflow-x: hidden;
+              }
+
+              #mynav {
+                  width: 100%;
+                  height: 90px;
+                  position: fixed;
+                  background-position-x: 0px;
+                  font-size: 16px;
+                  background-color: white;
+                  opacity: .9;
+                  z-index: 9999;
+              }
+
+              #navall > div {
+                  /* background-color: blue; */
+                  max-height: 100%;
+                  /* 待研究 */
+                  height: 90px;
+              }
+
+              #brand {
+                  font-family: Cascadia Mono SemiBold;
+                  font-size: 30px;
+                  color: black;
+                  height: 100%;
+              }
+
+                  #brand a,
+                  #brand a:link,
+                  #brand a:visited,
+                  #brand a:active {
+                      color: black;
+                      text-decoration-line: none;
+                  }
+
+
+
+              .navmid {
+                  /* background-color: blue; */
+                  height: 100%;
+              }
+
+                  .navmid > li {
+                      display: inline;
+                      color: black;
+                  }
+
+                      .navmid > li > a {
+                          color: black;
+                          font-weight: bold;
+                      }
+
+                          .navmid > li > a:hover {
+                              text-decoration-line: underline;
+                              text-decoration-thickness: 1.5px;
+                              text-underline-offset: 7px;
+                          }
+
+              .navend1 {
+                  /* background-color: darksalmon; */
+                  font-size: 14px;
+                  text-align: right;
+                  font-weight: bold;
+              }
+
+              .navend2 img { /* 因為notice 加入dropDown顯示系統通知訊息有修改格式 */
+                  width: 25px;
+                  /* background-color: blue; */
+              }
+
+              /* 頁尾---------------------------------------------------------- */
+
+              #hid {
+                  background-color: white;
+                  border: 0px solid white;
+                  height: 60px;
+                  margin: 1% 0%;
+              }
+
+
+              footer {
+                  width: 100%;
+                  margin-top: 7%;
+                  background-color: rgb(0, 0, 0);
+                  color: white;
+                  width: 100%;
+              }
+
+
+              #footit {
+                  margin-top: 6%;
+              }
+
+                  #footit b {
+                      font-size: 14px;
+                      margin-right: 1%;
+                  }
+
+              #footpre pre {
+                  color: white;
+                  font-size: 14px;
+              }
+
+              #footpre, #footcopy {
+                  margin-top: 1%;
+              }
+
+              .cursor-pointer {
+                  cursor: pointer;
+              }
+
+              .show {
+                  display: block !important;
+              }
+
+              .unread-badge-message {
+                  position: absolute;
+                  top: 1px;
+                  left: 16px;
+                  width: 10px;
+                  height: 10px;
+              }
+
+              .unread-badge-sysNotic {
+                  position: absolute;
+                  top: 0px;
+                  left: 15px;
+                  width: 10px;
+                  height: 10px;
+              }
+
+              /* dropdown sysNotic---------------------------------------------------------- */
+              /*#region Dropdown*/
+              .dropbtn {
+                  /* background-color: #04AA6D; */
+                  /* color: white; */
+                  /* padding: 16px; */
+                  /* font-size: 16px; */
+                  border: none;
+                  cursor: pointer;
+              }
+
+              /* .dropbtn:hover, .dropbtn:focus {
+        } */
+              .dropdown {
+                  float: right;
+                  position: relative;
+                  /* display: inline-block; */
+              }
+
+              .dropdown-content {
+                  display: none;
+                  position: absolute;
+                  background-color: #f1f1f1;
+                  /* min-width: 160px; */
+                  overflow: auto;
+                  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                  right: 0;
+                  z-index: 1;
+              }
+
+                  .dropdown-content a {
+                      color: black;
+                      padding: 5px 10px;
+                      text-decoration: none;
+                      display: block;
+                      white-space: nowrap;
+                  }
+
+              .dropdown a:hover {
+                  background-color: #ddd;
+              }
+
+              /*#endregion*/
+
+              .Navimg {
+                  height: 70px;
+                  object-fit: cover;
+                  border-radius: 50px;
+              }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid  p-0" id="app">
+
+        <nav id="mynav">
+            <div class="row opacity-25 p-0 " id="navall">
+                <div class="col-1 p-0"></div>
+                <div class="col-2 d-flex align-items-center" id="brand">
+                    <a href="/TanTanLib/html/cover.html">
+                        <img class="Navimg" src="UploadFolder/70.png"/>
+                    </a>
+                </div>
+                <div class="col-3">
+                    <ul class="navmid d-flex justify-content-between align-items-center p-0 pt-2">
+                        <li><a href="/YiPLib/Fliter.html"> 美 甲 查 詢 </a></li>
+                        <li><a href="/Community/Index"> 美 甲 小 天 地 </a></li>
+                        <li><a href="#"> 關 於 我 們 </a></li>
+                    </ul>
+                </div>
+                <div class="col-4 pt-3">
+                    <p class="navend1"><span id="daNick">尚未登入&nbsp&nbsp&nbsp&nbsp&nbsp</span><a id="huiORreg" style="color:black" href="../YueRegister.html"> 註冊&nbsp</a> / <a id="loginORout" style="color:black" href="../Yuelogin.html"> &nbsp登入 </a></p>
+                </div>
+                <div class="col-1 d-flex align-items-center justify-content-end navend2">
+                    <div style="position:relative">
+                        <img class="mt-1 mr-3 cursor-pointer" id="chat" src="../images/chat-box.png" onclick="showChatPage()">
+                        <div class="unread-badge-message bg-danger rounded-circle d-none"></div>
+                    </div>
+                    <div class="dropdown">
+                        <img class="cursor-pointer dropbtn-sysNotic" src="../images/notification.png" onclick="showSysNotic()">
+                        <div class="unread-badge-sysNotic bg-danger rounded-circle d-none"></div>
+                        <div id="sysNoticDropDown" class="dropdown-content dropdown-content-sysNotic rounded" style="background-color:#ccc;max-width:450px">
+                            <a class="drop-sysNotic-item">--目前沒有未讀系統訊息--</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 p-0"></div>
+            </div>
+        </nav>
+
+
+        <div class="row" style="padding-top:90px">
+            <div class="col-1"></div>
+            <!--Left bar-->
+            <div class="col-2">
+                <!--連結Start-->
+                <div>
+                    <a class="LinkTo" href="/TanTanLib/html/cover.html">首頁</a>
+                    <span>></span>
+                    <label class="LinkNow" href="Fliter.html">美甲查詢</label>
+                </div>
+                <!--連結End-->
+                <div class="mt-3">
+                    <div v-if="SelectMethod == 'ShowSingle'">
+                        <label class="ForSingle">
+                            單選查詢
+                            <input class="TagRadio" type="radio" />
+                        </label>
+                        <label class="ForCombo" onclick="ChangeToCombo()">
+                            複選查詢
+                            <input class="TagRadio" type="radio" />
+                        </label>
+                        <label class="ForClear" onclick="ClearSearch()">
+                            清除
+                        </label>
+                        <!--<div>
+                            <button class="ClearBtn ml-1 px-2" onclick="ClearSearch()">清除</button>
+                        </div>-->
+                    </div>
+                    <div v-if="SelectMethod == 'ShowCombo'">
+                        <label class="NowSingle" onclick="ChangeToSingle()">
+                            單選查詢
+                            <input class="TagRadio" type="radio" />
+                        </label>
+                        <label class="NowCombo">
+                            複選查詢
+                            <input class="TagRadio" type="radio" />
+                        </label>
+                        <label class="ForClear" onclick="ClearSearch()">
+                            清除
+                            <input class="TagRadio" type="radio" />
+                        </label>
+                    </div>
+                </div>
+                <!--First Left bar Start-->
+                <div v-if="SelectMethod == 'ShowSingle'">
+                    <div>
+                        <label>地區</label>
+                        <div>
+                            <div>
+                                <select v-model="SelectedCity" class="SelectStyle" onchange="ShowCountry(this)">
+                                    <option value="none" selected disabled hidden>請選擇縣市</option>
+                                    <option v-for="(item,key) in City" v-bind:value="[key]">{{City[key]}}</option>
+                                </select>
+                            </div>
+                            <div class="mt-2">
+                                <select v-model="SelectedArea" class="SelectStyle" v-if="ShowAreas" onchange="ShowArea(this)">
+                                    <option value="none" selected disabled hidden>請選擇地區</option>
+                                    <option v-if="Area" v-for="(item,key) in Area" v-bind:value="Area[key]">{{item}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <label>色彩</label>
+                        <br />
+                        <div v-for="(item,key) in Colors" class="d-inline-flex">
+                            <label class="DisplayCircle mx-1" v-bind:style="ColorStyle[key]">
+                                <input class="ColorsRadio" type="radio" v-bind:value="Colors[key].colorId-1" onclick="ShowColor(this)" />
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label>標籤</label>
+                        <div>
+                            <label class="px-3  mx-1 TagLabel" v-for="(item,key) in Tag">
+                                {{Tag[key].tagName}}
+                                <input class="TagRadio" type="radio" v-bind:value="Tag[key].tagName" onclick="ShowTag(this)" />
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label>價格</label>
+                        <div class="RangeContainer">
+                            <div class="SliderControl">
+                                <!--<input id="FromSlider" type="range" v-bind:value="MinPrice" v-bind:min="MinPrice" v-bind:max="MaxPrice" />-->
+                                <input id="FromSlider" type="range" v-model="SearchMin" v-bind:min="MinPrice" v-bind:max="MaxPrice" />
+                                <!--<input id="ToSlider" type="range" v-bind:value="MaxPrice" v-bind:min="MinPrice" v-bind:max="MaxPrice" />-->
+                                <input id="ToSlider" type="range" v-model="SearchMax" v-bind:min="MinPrice" v-bind:max="MaxPrice" />
+                            </div>
+                            <div class="FromControl">
+                                <div class="ControlContainer">
+                                    <div class="FromLabel">Min</div>
+                                    <!--<input id="Frommininput" class="Frominput" type="number" value="10" min="0" max="100" />-->
+                                    <!--<input id="Frommininput" class="Frominput" type="number" v-bind:value="MinPrice" v-bind:min="MinPrice" v-bind:max="MaxPrice"/>-->
+                                    <input id="Frommininput" class="Frominput" type="number" v-model="SearchMin" v-bind:min="MinPrice" v-bind:max="MaxPrice" />
+                                </div>
+                                <div class="ControlContainer">
+                                    <div class="FromLabel">Max</div>
+                                    <!--<input id="Frommaxinput" class="FromMaxinput" type="number" value="40" min="0" max="100" />-->
+                                    <!--<input id="Frommaxinput" class="FromMaxinput" type="number" v-bind:value="MaxPrice" v-bind:min="MinPrice" v-bind:max="MaxPrice"/>-->
+                                    <input id="Frommaxinput" class="FromMaxinput" type="number" v-model="SearchMax" v-bind:min="MinPrice" v-bind:max="MaxPrice" />
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div>
+                            <button onclick="SeachPrice()">範圍查詢</button>
+                        </div>-->
+                    </div>
+                    <div class="mt-2">
+                        <label>施作部位</label>
+                        <div>
+                            <label class="px-3  mx-1 TagLabel" v-for="(item,key) in CCode">
+                                {{CCode[key].codeRepresent}}
+                                <input class="TagRadio" type="radio" v-bind:value="CCode[key].codeId" onclick="ShowPart(this)" />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!--Second Left bar Start-->
+                <div v-if="SelectMethod == 'ShowCombo'">
+                    <div>
+                        <label>地區</label>
+                        <div>
+                            <div>
+                                <select id="SecCoun" class="SelectStyle" onchange="SecShowCoun(this)">
+                                    <option value="none" selected disabled hidden>請選擇縣市</option>
+                                    <option v-for="(item,key) in City" v-bind:value="[key]">{{City[key]}}</option>
+                                </select>
+                            </div>
+                            <div class="mt-2">
+                                <select v-model="QueryArray.Area" class="SelectStyle" v-if="SecShowArea">
+                                    <option value="none" selected disabled hidden>請選擇地區</option>
+                                    <option v-if="Area" v-for="(item,key) in Area" v-bind:value="Area[key]">{{item}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <label>色彩</label>
+                        <br />
+                        <div v-for="(item,key) in Colors" class="d-inline-flex">
+                            <label class="DisplayCircle mx-1" v-bind:style="ColorStyle[key]">
+                                <pre class="heart" v-if="Displayheart[key]"> ❤</pre>
+                                <input class="ColorsRadio" type="radio" v-bind:value="Colors[key].colorId" v-bind:name="Colors[key].colorId-1" v-model="QueryArray.Color" onclick="ShowHeart(this)" />
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label>標籤</label>
+                        <br />
+                        <div v-for="(item,key) in Tag" class="d-inline-flex">
+                            <label class="px-3  mx-1 TagLabel" v-if="TagisActive[key]">
+                                {{Tag[key].tagName}}
+                                <input class="TagRadio" type="radio" v-bind:value="Tag[key].tagName" v-model="QueryArray.FixedTag" v-bind:name="[key]" onclick="ActiveLabel(this)" />
+                            </label>
+                            <label class="px-3  mx-1 NowLabel" v-else="TagisActive[key]">
+                                {{Tag[key].tagName}}
+                                <input class="TagRadio" type="radio" v-bind:value="Tag[key].tagName" v-model="QueryArray.FixedTag" />
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label>價格</label>
+                        <div class="RangeContainer">
+                            <div class="SliderControl">
+                                <input id="FromSlider" type="range" v-model="QueryArray.SearchMin" v-bind:min="MinPrice" v-bind:max="MaxPrice" />
+                                <input id="ToSlider" type="range" v-model="QueryArray.SearchMax" v-bind:min="MinPrice" v-bind:max="MaxPrice" />
+                            </div>
+                            <div class="FromControl">
+                                <div class="ControlContainer">
+                                    <div class="FromLabel">Min</div>
+                                    <input id="Frommininput" class="Frominput" type="number" v-model="QueryArray.SearchMin" v-bind:min="MinPrice" v-bind:max="MaxPrice" />
+                                </div>
+                                <div class="ControlContainer">
+                                    <div class="FromLabel">Max</div>
+                                    <input id="Frommaxinput" class="FromMaxinput" type="number" v-model="QueryArray.SearchMax" v-bind:min="MinPrice" v-bind:max="MaxPrice" />
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div>
+                            <button onclick="SeachPrice()">範圍查詢</button>
+                        </div>-->
+                    </div>
+                    <div class="mt-2">
+                        <label>施作部位</label>
+                        <br />
+                        <div v-for="(item,key) in CCode" class="d-inline-flex">
+                            <label class="px-3  mx-1 TagLabel" v-if="PartisActive[key]">
+                                {{CCode[key].codeRepresent}}
+                                <input class="TagRadio" type="radio" v-bind:value="CCode[key].codeId" v-model="QueryArray.Part" v-bind:name="[key]" onclick="ActivePart(this)" />
+                            </label>
+                            <label class="px-3  mx-1 NowLabel" v-else="PartisActive[key]">
+                                {{CCode[key].codeRepresent}}
+                                <input class="TagRadio" type="radio" v-bind:value="CCode[key].codeId" v-model="QueryArray.Part" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button class="QryBtn mt-3 " onclick="QryArray()">查詢</button>
+
+                    </div>
+                </div>
+                <!--Second Left bar End-->
+            </div>
+            <!--Left bar End-->
+
+            <div class="col-1"></div>
+            <!--Demo-->
+            <div class="col-7 mt-3">
+                <div class="d-flex justify-content-between">
+                    <div id="Ctitle">
+                        <b>美甲查詢</b>
+                    </div>
+                    <div id="Sortdiv" class="d-flex">
+                        <select v-model="Query" onchange="ChangeQuery(this)" id="SortSelect">
+                            <option value="none" selected disabled hidden>查詢</option>
+                            <option value="QueryM">查詢工作室</option>
+                            <option value="QueryNT">查詢名稱/標籤</option>
+                        </select>
+                        <div v-if="NowQuery=='QueryNT'" class="mx-2">
+                            <input class="Searchbar" type="text" placeholder="作品,標籤" v-model="SearchString">
+                            <button class="Searchbtn" onclick="Searchit()"><i class="fa fa-search"></i></button>
+                        </div>
+                        <div v-if="NowQuery=='QueryM'" class="mx-2">
+                            <input class="Searchbar" type="text" placeholder="工作室" v-model="SearchM">
+                            <button class="Searchbtn" onclick="SearchM()"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between mt-3">
+                    <div>
+                        <p>現在搜尋的條件為：{{QueryCondition}}</p>
+                    </div>
+                    <div class="d-flex">
+                        <p v-if="QueryLength">共計{{QueryLength}}件商品</p>
+                    </div>
+                </div>
+                <div>
+                    <p v-if="QueryNone">查無結果</p>
+                </div>
+                <!--預設-->
+                <div class="d-flex Coverdiv" v-if="QueryResault">
+                    <div v-for="(item,key) in DemoSet">
+                        <div class="Seemore">
+                            <img class="Cover" v-bind:src="DemoSet[key].demoSetCover" />
+                            <button class="Clickme" onclick="Checkit(this)" v-bind:value="DemoSet[key].demoSetId">查看</button>
+                        </div>
+                        <p class="my-1">{{DemoSet[key].demoSetName}}</p>
+                        <p class="mt-1 mb-2">NT${{DemoSet[key].demoSetPrice}}</p>
+                    </div>
+                </div>
+
+                <!--預設END-->
+                <div class="d-flex Coverdiv" v-if="ShowQueryM">
+                    <div v-for="(item,key) in Manicurist">
+                        <div class="Seemore">
+                            <img class="Cover" v-bind:src="Manicurist[key].manicuristPic" />
+                            <button class="Clickme" onclick="CheckM(this)" v-bind:value="Manicurist[key].manicuristId">查看</button>
+                        </div>
+                        <p>{{Manicurist[key].manicuristSalonName}}</p>
+                        <p>{{Manicurist[key].manicuristCounty}}</p>
+                    </div>
+                </div>
+
+            </div>
+            <!--Demo End-->
+            <div class="col-1"></div>
+
+
+
+
+
+
+
+
+        </div>
+
+        <footer class="footer " style="height:320px;">
+            <div class="row p-0">
+                <div class="col-1 "></div>
+                <div class="col-10">
+                    <div id="footit">
+                        <b style="font-family:Cascadia Mono SemiBold;">關於Nail it</b>
+                        <b>檢舉</b>
+                        <b>隱私權政策</b>
+                        <b>防詐騙宣導</b>
+                    </div>
+                    <div id="footpre">
+                        <pre>
+地址：408台中市南屯區公益路二段51號18樓
+客服信箱：Nailit@gmail.com
+客服電話： 04 -2326-5860
+        </pre>
+                    </div>
+                    <div id="footcopy">
+                        <p style="font-size: 12px;font-family:Franklin Gothic Book;">
+                            Copyright ©2022 MSIT44TEAM1
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+        </footer>
+
+
+
+
+    </div>
+
+
+
+
+
+
+    <script src="../YueJs/loginCheck.js"></script>
+    <script src="../js/Ansel_Layout.js"></script>
+    <script src="../AnselLib/Ansel_Service.js"></script>
+    <script src="../AnselLib/Ansel_Common.js"></script>
+
+
+    <!--vue-->
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: function () {
+                return {
+                    City: [],
+                    AreaList: [],
+                    Area: [],
+                    SelectedCity: "none",
+                    SelectedArea: "none",
+                    Colors: [],
+                    ColorStyle: [],
+                    Tag: [],
+                    ShowAreas: false,
+                    CCode: [],
+                    Displayheart: [],
+                    DemoSet: [],
+                    SelectedColor: "",
+                    MaxPrice: 0,
+                    MinPrice: 0,
+                    SearchMin: this.MinPrice,
+                    SearchMax: this.MaxPrice,
+                    Query: "none",
+                    NowQuery: false,
+                    SearchString: "",
+                    SearchM: "",
+                    Manicurist: [],
+                    ShowQueryM: false,
+                    QueryCondition: "尚未選擇",
+                    QueryLength: 0,
+                    QueryNone: false,
+                    QueryResault: true,
+                    DefultDemo: [],
+                    QueryArray: [],
+                    SecShowArea: false,
+                    SelectMethod: "ShowSingle",
+                    TagisActive: [],
+                    PartisActive: [],
+                }
+            },
+            methods: {
+
+            }
+
+        })
+
+
+    </script>
+
+    <!--接網址-->
+    <script>
+
+        let getUrlString = location.href;
+        let url = new URL(getUrlString);
+        let searchCountry = url.searchParams.get('Country');
+        let searchArea = url.searchParams.get('Area');
+        let searchColor = url.searchParams.get('Color');
+        let searchTag = url.searchParams.get('FixTag');
+        let searchMinPrice = url.searchParams.get('Min');
+        let searchMaxPrice = url.searchParams.get('Max');
+        let searchPart = url.searchParams.get('Part');
+        let searchSearchString = url.searchParams.get('search');
+        let searchM = url.searchParams.get('name');
+        let searchManicurist = url.searchParams.get('Manicurist');
+
+    </script>
+
+    <!--range-->
+    <script>
+        const fromSlider = document.querySelector('#FromSlider');
+        const toSlider = document.querySelector('#ToSlider');
+        const fromInput = document.querySelector('#Frommininput');
+        const toInput = document.querySelector('#Frommaxinput');
+        //const controlSlider = document.querySelector('.SliderControl');
+        //console.log(fromSlider);
+        //console.log(toSlider);
+        //fillSlider(fromSlider, toSlider, '#C6C6C6', '#25daa5', toSlider);
+        //toSlider.style.backgroundColor = '#25daa5';
+        setToggleAccessible(toSlider);
+        //fromSlider.oninput = () => controlFromSlider(fromSlider, toSlider, fromInput);
+        fromSlider.oninput = function () {
+            controlFromSlider(fromSlider, toSlider, fromInput);
+            GetPriceMin(fromSlider.value);
+        };
+        //toSlider.oninput = () => controlToSlider(fromSlider, toSlider, toInput);
+        toSlider.oninput = function () {
+            controlToSlider(fromSlider, toSlider, toInput);
+            GetPriceMax(toSlider.value);
+        };
+        fromInput.oninput = function () {
+            controlFromInput(fromSlider, fromInput, toInput, toSlider);
+            GetPriceMin(fromSlider.value);
+
+        };
+        toInput.oninput = function () {
+            controlToInput(toSlider, fromInput, toInput, toSlider);
+            GetPriceMax(toSlider.value);
+
+        };
+
+
+        function fillSlider(from, to, sliderColor, rangeColor, controlSlider) {
+            const rangeDistance = to.max - to.min;
+            //console.log(rangeDistance);
+            const fromPosition = from.value - to.min;
+            const toPosition = to.value - to.min;
+            controlSlider.style.background = `linear-gradient(
+                                        to right,
+                                        ${sliderColor} 0%,
+                                        ${sliderColor} ${(fromPosition) / (rangeDistance) * 100}%,
+                                        ${rangeColor} ${((fromPosition) / (rangeDistance)) * 100}%,
+                                        ${rangeColor} ${(toPosition) / (rangeDistance) * 100}%,
+                                        ${sliderColor} ${(toPosition) / (rangeDistance) * 100}%,
+                                        ${sliderColor} 100%
+                                    )`;
+        }
+
+        function controlFromInput(fromSlider, fromInput, toInput, controlSlider) {
+            const [from, to] = getParsed(fromInput, toInput);
+            fillSlider(fromInput, toInput, '#C6C6C6', '#25daa5', controlSlider);
+            if (from > to) {
+                fromSlider.value = to;
+                fromInput.value = to;
+            } else {
+                fromSlider.value = from;
+            }
+        }
+
+        function controlToInput(toSlider, fromInput, toInput, controlSlider) {
+            const [from, to] = getParsed(fromInput, toInput);
+            fillSlider(fromInput, toInput, '#C6C6C6', '#25daa5', controlSlider);
+            setToggleAccessible(toInput);
+            if (from <= to) {
+                toSlider.value = to;
+                toInput.value = to;
+            } else {
+                toInput.value = from;
+            }
+        }
+
+        function controlFromSlider(fromSlider, toSlider, fromInput) {
+            const [from, to] = getParsed(fromSlider, toSlider);
+            fillSlider(fromSlider, toSlider, '#C6C6C6', '#25daa5', toSlider);
+            if (from > to) {
+                fromSlider.value = to;
+                fromInput.value = to;
+            } else {
+                fromInput.value = from;
+            }
+        }
+
+        function controlToSlider(fromSlider, toSlider, toInput) {
+            const [from, to] = getParsed(fromSlider, toSlider);
+            fillSlider(fromSlider, toSlider, '#C6C6C6', '#25daa5', toSlider);
+            setToggleAccessible(toSlider);
+            if (from <= to) {
+                toSlider.value = to;
+                toInput.value = to;
+            } else {
+                toInput.value = from;
+                toSlider.value = from;
+            }
+        }
+
+        function getParsed(currentFrom, currentTo) {
+            const from = parseInt(currentFrom.value, 10);
+            app.SearchMin = from;
+            const to = parseInt(currentTo.value, 10);
+            app.SearchMax = to;
+            return [from, to];
+        }
+
+        function setToggleAccessible(currentTarget) {
+            const toSlider = document.querySelector('#ToSlider');
+            if (Number(currentTarget.value) <= 0) {
+                toSlider.style.zindex = 2;
+            } else {
+                toSlider.style.zindex = 0;
+            }
+        }
+
+
+
+    </script>
+
+
+    <!--AJAX-->
+    <script>
+
+        $.ajax({
+            type: "get",
+            url: "CityCountyData.json",
+            success: function (e) {
+                //console.log(e);
+                for (let city in e) {
+                    //console.log(e[city].CityName);
+                    app.City.push(e[city].CityName);
+                    app.AreaList.push(e[city].AreaList);
+                    //for (let area in e[city].AreaList) {
+                    //    console.log(e[city].AreaList[area].AreaName);
+                    //}
+                }
+            }
+        });
+
+        $.ajax({
+            type: "get",
+            url: "/api/Color",
+            success: function (e) {
+                //console.log(e);
+                for (color in e) {
+                    app.Colors.push(e[color]);
+                    app.ColorStyle.push({ backgroundColor: e[color].colorCss, border: 'gray solid 1pt' });
+                    app.Displayheart.push(false);
+                }
+                //console.log(app.Displayheart);
+                //app.ColorStyle[12] = ({ background: 'linear-gradient(to right, #fffbd5, #b20a2c)' });
+                app.ColorStyle[4] = ({ backgroundColor: "#F2F2F2", border: 'gray solid 1pt' });
+                app.ColorStyle[12] = ({ backgroundImage: 'linear-gradient(to right, #ed6ea0 0%, #ec8c69 100%)' });
+                app.ColorStyle[13] = ({ backgroundColor: "#FFFFFF", border: 'gray solid 1pt' });
+                //app.ColorStyle[13] = ({ backgroundColor: "#00ffff", border: 'black solid 1pt' });
+                //background - image: linear - gradient(to right, #b8cbb8 0 %, #b8cbb8 0 %, #b465da 0 %, #cf6cc9 33 %, #ee609c 66 %, #ee609c 100 %);
+                //console.log(app.ColorStyle);
+            }
+        });
+
+        $.ajax({
+            type: "get",
+            url: "/api/TagTable",
+            success: function (e) {
+                for (let g = 0; g < 10; g++) {
+                    app.Tag.push(e[g]);
+                    app.TagisActive.push(true);
+                }
+
+                //for (Tag in e) {
+                //    app.Tag.push(e[Tag]);
+                //    app.TagisActive.push(true);
+                //}
+
+            }
+        });
+
+        $.ajax({
+            type: "get",
+            url: "/api/PCodeTable",
+            success: function (e) {
+                //console.log(e);
+                app.CCode = e;
+                for (Part in e) {
+                    app.PartisActive.push(true);
+                }
+
+            }
+        });
+
+        //$.ajax({
+        //    type: "get",
+        //    url: "/api/DemoSet/GetDemoSet",
+        //    success: function (e) {
+        //        app.DemoSet = e;
+        //        app.QueryLength = e.length;
+        //    }
+        //});
+
+        $.ajax({
+            type: "get",
+            url: "/api/DemoSet/GetMaxPrice",
+            success: function (e) {
+                //console.log(e.max);
+                app.MaxPrice = e.max;
+            }
+        });
+
+        $.ajax({
+            type: "get",
+            url: "/api/DemoSet/GetMinPrice",
+            success: function (e) {
+                //console.log(e.max);
+                app.MinPrice = e.min;
+            }
+        });
+
+
+
+
+
+    </script>
+
+    <!--On-->
+    <script>
+        async function ShowCountry(e) {
+            app.Area = [];
+            //console.log(app.AreaList);
+            for (Area in app.AreaList[e.value]) {
+                await app.Area.push(app.AreaList[e.value][Area].AreaName);
+            }
+            app.ShowAreas = true;
+            //console.log(app.City[e.value]);
+            let AreaStr;
+            AreaStr = app.City[e.value].replace("臺", "台");
+            app.QueryCondition = app.City[e.value];
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetCountyDemo/?Country=" + AreaStr,
+                success: function (e) {
+                    //console.log(e.length);
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.Manicurist = [];
+                        app.DemoSet = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (demo in e) {
+                            app.DemoSet.push(e[demo]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+        }
+
+
+        function HoverColor(e) {
+            app.Displayheart[e.value] = true;
+        }
+
+
+        function ShowArea(e) {
+            //console.log(e.value)
+            app.QueryCondition = e.value;
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetAreaDemo/?Area=" + e.value,
+                success: function (e) {
+                    //console.log(e);
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.Manicurist = [];
+                        app.DemoSet = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (demo in e) {
+                            app.DemoSet.push(e[demo]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+        }
+
+        function ShowColor(e) {
+            //console.log(e.value);
+            app.QueryCondition = app.Colors[e.value].colorName;
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetColorDemo/?Color=" + e.value,
+                success: function (e) {
+                    //console.log(e);
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.DemoSet = [];
+                        app.Manicurist = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (demo in e) {
+                            app.DemoSet.push(e[demo]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+        }
+
+        function ShowTag(e) {
+            //console.log(e.value);
+            app.QueryCondition = e.value;
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetFixTagDemo/?FixTag=" + e.value,
+                success: function (e) {
+                    //console.log(e);
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.Manicurist = [];
+                        app.DemoSet = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (demo in e) {
+                            app.DemoSet.push(e[demo]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+        }
+
+        //function SeachPrice() {
+        //    //console.log("MIN"+app.SearchMin);
+        //    //console.log(app.SearchMax);
+        //    $.ajax({
+        //        type: "get",
+        //        url: "/api/DemoSet/GetPriceRange?Min=" + app.SearchMin + "&Max=" + app.SearchMax,
+        //        success: function (e) {
+        //            console.log(e);
+        //            app.Manicurist = [];
+        //            app.DemoSet = [];
+        //            for (demo in e) {
+        //                app.DemoSet.push(e[demo]);
+        //            }
+        //        }
+        //    });
+        //}
+
+        function GetPriceMin(e) {
+            //console.log("MIN"+app.SearchMin);
+            //console.log(app.SearchMax);
+            app.SearchMin = e;
+            //console.log(app.SearchMin);
+            app.QueryCondition = `${app.SearchMin}元至${app.SearchMax}元`;
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetPriceRange?Min=" + app.SearchMin + "&Max=" + app.SearchMax,
+                success: function (e) {
+                    //console.log(e);
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.Manicurist = [];
+                        app.DemoSet = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (demo in e) {
+                            app.DemoSet.push(e[demo]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+        }
+
+        function GetPriceMax(e) {
+            //console.log("MIN"+app.SearchMin);
+            //console.log(app.SearchMax);
+            app.SearchMax = e;
+            //console.log(app.SearchMax);
+            app.QueryCondition = `${app.SearchMin}元至${app.SearchMax}元`;
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetPriceRange?Min=" + app.SearchMin + "&Max=" + app.SearchMax,
+                success: function (e) {
+                    //console.log(e);
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.Manicurist = [];
+                        app.DemoSet = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (demo in e) {
+                            app.DemoSet.push(e[demo]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+        }
+
+        function ShowPart(e) {
+            //console.log(e.value);
+            app.QueryCondition = app.CCode[e.value.substr(1, 1)].codeRepresent;
+
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetPart/?Part=" + e.value,
+                success: function (e) {
+                    //console.log(e);
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.Manicurist = [];
+                        app.DemoSet = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (demo in e) {
+                            app.DemoSet.push(e[demo]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+        }
+
+        function ChangeQuery(e) {
+            //console.log(e.value);
+            app.NowQuery = e.value;
+        }
+
+        function Searchit() {
+            //console.log(app.SearchString);
+            app.QueryCondition = app.SearchString;
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetSearchAllTable?search=" + app.SearchString,
+                success: function (e) {
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.Manicurist = [];
+                        app.DemoSet = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (DS in e) {
+                            app.DemoSet.push(e[DS]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+            //console.log(app.DemoSet);
+        }
+
+        //要多寫一個FOR美甲師的陣列
+        function SearchM() {
+            //console.log(app.SearchM);
+            app.QueryCondition = app.SearchM;
+            $.ajax({
+                type: "get",
+                url: "/api/Manicurist?name=" + app.SearchM,
+                success: function (e) {
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.DemoSet = [];
+                        app.Manicurist = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (M in e) {
+                            app.Manicurist.push(e[M]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+            app.ShowQueryM = true;
+        }
+
+        async function ClearSearch() {
+            app.DemoSet = [];
+            for (e in app.DefultDemo) {
+                await app.DemoSet.push(app.DefultDemo[e]);
+            }
+            //app.DemoSet = app.DefultDemo;
+            app.SearchString = "";
+            app.SearchM = "";
+            app.QueryCondition = "尚未選擇";
+            app.QueryNone = false;
+            app.QueryResault = true;
+
+        }
+
+        function Checkit(e) {
+            window.location = "product.html?id=" + e.value;
+        }
+
+        function CheckM(e) {
+            window.location = "NailDesign.html?id=" + e.value;
+        }
+
+        function clearHeart() {
+            for (Num in app.Displayheart) {
+                app.Displayheart[Num] = false;
+            }
+        }
+
+        async function ShowHeart(e) {
+            await clearHeart();
+            app.Displayheart[e.name] = true;
+        }
+
+        function ChangeToCombo() {
+            clearHeart();
+            app.SelectMethod = 'ShowCombo';
+            ClearTagLabel();
+            ClearPartLabel();
+            ClearSearch();
+            app.Area = [];
+            app.ShowAreas = false;
+            app.SecShowArea = false;
+            app.SelectedCity = "none";
+            $('#SecCoun').val('none');
+        }
+
+        function ChangeToSingle() {
+            clearHeart();
+            app.SelectMethod = 'ShowSingle';
+            ClearTagLabel();
+            ClearPartLabel();
+            ClearSearch();
+            app.Area = [];
+            app.ShowAreas = false;
+            app.SelectedCity = "none";
+            app.QueryArray.City = "none";
+
+        }
+
+        function ClearTagLabel() {
+            for (Num in app.TagisActive) {
+                app.TagisActive[Num] = true;
+            }
+        }
+
+        async function ActiveLabel(e) {
+            await ClearTagLabel();
+            //console.log(e.name);
+            //console.log('--------' + app.TagisActive);
+            app.TagisActive[e.name] = false;
+        }
+
+        function ClearPartLabel() {
+            for (Num in app.PartisActive) {
+                app.PartisActive[Num] = true;
+            }
+        }
+
+        async function ActivePart(e) {
+            await ClearPartLabel();
+            //console.log(e.name);
+            app.PartisActive[e.name] = false;
+            //console.log(app.PartisActive);
+            //console.log(app.PartisActive[e.name]);
+        }
+
+
+
+
+
+    </script>
+
+    <!--複合On-->
+    <script>
+        function QryArray() {
+            app.QueryArray.SearchMin = Number(app.QueryArray.SearchMin);
+            app.QueryArray.SearchMax = Number(app.QueryArray.SearchMax);
+            console.log(app.QueryArray);
+            console.log(app.QueryArray.Color)
+            app.QueryCondition = "複合查詢";
+            $.ajax({
+                type: "get",
+                url: `/api/DemoSet/GetAllQuery?Area=${app.QueryArray.Area}&City=${app.QueryArray.City}&Color=${app.QueryArray.Color}&FixedTag=${app.QueryArray.FixedTag}&Part=${app.QueryArray.Part}&SearchMax=${app.QueryArray.SearchMax}&SearchMin=${app.QueryArray.SearchMin}`,
+                success: function (e) {
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.Manicurist = [];
+                        app.DemoSet = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (demo in e) {
+                            app.DemoSet.push(e[demo]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+        }
+
+
+        async function SecShowCoun(e) {
+            app.Area = [];
+            //console.log(app.AreaList);
+            for (Area in app.AreaList[e.value]) {
+                await app.Area.push(app.AreaList[e.value][Area].AreaName);
+            }
+            app.SecShowArea = true;
+            let SAreaStr;
+            SAreaStr = app.City[e.value].replace("臺", "台");
+            app.QueryArray.City = SAreaStr;
+        }
+
+
+    </script>
+
+    <!--網址-->
+    <script>
+
+        function GetDefultDemo() {
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetDemoSet",
+                success: function (e) {
+                    app.DemoSet = e;
+                    app.QueryLength = e.length;
+                    app.DefultDemo = e;
+                }
+            });
+        }
+
+        function URLShowCountry() {
+            app.QueryCondition = searchCountry;
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetCountyDemo/?Country=" + searchCountry,
+                success: function (e) {
+                    //console.log(e.length);
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.Manicurist = [];
+                        app.DemoSet = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (demo in e) {
+                            app.DemoSet.push(e[demo]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+        }
+
+        function URLShowArea() {
+            app.QueryCondition = searchArea;
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetAreaDemo/?Area=" + searchArea,
+                success: function (e) {
+                    //console.log(e);
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.Manicurist = [];
+                        app.DemoSet = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (demo in e) {
+                            app.DemoSet.push(e[demo]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+        }
+
+        async function URLShowColor() {
+            let GetColorNum = searchColor - 1;
+            let ColorName = [];
+            await $.ajax({
+                type: "get",
+                url: "/api/Color",
+                success: function (e) {
+                    ColorName = e[GetColorNum].colorName;
+                }
+            });
+
+            //console.log(ColorName);
+            app.QueryCondition = ColorName;
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetColorDemo/?Color=" + searchColor,
+                success: function (e) {
+                    //console.log(e);
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.DemoSet = [];
+                        app.Manicurist = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (demo in e) {
+                            app.DemoSet.push(e[demo]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+        }
+
+        function URLShowTag() {
+            //console.log(e.value);
+            app.QueryCondition = searchTag;
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetFixTagDemo/?FixTag=" + searchTag,
+                success: function (e) {
+                    //console.log(e);
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.Manicurist = [];
+                        app.DemoSet = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (demo in e) {
+                            app.DemoSet.push(e[demo]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+        }
+
+        function URLGetPriceMin() {
+            app.QueryCondition = `${searchMinPrice}元至${searchMaxPrice}元`;
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetPriceRange?Min=" + searchMinPrice + "&Max=" + searchMaxPrice,
+                success: function (e) {
+                    //console.log(e);
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.Manicurist = [];
+                        app.DemoSet = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (demo in e) {
+                            app.DemoSet.push(e[demo]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+        }
+
+        function URLGetPriceMax() {
+            app.QueryCondition = `${searchMinPrice}元至${searchMaxPrice}元`;
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetPriceRange?Min=" + searchMinPrice + "&Max=" + searchMaxPrice,
+                success: function (e) {
+                    //console.log(e);
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.Manicurist = [];
+                        app.DemoSet = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (demo in e) {
+                            app.DemoSet.push(e[demo]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+        }
+
+        function URLShowPart() {
+            /*console.log(e.value);*/
+            //app.QueryCondition = app.CCode[e.value.substr(1, 1)].codeRepresent;
+            if (searchPart == 'C0') {
+                app.QueryCondition = "手";
+            }
+            if (searchPart == 'C1') {
+                app.QueryCondition = "腳";
+            }
+            if (searchPart == 'C2') {
+                app.QueryCondition = "手、腳";
+            }
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetPart/?Part=" + searchPart,
+                success: function (e) {
+                    //console.log(e);
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.Manicurist = [];
+                        app.DemoSet = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (demo in e) {
+                            app.DemoSet.push(e[demo]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+        }
+
+        function URLSearchit() {
+            //console.log(app.SearchString);
+            app.QueryCondition = searchSearchString;
+            $.ajax({
+                type: "get",
+                url: "/api/DemoSet/GetSearchAllTable?search=" + searchSearchString,
+                success: function (e) {
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.Manicurist = [];
+                        app.DemoSet = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (DS in e) {
+                            app.DemoSet.push(e[DS]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+            //console.log(app.DemoSet);
+        }
+
+        function URLSearchM() {
+            //console.log(app.SearchM);
+            app.QueryCondition = searchM;
+            $.ajax({
+                type: "get",
+                url: "/api/Manicurist?name=" + searchM,
+                success: function (e) {
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.DemoSet = [];
+                        app.Manicurist = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (M in e) {
+                            app.Manicurist.push(e[M]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+            app.ShowQueryM = true;
+        }
+
+        function URLSearchCertainM() {
+            //console.log(app.SearchM);
+            app.QueryCondition = "複合查詢";
+            $.ajax({
+                type: "get",
+                url: `/api/DemoSet/GetCertainQuery?Area=${searchArea}&Country=${searchCountry}&Manicurist=${searchManicurist}`,
+                success: function (e) {
+                    //console.log(e);
+                    if (e.length == 0 || e == []) {
+                        app.QueryNone = true;
+                        app.QueryResault = false;
+                        app.QueryLength = false;
+                    } else {
+                        app.DemoSet = [];
+                        app.Manicurist = [];
+                        app.QueryResault = true;
+                        app.QueryNone = false;
+                        for (M in e) {
+                            app.Manicurist.push(e[M]);
+                        }
+                        app.QueryLength = e.length;
+                    }
+                }
+            });
+            app.ShowQueryM = true;
+        }
+
+
+    </script>
+
+
+    <!--if not null-->
+    <script>
+        //console.log(searchCountry);
+        //console.log(searchArea);
+        //console.log(searchColor);
+        //console.log(searchTag);
+        //console.log(searchMinPrice);
+        //console.log(searchMaxPrice);
+        //console.log(searchPart);
+        //console.log(searchSearchString);
+        //console.log(searchM);
+
+        if (searchManicurist != null) {
+            URLSearchCertainM();
+        }
+
+        if (searchCountry != null && searchManicurist == null) {
+            URLShowCountry();
+        }
+
+        if (searchArea != null && searchManicurist == null) {
+            URLShowArea();
+        }
+
+        if (searchColor != null) {
+            URLShowColor();
+        }
+
+        if (searchTag != null) {
+            URLShowTag();
+        }
+
+        if (searchMinPrice != null && searchMaxPrice != null) {
+            URLGetPriceMin();
+        }
+
+        if (searchPart != null) {
+            URLShowPart();
+        }
+
+        if (searchSearchString != null) {
+            URLSearchit();
+        }
+
+        if (searchM != null) {
+            URLSearchM();
+        }
+
+        if (searchM == null && searchCountry == null && searchArea == null && searchColor == null && searchTag == null && searchMinPrice == null && searchMaxPrice == null && searchPart == null && searchSearchString == null) {
+            GetDefultDemo();
+        }
+
+    </script>
+
+
+
+</body>
+</html>
