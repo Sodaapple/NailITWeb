@@ -1,7 +1,5 @@
 # NailIt
-"Nail It" It's a web for people to find the manicurist who they really need.
-* .NET 5.0
-
+提供一個大眾平台給獨立接案的美甲師宣傳、推廣自己的業務，並也給客戶一個友善的平台，方便以平台搜尋當地的美甲店與各個美甲師的歷史評價與顧客反饋，了解美甲的市場行情。
 # Package
 * Entity Framework
 * Swagger
